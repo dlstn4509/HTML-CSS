@@ -1,0 +1,4 @@
+.wrapper {width: 800px; border: 10px solid red; max-width: 100%;}
+.wrapper img {width: 100%;}
+/* .wrapper img {max-width: 100%;} */
+/* %는 내 부모의 퍼센트 */

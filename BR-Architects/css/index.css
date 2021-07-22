@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Zen+Tokyo+Zoo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+/* font-family: 'Otomanopee One', sans-serif; */
+html, body {font-family: 'Open Sans' font-size: 15px; height: 10000px;}
+.font {font-family: 'Open Sans Condensed', sans-serif;}
+
+.main {width: 1500px; margin: auto;}
+
+hr {border: 1px solid #eee; margin-bottom: 40px;}
+
+
+/************************** header-wrapper ************************/
+.header-wrapper {padding: 8px 16px; position: fixed; z-index: 99; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, .5); background-color: white;}
+.header-wrapper .wrapper {padding: 8px 16px;}
+.header-wrapper .wrapper a {padding: 8px 16px;}
+.header-wrapper .wrapper .wrap a:hover {background-color: #eee;}
+.header-wrapper .wrapper .left-wrap {float: left;}
+.header-wrapper .wrapper .right-wrap {float: right;}
+.header-wrapper span {font-weight: bold;}
+.wrap {letter-spacing: 4px;}
+
+
+
+
+
+
+/************************** main-wrapper ************************/
+.logo {position: relative;}
+.main-wrapper .logo1 {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.main-wrapper .logo1 {font-size: 36px; color: #fff; letter-spacing: 4px; opacity: .7;}
+.main-wrapper .logo1 span {font-weight: bold; background-color: #000; padding: 8px 16px;}
+.main-wrapper {margin-bottom: 64px;}
+
+
+
+
+
+/************************** projects-wrapper ************************/
+.projects-wrapper .title {margin-bottom: 22px;}
+.projects-wrapper .pic .pic1 {margin-bottom: 20px;}
+
+.projects-wrapper .pic img {float: left; width: 24.25%;}
+.projects-wrapper .pic .picmargin {margin: 0 0 0 1%;}
+
+.projects-wrapper .pic .pic1 .pic1-1 img {position: relative;}
+.projects-wrapper .pic .pic1 .pic1-1 div {position: absolute; background-color: black; color: white; padding: 12px 16px;}
+.projects-wrapper .pic .pic1 .pic1-2 img {position: relative;}
+.projects-wrapper .pic .pic1 .pic1-2 div {position: absolute; background-color: black; color: white; padding: 12px 16px;}
+.projects-wrapper .pic .pic1 .pic1-3 img {position: relative;}
+.projects-wrapper .pic .pic1 .pic1-3 div {position: absolute; background-color: black; color: white; padding: 12px 16px;}
+.projects-wrapper .pic .pic1 .pic1-4 img {position: relative;}
+.projects-wrapper .pic .pic1 .pic1-4 div {position: absolute; background-color: black; color: white; padding: 12px 16px;}
+
+
+
+
+
+
+
+
+
+
+/************************** about-wrapper ************************/
+
+
+
+
+
+
+/************************** contact-wrapper ************************/
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+/* 구글참조
+a:link    : 기본컬러 (파란색)
+a:visited : 방문했던 페이지 (보라색)
+a:hover   : 마우스 오버시 (올렸을때 밑줄)
+a:active  : 마우스를 클릭하고 있는 동안
+*/
+
+.header {background-color: black; color: white;}
+.header a {text-decoration: none;}
+/* 밑줄 없애기 */
+.header a:link {color: beige;}
+.header a:visited {color: white;}
+.header a:hover {color: black;}
+.header a:active {color: gold;}
+
+.header .logo {float: left; padding: 0 100px;}
+.header .navi-wrap {float: right;}
+.header .navi-wrap .navi {float: right; padding: 12px 100px;}
+.header .navi-wrap .navi:hover {background-color: red;}
+
+.after-wrap {border: 10px solid red;}
+.after-wrap::before {content: 'ABCD'; display: block; background-color: royalblue;}
+/* 클래스 전에 고정메크로 입력 */
+.after-wrap::after {content: '1234'; display: block; background-color: saddlebrown;}
+/* 클래스 후에 고정메크로 입력 */
+/* 태그가 열리자마자는 비포어, 닫히기전에는 에프터 */

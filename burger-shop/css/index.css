@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Zen+Tokyo+Zoo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+/* font-family: 'Otomanopee One', sans-serif; */
+html, body {font-family: 'Open Sans' font-size: 15px;}
+hr {border: 1px solid #eee;}
+img {border-radius: 5px;}
+
+.font {font-family: 'Open Sans Condensed', sans-serif;}
+
+.title {box-shadow: 0 0 8px rgba(0, 0, 0, .5); position: fixed; z-index: 99; width: 100%; background-color: #fff}
+.title .left {float: left; margin: 8px 16px; padding: 8px;}
+.title .right {float: right; margin: 8px 16px; padding: 8px;}
+.title .left:hover {background-color: #bbb;}
+.title .right:hover {background-color: #bbb;}
+
+.title .subsub {position: relative;}
+.title .subsub .sub-subtitle {position: absolute; top: 38px; left: 0px; display: none;}
+.title .subsub:hover .sub-subtitle {display: block;}
+.title .subsub .sub-subtitle a {display: block; color: #fff; padding: 12px 48px 12px 16px; background-color: black;}
+.title .subsub .sub-subtitle a:hover {background-color: chartreuse;}
+
+
+/* .title .subsub .sub-subtitle a {display: block; padding: 12px 48px 12px 16px; color: #000;} */
+
+
+
+.img1 {max-width: 1600px; margin: auto; margin-bottom: 100px; position: relative;}
+.img1 .img1-sub {font-size: 40px; position: absolute; bottom: 30px; left: 24px; color: #aaa;}
+
+.t1 {width: 1100px; margin: 0 auto; margin-bottom: 80px;}
+.t1 .insu {}
+.t1 .insu .pic1 {float: left; width: 49%; padding: 2%; opacity: .7;}
+.t1 .insu .text {float: left; width: 49%; padding: 2%;}
+.t1 .insu .text1 {margin-bottom: 20px; padding: 20px;}
+.t1 .insu .text1, .text2 {text-align: center;}
+.t1 .insu .text3, .text4 {font-family: 'Otomanopee One', sans-serif;}
+.t1 .insu .text4 {color: #bbb;}
+
+.t1 .our-menu {float: left; text-align: center; width: 49%; padding: 2%;}
+.t1 .pic2 {float: right;  opacity: .7;  width: 49%; padding: 2%;}
+.t1 .our-menu .menu1 {margin-bottom: 20px;}
+
+.t1 .our-menu .rrr {text-align: left;}
+.t1 .our-menu .rrr .black-menu {letter-spacing: 5px; margin-bottom: 16px;}
+.t1 .our-menu .rrr .gray-menu {margin-bottom: 50px; color: #aaa;}
+
+
+.t1 .Contact {margin: 30px 0;}
+.t1 .fin h3 {color: seagreen;}
+.t1 h4, h5 {font-family: 'Otomanopee One', sans-serif;}
+
+
+.t1 input[type='text'], [type='number'], [type='datetime-local'], [type='content']
+{width: 100%; font-size: 12px; padding: 20px 10px; border: none; border-bottom: 1px solid #ccc}
+.form1 {margin-bottom: 30px;}
+.send {padding: 8px 16px; background-color: #eee; float: left;}
+.send:hover {background-color: #aaa;}
+
+
+
+

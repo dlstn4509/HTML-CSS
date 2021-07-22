@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    class
+  </title>
+  <style>
+    html, h1, h2, h3, h4, h5, p, div {margin: 0; padding: 0;}
+    div.red {background-color: lemonchiffon;}
+    .box{width: 100px; height: 100px; background-color: lawngreen; margin: 10px;}
+    .x2 {width: 200px; height: 200px;}
+    .center{margin: 10px auto;}
+    /* .box에서 .은 클래스를 의미  / 반으로 묶어 규칙 설정*/
+    /*  정수가 같으면 우선순위는 밑에꺼 or 정수가 높은것 부터 우선순위 */
+  </style>
+</head>
+<body>
+  <div>
+    <p class="box x2"></p>
+    <div class="box"></div>
+    <div class="box center"></div>
+    <div class="box red center"></div>
+    <div class="box red"></div>
+    <div class="box red"></div>
+    <div class="box"></div>
+    <div class="box x2"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+</body>
+</html>
+
+
+
+<!-- div>div*10 (div밑에 div가 10개) -->
