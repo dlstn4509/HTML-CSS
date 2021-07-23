@@ -1,6 +1,9 @@
-html, body, h1, h2, h3, h4, h5, h6, p, div, input, textarea, table, td, th {margin: 0; padding: 0; box-sizing: border-box;}
+html, body, h1, h2, h3, h4, h5, h6, p, div, input, textarea, table, td, th, header, section, aside, footer, article, nav, ul, ol, li {margin: 0; padding: 0; box-sizing: border-box; line-height: 1;}
+
 img {vertical-align: bottom;}
 /* 이미지 라인 맞추기 */
+
+ul, ol {list-style: none;}
 
 table {border-spacing: 0; border-collapse: collapse;}
 /* table끼리 붙어서 간격은 0으로 하기 */
@@ -21,3 +24,7 @@ a {color: inherit; text-decoration: none;}
 
 .w100 {width: 100%;}
 .mw100 {max-width: 100%; wi}
+
+.bor {border: 1px solid red;}
+.bob {border: 1px solid blue;}
+.bog {border: 1px solid green;}

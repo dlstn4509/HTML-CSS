@@ -3,17 +3,21 @@
 /* font-family: 'Lato', sans-serif; */
 
 html, body {height: 5000px;}
-html, body {font-family: 'Lato', sans-serif; font-size: 15px;}
+html, body {font-family: 'Lato', sans-serif; font-size: 15px; color: #777;}
 
-.wrapper {max-width: 980px; margin: auto;}
-
+.wrapper {max-width: 980px; margin: auto; padding: 80px 16px;}
+h2.title {text-align: center; margin-bottom: 24px;}
+h3.title {text-align: center; font-style: italic; font-size: 14px; margin-bottom: 24px;}
+p.content {line-height: 1.75; margin-bottom: 48px;}
 
 /********************************* header-wrapper *******************************/
-.header-wrapper {position: fixed; z-index: 9999;/*  top: 0; left: 0;  */width: 100%;}
+.header-wrapper {position: fixed; z-index: 9999; width: 100%; color: #777;  transition: all .5s;}
+.header-wrapper.active {background-color: #fff; color: #000; box-shadow: 0 0 10px
+  rgba(0, 0, 0, .6);}
 .header-wrapper .navi-wrap {}
 .header-wrapper .navi-wrap .navi-wp {float: left;}
 .header-wrapper .navi-wrap .search-wp {float: right;}
-.header-wrapper .navi-wrap .navi {float: left; padding: 12px 16px; color: #777;}
+.header-wrapper .navi-wrap .navi {float: left; padding: 12px 16px;}
 
 .header-wrapper .navi-wrap .navi-wp .navi:hover {background-color: #ddd; color: #000;}
 .header-wrapper .navi-wrap .search-wp .navi:hover {background-color: #f32; color: #ddd;}
@@ -24,20 +28,35 @@ html, body {font-family: 'Lato', sans-serif; font-size: 15px;}
 .main-wrapper h1.logo {background-color: #000; color: #fff; letter-spacing: 6px; display: inline-block; padding: 12px 16px;}
 .main-wrapper > div {display: table-cell; text-align: center; vertical-align: middle;}
 
-
-
-
-
-
-
-
-
 /********************************* about-wrapper *******************************/
+.about-wrapper h4.title {margin-bottom: 24px; text-align: center; font-size: 18px;}
+.about-wrapper .wrapper .info-wrap > div {width: 50%; float: left; padding: 0 16px;}
+.about-wrapper .wrapper .info-wrap .my-wp h4.title .fa {margin-right: 16px;}
+.about-wrapper .wrapper .info-wrap .story-wp {line-height: 1.75;}
+.about-wrapper .wrapper .info-wrap .my-wp .imgs {overflow: hidden;}
+.about-wrapper .wrapper .info-wrap .my-wp {margin-bottom: 60px;}
+.about-wrapper .wrapper .info-wrap .my-wp img {opacity: .5; transition: all .5s;}
+/* transition: all 1s 은 원본한테 준다 */
+.about-wrapper .wrapper .info-wrap .my-wp img:hover {opacity: 1; transform: scale(1.2);}
 
+.about-wrapper .skill {margin-bottom: 24px;}
+.about-wrapper .skill-wp h5.title {font-size: 16px; letter-spacing: 8px; margin-bottom: 16px; margin-bottom: 16px;}
+.about-wrapper .skill .bars {background-color: #eee; text-align: center;}
+.about-wrapper .skill .bars .bar {background-color: #555; color: #fff; padding: 8px;}
 
+.about-wrapper .skill:nth-child(1) .bars .bar {width: 90%;}
+.about-wrapper .skill:nth-child(2) .bars .bar {width: 85%;}
+.about-wrapper .skill:nth-child(3) .bars .bar {width: 80%;}
 
 /********************************* pf-wrapper *******************************/
+.pf-wrapper .prj-wrap {background-color: #666; color: #fff;}
+.pf-wrapper .prj-wrap .prj {width: 25%; float: left; text-align: center; padding: 36px;}
+.pf-wrapper .prj-wrap .prj h3.title {font-size: 24px; margin-bottom: 16px;}
+.pf-wrapper .prj-wrap .prj p.content {margin-bottom: 0;}
 
+.pf-wrapper .title-wrap {width: 100%; height: 400px; background-image: url(../img/parallax2.jpg); background-position: center; background-size: cover; background-attachment: fixed; display: table; opacity: .8;}
+.pf-wrapper .title-wrap .cell-wp {display: table-cell; vertical-align: middle;}
+.pf-wrapper .title-wrap .cell-wp h2.title {font-size: 36px; color: #fff; letter-spacing: 8px;}
 
 
 /********************************* contact-wrapper *******************************/
