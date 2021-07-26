@@ -1,4 +1,4 @@
-html, body {height: 10000px;}
+
 section:not(.main-wrapper) {padding-top: 100px;}
 
 
@@ -21,17 +21,25 @@ section:not(.main-wrapper) {padding-top: 100px;}
 /************************** .about-wrapper ***********************/
 
 .about-wrapper {}
-
-
+.about-wrapper .wrapper {overflow: hidden;}
+.about-wrapper .wrapper .team-wrap {display: flex; width: 101%;}
+.about-wrapper .wrapper .team-wrap .team {width: 24%; margin: 0 1% 1% 0;}
+.about-wrapper .wrapper .team-wrap .team .imgs {filter: grayscale(.75);}
+.about-wrapper .wrapper .team > * {margin-bottom: 20px;}
+.about-wrapper .wrapper .team h4.name {font-size: 24px;}
+.about-wrapper .wrapper .team h5.title {color: #999;}
+.about-wrapper .wrapper .team p.content {line-height: 1.5;}
+.about-wrapper .wrapper .team a.bt-contact {display: block; padding: 12px; text-align: center; background-color: #eee;}
+.about-wrapper .wrapper .team a.bt-contact:hover {background-color: #ccc;}
 
 /***************************** .contact-wrapper ****************************/
 
-
-
-
+.contact-wrapper {margin-bottom: 12px;}
+.contact-wrapper .input {margin-bottom: 12px;}
+.contact-wrapper .contact-form {margin-bottom: 36px;}
 
 /************************ .footer-wrapper ****************************/
 
-
+.footer-wrapper {background-color: #000; color: #fff; text-align: center; padding: 50px 0;}
 
 
