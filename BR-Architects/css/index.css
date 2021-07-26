@@ -1,56 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Zen+Tokyo+Zoo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
-/* font-family: 'Otomanopee One', sans-serif; */
-html, body {font-family: 'Open Sans' font-size: 15px; height: 10000px;}
-.font {font-family: 'Open Sans Condensed', sans-serif;}
-
-.main {width: 1500px; margin: auto;}
-
-hr {border: 1px solid #eee; margin-bottom: 40px;}
-
-h2.title {margin-bottom: 22px;}
-
-
-/************************** header-wrapper ************************/
-.header-wrapper {padding: 8px 16px; position: fixed; z-index: 99; width: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, .5); background-color: white;}
-.header-wrapper .wrapper {padding: 8px 16px;}
-.header-wrapper .wrapper a {padding: 8px 16px;}
-.header-wrapper .wrapper .wrap a:hover {background-color: #eee;}
-.header-wrapper .wrapper .left-wrap {float: left;}
-.header-wrapper .wrapper .right-wrap {float: right;}
-.header-wrapper span {font-weight: bold;}
-.wrap {letter-spacing: 4px;}
-
-/************************** main-wrapper ************************/
-.logo {position: relative;}
-.main-wrapper .logo1 {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
-.main-wrapper .logo1 {font-size: 36px; color: #fff; letter-spacing: 4px; opacity: .7;}
-.main-wrapper .logo1 span {font-weight: bold; background-color: #000; padding: 8px 16px;}
-.main-wrapper {margin-bottom: 64px;}
-
-/************************** projects-wrapper ************************/
-.projects-wrapper .wrapper .wrap .img-wrap {width: 24.9999999%; float: left; position: relative; padding: 0 8px;}
-.projects-wrapper .wrapper .wrap .img-wrap .text {position: absolute; background-color: #000; color: #fff; padding: 12px 16px;}
-.img-wrapper {margin-bottom: 16px;}
-
-.projects-wrapper {margin-bottom: 64px;}
-
-
-/************************** about-wrapper ************************/
-.about-wrapper .about-wrapper-text {line-height: 1.5; margin-bottom: 40px;}
-.about-wrapper .wrapper {}
-.about-wrapper .wrapper .contact {width: 25%; float: left; padding: 0 8px;}
-.about-wrapper .wrapper .contact img,h2,h4 {margin-bottom: 16px;}
-.about-wrapper .wrapper .contact .bt {background-color: #eee; color: #000; display: inline-block; width: 100%; padding: 12px 0; text-align: center;}
-
-
-
-
-
-/************************** contact-wrapper ************************/
-
-
-
-
-
-
+<!--***************************** header-wrapper *****************************-->
+<!--***************************** main-wrapper *****************************-->
+<!--***************************** Projects-wrapper *****************************-->
+<!--***************************** About-wrapper *****************************-->
+<!--***************************** Contact-wrapper *****************************-->
+<!--***************************** footer-wrapper *****************************-->
