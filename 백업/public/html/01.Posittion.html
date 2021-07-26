@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position을 배워보자</title>
+  <link rel="stylesheet" href="../css/all.min.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
+    /* font-family: 'Lato', sans-serif; */    
+    html, body {height: 5000px;}
+    html, body {font-family: 'Lato', sans-serif; font-size: 15px;}
+    
+    .wrapper {max-width: 800px; margin: auto;}
+    .wrapper1 {position: relative;}
+    .logo {position: absolute; top: 50px; left: 50px;}
+    /* position:static(디폴트) / absolute(뜸) / relative(기준) / fixed(브라우저가 기준, 스크롤 내려도 따라감) / sticky */
+    /* absolute:공중에 뜸, 기준인 ralative를 따라감 */
+    /* relative:기준!!!! 주변에 말해주고 공중에 뜸 (자리 맡아줘) */
+    .top {font-size: 50px; position: fixed; bottom: 50px; right: 50px;}
+    /* fixed의 기준은 브라우저 */
+    
+
+  </style>
+</head>
+<body>
+  <div class="wrapper wrapper1">
+    <h1 class="logo">absolute</h1>
+    <img src="../img/parallax1.jpg" alt="배경" class="w100">
+  </div>
+  <div class="wrapper wrapper2">
+    <img src="../img/parallax2.jpg" alt="배경" class="w100">
+  </div>
+  <div class="wrapper wrapper3">
+    <img src="../img/parallax3.jpg" alt="배경" class="w100">
+  </div>
+  <i class="top fa fa-arrow-alt-circle-up">
+  </i>
+</body>
+</html>
