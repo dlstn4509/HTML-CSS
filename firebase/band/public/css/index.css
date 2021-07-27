@@ -27,9 +27,11 @@ p.content {sans-serif; color: #222; text-align: justify; line-height: 2;}
 .header-wrapper .navi-wrap .navi:hover {color: #000; background-color: #ddd;}
 .header-wrapper .search-wrap {float: right; padding: 12px 16px;}
 .header-wrapper .search-wrap:hover {background-color: #f30;}
+.header-wrapper .bars-wrap {float: right; padding: 12px 16px; display: none;}
+.header-wrapper .bars-wrap:hover {color: #000; background-color: #ddd;}
 
 .header-wrapper .navi-more {position: relative;}
-.header-wrapper .navi-more .sub-wrap {background-color: #fff; position: absolute; box-shadow: 0 0 10px rgba(0, 0, 0, 5); top: 45px; left: 0; display: none;}
+.header-wrapper .navi-more .sub-wrap {background-color: #fff; position: absolute; box-shadow: 0 0 10px rgba(0, 0, 0, 5); top: 40px; left: 0; display: none;}
 .header-wrapper .navi-more:hover .sub-wrap {display: block;}
 .header-wrapper .navi-more .sub-wrap a {display: block; padding: 12px 48px 12px 16px; color: #000;}
 .header-wrapper .navi-more .sub-wrap a:hover {background-color: #ddd;}
@@ -115,3 +117,31 @@ p.content {sans-serif; color: #222; text-align: justify; line-height: 2;}
 .footer-wrapper .sns-wrap {font-size: 20px; margin-bottom: 24px;}
 .footer-wrapper .sns-wrap .fab:hover {opacity: .5;}
 /* opacity 투명도 */
+
+/*************************** 반응형 **********************/
+
+@media screen and (max-width: 1199px) {
+    
+}
+@media screen and (max-width: 991px) {
+    
+}
+@media screen and (max-width: 767px) {
+    
+}
+@media screen and (max-width: 575px) {
+    .header-wrapper .search-wrap {display: none;}
+    .header-wrapper .bars-wrap {display: block;}
+    .header-wrapper .navi-wrap .navi:not(:first-child) {display: none;}
+    .main-wrapper .slogan-wrap {display: none;}
+    .band-wrapper .member-wrap .member {width: 100%; padding: 20px 100px;}
+    .band-wrapper .member .name {font-size: 18px;}
+    .tour-wrapper .city {width: 100%; margin: 0 0 2% 0;}
+    .tour-wrapper .city:nth-child(2) {margin: 0 0 2% 0;}
+
+    .contact-wrapper .info-wp {width: 100%; margin-bottom: 26px;}
+    .contact-wrapper .form-wp {width: 100%;}
+    .contact-wrapper .form-wp input[name="name"] {width: 100%;}
+    .contact-wrapper .form-wp input[name="email"] {width: 100%;}
+    
+}
