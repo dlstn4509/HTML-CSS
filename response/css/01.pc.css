@@ -2,8 +2,6 @@
 .img-wrap {display: flex; flex-wrap: wrap;}
 .img-wrap .imgs {width: 25%;}
 
-
-
 @media screen and (max-width: 1024px) {
     .img-wrap .imgs {width: 33.3333%;}
 }
