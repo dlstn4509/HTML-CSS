@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <!-- initial-scale=1.0 확대해도 상관 X -->
+    <title>반응형 PC먼저 mobile 나중에...</title>
+    <link rel="stylesheet" href="../../0.BASE/all.min.css">
+    <link rel="stylesheet" href="../../0.BASE/base.css">
+    <link rel="stylesheet" href="../css/01.pc.css">
+</head>
+<body>
+    <!-- 
+        1. 반응형 사이트 중점사항
+            1) layout의 width는 %를 써야 한다. (스마트폰 가로는 없음)
+            2) .wrapper 같은 경우는 max-width로 최대값을 제한한다.
+            3) 이미지는 자체 사이즈로 보인다. -> 반응형으로 처리하려면 %로
+                width로 제어한다.
+            4)
+    -->
+
+    <div class="wrapper">
+        <img src="../img/map.jpg" alt="map" class="w100">
+    </div>
+    <div class="wrapper">
+        <ul class="img-wrap">
+            <li class="imgs"><img src="../img/team1.jpg" alt="team" class="w100"></li>
+            <li class="imgs"><img src="../img/team2.jpg" alt="team" class="w100"></li>
+            <li class="imgs"><img src="../img/team3.jpg" alt="team" class="w100"></li>
+            <li class="imgs"><img src="../img/team4.jpg" alt="team" class="w100"></li>
+        </ul>
+    </div>
+
+
+
+
+
+
+</body>
+</html>
