@@ -4,15 +4,20 @@ html, body {font-family: 'Lato', sans-serif; font-size: 15px; color: #777;}
 .header-wrapper {position: fixed; z-index: 9999; width: 100%; color: #777;  transition: all .5s;}
 .header-wrapper.active {background-color: #fff; color: #000;
   box-shadow: 0 0 10px rgba(0, 0, 0, .6);}
-.header-wrapper .navi-wrap .search-wp {float: right;}
+.header-wrapper .navi-wrap {display: flex;}
+.header-wrapper .navi-wrap .search-wp {float: right; margin-left: auto;}
+.header-wrapper .navi-wrap .bars-wp {float: right; display: none;}
 .header-wrapper .navi-wrap .navi {float: left; padding: 12px 16px;}
 
 .header-wrapper .navi-wrap .navi-wp .navi:hover {background-color: #ddd; color: #000;}
 .header-wrapper .navi-wrap .search-wp .navi:hover {background-color: #f32; color: #ddd;}
 
+.header-wrapper .navi-wrap .bars-wp .navi:hover {background-color: #000; color: #fff;}
+
 /********************************* main-wrapper *******************************/
 .main-wrapper {height: 100vh; background-image: url(../img/parallax1.jpg); background-position: center; background-size: cover; background-attachment: fixed; opacity: 0.8; display: table; width: 100%;}
 .main-wrapper h1.logo {background-color: #000; color: #fff; letter-spacing: 6px; display: inline-block; padding: 12px 16px;}
+.main-wrapper h1.logo1 {display: none;}
 .main-wrapper > div {display: table-cell; text-align: center; vertical-align: middle;}
 
 /********************************* about-wrapper *******************************/
@@ -77,3 +82,23 @@ html, body {font-family: 'Lato', sans-serif; font-size: 15px; color: #777;}
 .footer-wrapper .sns-wrap .sns {display: inline-block; font-size: 20px; margin: 0 2px;}
 .footer-wrapper .sns-wrap {margin-bottom: 24px;}
 
+
+
+
+
+@media screen and (max-width: 575px) {
+  .header-wrapper .navi-wrap .search-wp {display: none;}
+  .header-wrapper .navi-wrap .bars-wp {display: block; margin-left: auto;}
+  .header-wrapper .navi-wrap .navi:not(:first-child) {display: none;}
+  .main-wrapper h1.logo {display: none;}
+  .main-wrapper h1.logo1 {display: inline-block;}
+  .about-wrapper .wrapper .info-wrap > div {width: 100%;}
+  .about-wrapper .wrapper .info-wrap .story-wp {display: none;}
+  .pf-wrapper .prj-wrap .prj {width: 100%;}
+  .pf-wrapper .work-wrap .work-wp .work {width: 100%;}
+
+  .contact-wrapper .map-wp {width: 100%;}
+  .contact-wrapper .info-wp {width: 100%; padding: 0;}
+  .contact-wrapper .info-wp form > :nth-child(1) {width: 100%;}
+  .contact-wrapper .info-wp form > :nth-child(2) {width: 100%;}
+}

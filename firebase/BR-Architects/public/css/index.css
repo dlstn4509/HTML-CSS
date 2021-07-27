@@ -45,3 +45,21 @@ section:not(.main-wrapper) {padding-top: 100px;}
 .footer-wrapper a {text-decoration:underline}
 
 
+
+@media screen and (max-width: 922px) {
+    .prj-wrapper .wrapper .prj-wrap .prj {width: 49%; margin: 0 1% 1% 0;}
+
+    .about-wrapper .wrapper .team-wrap {display: flex; flex-wrap: wrap;}
+    .about-wrapper .wrapper .team-wrap .team {width: 49%; margin: 0 1% 1% 0;}
+    
+}
+
+@media screen and (max-width: 600px) {
+    .header-wrapper .logo {padding: 12px 10px;}
+    .header-wrapper .navi-wrap {display: none;}
+    .prj-wrapper .wrapper .prj-wrap .prj {width: 99%;}
+
+    
+    .about-wrapper .wrapper .team-wrap .team {width: 90%; margin: auto;}
+
+}
