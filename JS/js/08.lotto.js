@@ -1,26 +1,31 @@
+
+
 /* 
-Math: abs(): 절대값. floor(): 버림, ceil(): 올림, round(): 반올림, random(): 난수발생
+console.log(Math.abs(-1));      // 절대값
+console.log(Math.floor(4.9));   // 소수점 이하 버림
+console.log(Math.ceil(4.1));    // 소수점 이하 올림
+console.log(Math.round(4.5));   // 반올림
+console.log(Math.random());     // 0 ~ 0.9999999 까지의 난수를 발생 (랜덤)
+*/
+
+/* 
+1 ~ 45까지의 난수 발생
+console.log(Math.floor(Math.random() * 45));   //   0 ~ 44
+console.log(Math.floor(Math.random() * 45)+1); //   1 ~ 45
+*/
+
+/*
+200 ~ 299까지의 난수 발생
+console.log(Math.random() * 100);  // 0 ~ 99.99999999
+console.log(Math.floor(Math.random() * 100));  // 0 ~ 99
+console.log(Math.floor(Math.random() * 100)+200);  // 200 ~ 299
 */
 
 
-// console.log(Math.abs(-1));      // 절대값
-// console.log(Math.floor(4.9));   // 소수점 이하 버림
-// console.log(Math.ceil(4.1));    // 소수점 이하 올림
-// console.log(Math.round(4.5));   // 반올림
-// console.log(Math.random());     // 0 ~ 0.9999999 까지의 난수를 발생 (랜덤)
 
-// 1 ~ 45까지의 난수 발생
-// console.log(Math.floor(Math.random() * 45)); // 0 ~ 44
-// console.log(Math.floor(Math.random() * 45)+1); // 1 ~ 45
-
-// 200 ~ 299까지의 난수 발생
-// console.log(Math.random() * 100);  // 0 ~ 99.99999999
-// console.log(Math.floor(Math.random() * 100));  // 0 ~ 99
-// console.log(Math.floor(Math.random() * 100)+200);  // 200 ~ 299
-
-
-
-/* console.log(random(1,45)); */
+/*
+console.log(random(1,45));
+*/
 
 
 
@@ -34,7 +39,7 @@ Array
 - arr.pop() : 배열의 맨 뒤의 값을 뽑아낸다 (배열이 변한다.)
 - arr.shift() : 배열의 맨 앞의 값을 뽑아낸다 (배열이 변한다.)
 - arr.splice(idx, 빼고싶은 갯수, 넣을 값) : 배열의 중간에 값을 넣거나 빼거나 교체한다. 
- */
+*/
 
 var arr = ['A', 'B'];
 
