@@ -68,10 +68,7 @@ var human = {
     name: '홍길동',
     age: 20,
     weight: 80,
-    height: 180
-    run: function() {
-        console.log(this.name + '이 뜁니다.');
-    }
+    height: 180    
 }
 console.log(human.name);
 console.log(human.age);
