@@ -1,7 +1,8 @@
 function bt(chk) {
   var bulb = document.getElementsById('bulb')
-  var on = document.getElementsById('on')
   var off = document.getElementsById('off')
+  var on = document.getElementsById('on')
+
   if(chk) {
     bulb.src = '../img/on.png';
   }
@@ -9,3 +10,7 @@ function bt(chk) {
     bulb.src = '../img/off.png';
   }  
 } 
+
+
+
+

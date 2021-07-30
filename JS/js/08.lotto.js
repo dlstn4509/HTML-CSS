@@ -39,6 +39,7 @@ Array
 - arr.pop() : 배열의 맨 뒤의 값을 뽑아낸다 (배열이 변한다.)
 - arr.shift() : 배열의 맨 앞의 값을 뽑아낸다 (배열이 변한다.)
 - arr.splice(idx, 빼고싶은 갯수, 넣을 값) : 배열의 중간에 값을 넣거나 빼거나 교체한다. 
+- arr.indexOf(값) : 값이 위치한 index값을 리턴한다. 만약 값이 없으면 -1을 리턴한다.
 */
 
 var arr = ['A', 'B'];
@@ -81,3 +82,41 @@ var fruits = ['apple', 'banana', 'cherry']
 // 값을 교체 함
 console.log(fruits.splice(1, 2, 'melon', 'orange'))  // ["banana", "cherry"]
 console.log(fruits);                                 // ["apple", "melon", "orange"]
+
+var fruits = ['apple', 'banana', 'cherry']
+// 값을 찾아냄
+console.log (fruits.indexOf('banana'));               //  1
+console.log (fruits.indexOf('melon'));                //  -1
+
+
+
+console.clear();
+
+/********************* 로또 프로그램 ******************/
+
+function choiceLotto() {
+  var numbers = [];
+  var lotto = new Array();
+  var lottoEl = document.getElementById('lotto')
+
+	for(var i=1; i<=45; i++) numbers.push(i);
+	// for(; lotto.length < 6;) {
+  while(lotto.length < 6) {
+		var idx = random(0, 45); // Math.floor(Math.random * 45) + 0;
+    if(lotto.indexOf(numbers[idx]) === -1) lotto.push(numbers[idx]);
+  } // while(조건) -> 조건이 참일때까지 반복, 반복횟수 제한이 애매할때
+	lottoEl.innerHTML = '';
+	for(var i=0; i<6; i++) {
+		lottoEl.innerHTML += '<li class="'+lottoColor(lotto[i])+'">'+lotto[i]+'</li>';
+	}
+}
+
+function lottoColor(n) {
+  var color = '';
+  if(n <= 10) color = 'yellow';
+  else if(n <= 20) color = 'blue';
+  else if(n <= 30) color = 'red';
+  else if(n <= 40) color = 'black';
+  else color = 'green';  
+  return color;
+}
