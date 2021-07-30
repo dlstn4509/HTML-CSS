@@ -27,7 +27,7 @@ $('.bt6').on('click', function() {
 })
 
 $('.bt7').on('click', function() {
-  $('.box').stop().stop();
+  $('.box').stop();
 })
 
 $('.navi').on('mouseenter', function () {

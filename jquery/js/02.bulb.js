@@ -27,9 +27,9 @@ $('className') -> jQuery
 
 
 /*
-document.getElementById('a').getElementsByTagName('ul')[0].getElementsByTagName('li')[0].innerHTML                                      // js
+document.getElementById('a').getElementsByTagName('ul')[0].getElementsByTagName('li')[0].innerHTML                                          // js
 
-$('#a li:nth-child(1)').html()                     // jQuery
+$('#a li:nth-child(1)').html()                      // jQuery
 
 document.querySelectorAll('#a li')[0].innerHTML     // js 
 */
