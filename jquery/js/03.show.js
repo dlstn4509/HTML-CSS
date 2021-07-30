@@ -26,9 +26,15 @@ $('.bt6').on('click', function() {
   $('.box').stop().slideDown(1000);
 })
 
-
+$('.bt7').on('click', function() {
+  $('.box').stop().stop();
+})
 
 $('.navi').on('mouseenter', function () {
   // $(this).childern('.sub-wp').stop().slideDown(100); // 자식선택자
   $(this).find('.sub-wp').stop().slideDown(100);        // 자손선택자
+})
+
+$('.navi').on('mouseleave', function () {
+  $(this).find('.sub-wp').stop().slideUp(100);
 })
