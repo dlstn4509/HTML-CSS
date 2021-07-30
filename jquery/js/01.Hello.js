@@ -1,2 +1,2 @@
-console.log ($);
-console.log (jQuery);
+console.log ($);         // $()
+console.log (jQuery);    // jQuery()

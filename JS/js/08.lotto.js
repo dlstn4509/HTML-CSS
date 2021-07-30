@@ -21,6 +21,18 @@ console.log(Math.floor(Math.random() * 100));  // 0 ~ 99
 console.log(Math.floor(Math.random() * 100)+200);  // 200 ~ 299
 */
 
+/*
+function sum(a, b) {
+	a, b: 인자/매개변수/parameter/arguments
+}
+var a = {
+	a: 'A', // property
+	b: function() { // method
+
+	}
+}
+*/
+
 
 
 /*
