@@ -40,6 +40,9 @@ Array
 - arr.shift() : 배열의 맨 앞의 값을 뽑아낸다 (배열이 변한다.)
 - arr.splice(idx, 빼고싶은 갯수, 넣을 값) : 배열의 중간에 값을 넣거나 빼거나 교체한다. 
 - arr.indexOf(값) : 값이 위치한 index값을 리턴한다. 만약 값이 없으면 -1을 리턴한다.
+- arr.sort() : 배열의 값을 정렬한다.
+  1. 오름차순 arr.sort(function(a, b) {return a - b})
+  2. 내림차순 arr.sort(function(a, b) {return b - a})
 */
 
 var arr = ['A', 'B'];
@@ -97,20 +100,28 @@ console.clear();
 function choiceLotto() {
   var numbers = [];
   var lotto = new Array();
-  var lottoEl = document.getElementById('lotto')
-
-	for(var i=1; i<=45; i++) numbers.push(i);
-	// for(; lotto.length < 6;) {
+  
+	for(var i=1; i<=45; i++) numbers.push(i); // for(; lotto.length < 6;)
   while(lotto.length < 6) {
-		var idx = random(0, 45); // Math.floor(Math.random * 45) + 0;
+    var idx = random(0, 45); // Math.floor(Math.random * 45) + 0;
     if(lotto.indexOf(numbers[idx]) === -1) lotto.push(numbers[idx]);
   } // while(조건) -> 조건이 참일때까지 반복, 반복횟수 제한이 애매할때
-	lottoEl.innerHTML = '';
-	for(var i=0; i<6; i++) {
-		lottoEl.innerHTML += '<li class="'+lottoColor(lotto[i])+'">'+lotto[i]+'</li>';
-	}
+  lotto.sort(function(a, b) {return a - b}) // 숫자 오름차순 정렬
+  setHtml(lotto);
 }
 
+function setHtml(lotto) {
+  var lottoEl = document.getElementById('lotto');
+	var historyEl = document.getElementById('history');
+	var html = lottoEl.innerHTML;
+  historyEl.innerHTML = '<li><ul class="d-flex my-3 justify-content-center">'+html+'</ul></li>' + historyEl.innerHTML;
+
+
+	lottoEl.innerHTML = '';
+	for(var i=0; i<6; i++) {
+		lottoEl.innerHTML += '<li class="ball '+lottoColor(lotto[i])+'">'+lotto[i]+'</li>';
+	}
+}
 function lottoColor(n) {
   var color = '';
   if(n <= 10) color = 'yellow';
