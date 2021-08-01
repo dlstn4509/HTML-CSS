@@ -131,10 +131,10 @@ function setHtml(lotto) {
 
 	lottoEl.innerHTML = '';
 	for(var i=0; i<6; i++) {
-		lottoEl.innerHTML += '<li class="ball '+lottoColor(lotto[i])+'">'+lotto[i]+'</li>';
+		lottoEl.innerHTML += '<li class="ball '+getLottoColor(lotto[i])+'">'+lotto[i]+'</li>';
 	}
 }
-function lottoColor(n) {
+function getLottoColor(n) {
   var color = '';
   if(n <= 10) color = 'yellow';
   else if(n <= 20) color = 'blue';
