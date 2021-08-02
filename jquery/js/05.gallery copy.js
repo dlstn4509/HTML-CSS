@@ -62,42 +62,19 @@ var products = [
 	},
 ];
 
-
-var json = JSON.stringify(products); // js Object -> json
-var jsobj = JSON.parse(json); //  json -> js Object
-
-
-(function init() {
-	var cnt = products.length; // 12
-	var html = '';
-	var wrap = document.getElementsByClassName('prd-wrap')[0];
-	for(var i=0; i<cnt; i++) {
+$(document).ready(function(){
+	var cnt = products.length;
+	for(var i=0, html; i<cnt; i++) {
 		html = '<li class="prd">';
-		html += '<div class="imgs">';
-		html += '<img src="'+products[i].src+'" class="w100" onclick="openModal('+i+');">';
+		html += '<li class="imgs">';
+		html += '<img src="'+products[i].src+'" class="w100">';
 		html += '</div>';
 		html += '<div class="conts">';
 		html += '<h2 class="name">'+products[i].name+'</h2>';
 		html += '<p class="content">'+products[i].content+'</p>';
-		html += '<div class="price">$'+products[i].price+'</div>';
+		html += '<div class="price">'+products[i].price+'</div>';
 		html += '</div>';
 		html += '</li>';
-		wrap.innerHTML += html;
+		$('.prd-wrap').append(html);
 	}
-})();  //  IIFE(즉시실행함수)
-
-function openModal(id) {
-	var modal = document.getElementsByClassName('modal-wrapper')[0];
-	var img = modal.getElementsByTagName('img')[0];
-	img.src = products[id].src;
-	modal.style.display = 'flex';
-}
-
-function closeModal() {
-	var modal = document.getElementsByClassName('modal-wrapper')[0];
-	modal.style.display = 'none';
-}
-/* 1. bt-close를 클릭하면 modal창을 닫는다. */
-
-
-
+});

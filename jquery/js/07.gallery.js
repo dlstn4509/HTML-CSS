@@ -33,7 +33,7 @@ for (var i=0; i<thumbs.length; i++) {
       lists[j].classList.remove('active');
     }
     this.parentNode.classList.add('active');
-  })
+  });
 }
 
 
