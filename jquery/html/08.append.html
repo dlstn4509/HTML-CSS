@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Append(), AppendTo(), prepend(), prependTo()</title>
+  <link rel="stylesheet" href="../../0.BASE/bootstrap.min.css">
+  <script src="../../0.BASE/jquery.min.js"></script>
+  <style>
+    .box {width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #fff; background-color: red;}
+  </style>
+
+</head>
+<body>
+  <div class="text-center my-5">
+    <button class="bt-append btn btn-primary">Append</button>
+    <button class="bt-prepend btn btn-primary">prepend</button>
+    <button class="bt-remove btn btn-danger">Remove</button>
+    <button class="bt-empty btn btn-danger">Empty</button>
+  </div>
+  <div class="wrapper container border border-danger p-5 d-flex flex-wrap">
+    <!-- <div class="box">1</div> -->
+  </div>
+
+  <script>
+    $('.bt-append').click(function(){
+      /* $('.wrapper').append('<div class="box">'+($('.box').length + 1)+'</div>'); */
+      $('<div class="box">'+($('.box').length + 1)+'</div>').appendTo('.wrapper');
+    });
+    $('.bt-prepend').click(function(){
+      // $('.wrapper').prepend('<div class="box">'+($('.box').length + 1)+'</div>')
+      $('<div class="box">'+($('.box').length + 1)+'</div>').prependTo('.wrapper');
+    });
+    $('.bt-remove').click(function(){
+      $('.box').remove(); // 대상이 지우짐
+    });
+    $('.bt-empty').click(function(){
+      $('.wrapper').empty(); // 대상의 자손을 지움
+    });
+  </script>
+</body>
+</html>

@@ -75,18 +75,20 @@ $(document).ready(function() {
 		html += '<div class="price">'+products[i].price+'</div>';
 		html += '</div>';
 		html += '</li>';
-		$('.prd-wrap').append(html); // prepend 는 역순, $('.prd-wrap')[0].innerHTML += html;
-	}
-		// 여기까지 와야 .prd 생성완료
-		$('.prd img').click(function(){
+		$(html).appendTo('.prd-wrap').find('img').click(function(){
 			var src = $(this).attr('src'); // this.src; (Getter)
 			$('.modal-wrap img').attr('src', src); // this.src; (Setter)
-			$('.madal-wrapper').stop().fadein(800); // this.style.display = 'flex'; (Setter)
+			$('.modal-wrapper').stop().fadeIn(800); // this.style.display = 'flex'; (Setter)
 		});
+		// prepend 는 역순, $('.prd-wrap')[0].innerHTML += html;
+	}
+		// 여기까지 와야 .prd 생성완료
 		$('.modal-wrapper .bt-close').click(function(){
 			$('.modal-wrapper').stop().fadeOut(800);
 		});
 });
+
+
 
 		// document.getElementsByClassName('prd-wrap')[0].innerHTML += html;
 		// $('.prd-wrap')[0].innerHTML += html;
