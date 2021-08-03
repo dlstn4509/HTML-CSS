@@ -1,5 +1,5 @@
 /*************** Global init ****************/
-var scores = [
+let scores = [
 	{ id: 1, name: '홍길동', kor: 95, eng: 80, math: 75 },
 	{ id: 2, name: '홍길순', kor: 88, eng: 95, math: 85 },
 	{ id: 3, name: '홍길만', kor: 90, eng: 85, math: 85 },
@@ -8,7 +8,7 @@ var scores = [
 /*************** Function init ****************/
 function init() {
 	// for(var i=0; i<scores.length; i++) {createRow(scores[i])}
-	for(var i in scores) {createRow(scores[i]);}
+	for(let i in scores) {createRow(scores[i]);}
 	// for(var v of scores) {createRow(v)}  //  IE11 미지원
   // scores.forEach(function(v, i){createRow(v)})
 }
@@ -29,14 +29,14 @@ function total() { // 가변인자
 
 
 function createRow(data) {
-  var id = $('.score-tbody tr').length + 1;
-	var name = data.name;
-	var kor = data.kor;
-	var eng = data.eng;
-	var math = data.math;
-	var tot = total(kor, eng, math);
-	var avg = average(kor, eng, math);	
-  var html = '<tr>';
+  let id = $('.score-tbody tr').length + 1;
+	let name = data.name;
+	let kor = data.kor;
+	let eng = data.eng;
+	let math = data.math;
+	let tot = total(kor, eng, math);
+	let avg = average(kor, eng, math);	
+  let html = '<tr>';
   html += '<td>'+id+'</td>';
   html += '<td>'+name+'</td>';
   html += '<td>'+kor+'</td>';
@@ -57,11 +57,11 @@ function onShowForm() {
 }
 
 function onSubmit () { // 검증
-  var f = document.scoreForm;
-  var name = f.name.value.trim();
-  var kor = f.kor.value;
-  var eng = f.eng.value;
-  var math = f.math.value;
+  let f = document.scoreForm;
+  let name = f.name.value.trim();
+  let kor = f.kor.value;
+  let eng = f.eng.value;
+  let math = f.math.value;
   if(name.length < 2) {
     alert('이름을 입력하세요.')
     f.name.focus();

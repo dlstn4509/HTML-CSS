@@ -14,8 +14,6 @@ let nowDate = d.getFullYear() + '-' + zp((d.getMonth() + 1)) + '-' + zp(d.getDat
 
 console.log(nowDate);  //  ISO 표준시 (국제 표준시간 표기)
 
-
-setInterval(oninterval, 1000);
 function oninterval() {
   /*
   let yoil = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -26,7 +24,8 @@ function oninterval() {
   document.querySelector('.time-wp').innerHTML = time;
 }
 */
-document.querySelector('.date-wp').innerHTML = moment().format('Y년MM월DD일. ddd');
-document.querySelector('.time-wp').innerHTML = moment().format('HH시mm분ss초')
-document.querySelector('.timestamp-wp').innerHTML = new Date().getTime();
+  document.querySelector('.date-wp').innerHTML = moment().format('Y년MM월DD일. ddd');
+  document.querySelector('.time-wp').innerHTML = moment().format('HH시mm분ss초')
+  document.querySelector('.timestamp-wp').innerHTML = new Date().getTime();
 }
+setInterval(oninterval, 1000);

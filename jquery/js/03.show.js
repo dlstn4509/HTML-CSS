@@ -41,7 +41,7 @@ $('.bt-ani').click(function() {
   });
 })
 
-$('.bt-ani').on('mouseenter', function () {
+$('.navi').on('mouseenter', function () {
   // $(this).childern('.sub-wp').stop().slideDown(100); // 자식선택자
   $(this).find('.sub-wp').stop().slideDown(100);        // 자손선택자
 })
