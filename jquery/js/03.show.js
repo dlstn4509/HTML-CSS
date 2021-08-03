@@ -60,7 +60,7 @@ $('.bt7').click(function() {
   // [] 안에는 생략 가능
 });
 
-$('.bt-8').click(function(){
+$('.bt8').click(function(){
   $('.box4').stop().animate({
     "width":"500px",
     "height":"500px"
