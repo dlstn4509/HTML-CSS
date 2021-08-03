@@ -25,7 +25,7 @@ function oninterval() {
 }
 */
   document.querySelector('.date-wp').innerHTML = moment().format('Y년MM월DD일. ddd');
-  document.querySelector('.time-wp').innerHTML = moment().format('HH시mm분ss초')
+  document.querySelector('.time-wp').innerHTML = moment().format('HH시mm분ss초') // moment() = new Date()
   document.querySelector('.timestamp-wp').innerHTML = new Date().getTime();
 }
 setInterval(oninterval, 1000);

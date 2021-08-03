@@ -29,16 +29,16 @@ $('.bt6').on('click', function() {
   $('.box').stop().slideDown(1000);
 })
 
-$('.bt-ani').click(function() {
+$('.bt-ani').click(function(){
   $('.box').stop().fadeOut(1000, function(){
     $(this).stop().fadeIn(1000, function(){
       $(this).stop().slideUp(1000, function(){
         $(this).stop().slideDown(1000, function(){
-          alert('애니메이션 종료');
+          alert('끝');
         })
       })
     })
-  });
+  })
 })
 
 $('.navi').on('mouseenter', function () {
