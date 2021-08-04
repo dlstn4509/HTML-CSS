@@ -8,6 +8,17 @@ var user = null;
 /***************** function init *******************************/
 
 /***************** event callback *******************************/
+function onAdded (v){
+  var n = $('.test-wrapper .tbody tr').length + 1;
+  var html = '<tr>';
+  html += '<td>'+n+'</td>';
+  html += '<td>'+v.val().username+'</td>';
+  html += '<td class="text-left">'+v.val().comment+'</td>';
+  html += html += '<td>'+moment(v.val().createdAt).format('YYYY-MM-DD HH:mm:ss')+'</td>';
+  html += '<tr>';
+  $(html).prependTo('.test-wrapper .tbody')
+}
+
 function onSubmit (f) {
   if(!user) alert('로그인 후 사용해 주세요.')
   else {
@@ -22,12 +33,14 @@ function onSubmit (f) {
       db.ref('root/test').push(data);
       f.reset();
     }
-  }return false;
+  }
+  return false;
 }
 
 function onAuthChanged(v){        // auth의 상태가 변하면 알려줘
   user = v;
   if(user){
+    db.ref('root/test').on('child_added', onAdded);
     $('.bt-login').hide();
     $('.bt-logout').show();
     $('.photo-logo img').attr('src', user.photoURL);
@@ -40,6 +53,7 @@ function onAuthChanged(v){        // auth의 상태가 변하면 알려줘
     $('.photo-logo').hide();
     $('.icon-logo').show();
   }
+  $('.test-wrapper .tbody').empty();
 }
 
 function onLogin() {
