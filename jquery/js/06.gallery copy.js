@@ -17,8 +17,12 @@ for (var i=0, html; i<foods.length; i++) {
 }
 
 $('.list-wrap .thumb').click(function(){
-  $('.stage-wrap img').attr('src', this.src)
-  $('.stage-wrap .name').html(this.alt)
-  
-})
+  $('.stage-wrap .big').html('html').stop().hide().fadeIn(1000, function(){
+  });
+  $('.stage-wrap .big').attr('src', $(this).attr('src'));
+  $('.stage-wrap .name').html($(this).attr('alt'));
+  $('.list').removeClass('active');
+  $(this).parent().addClass('active');
+});
+
 
