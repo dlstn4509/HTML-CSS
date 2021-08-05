@@ -1,0 +1,59 @@
+<!-- 
+p : padding
+m : margin
+my : margin-top, margin-bottom
+mx : margin-left, margin-right
+mt : margin-top
+mb : margin-bottom
+ml : margin-left
+mr : margin-right
+1: 0.25redm = 4px
+2: 0.5rem   = 8px
+3: 1rem     = 16px
+-->
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제어문</title>
+  <link rel="stylesheet" href="../../0.BASE/01_bootstrap.min.css">
+  <link rel="stylesheet" href="../../0.BASE/02_base.css">
+  <script src="../../0.BASE/04_jquery.min.js"></script>
+</head>
+<body>
+  <div class="container py-5 text-center">
+    <div id="box" class="box bor" style="width: 200px; height: 200px; margin: 20px auto;"></div>
+    <button class="btn btn-primary" onclick="changeColor('blue');">파란색</button>
+    <button class="btn btn-danger" onclick="changeColor('red');">빨간색</button>
+    <button class="btn btn-success" onclick="changeColor('#0f0');">녹색</button>
+    <button class="btn btn-warning" onclick="changeColor('');">지우기</button>
+  </div>
+  <div class="container py-1 my-3 border rounded">
+    <img src="../img/house2.jpg" alt="큰그림" id="mainImg" class="w100">
+  </div>
+  <ul class="container py-1 my-3 d-flex">
+    <li class="p-1">
+      <img src="../img/house2.jpg" alt="house" class="w100" onclick="showImg('../img/house2.jpg')">
+    </li>
+    <li class="p-1">
+      <img src="../img/house3.jpg" alt="house" class="w100" onclick="showImg('../img/house3.jpg')">
+    </li>
+    <li class="p-1">
+      <img src="../img/house4.jpg" alt="house" class="w100" onclick="showImg('../img/house4.jpg')">
+    </li>
+    <li class="p-1">
+      <img src="../img/house5.jpg" alt="house" class="w100" onclick="showImg('../img/house5.jpg')">
+    </li>    
+  </ul>
+
+
+
+
+
+  <script src="../js/04.if copy.js"></script>
+</body>
+</html>

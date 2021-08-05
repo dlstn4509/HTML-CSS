@@ -1,0 +1,57 @@
+<script>
+// BOM - Browser Object Model
+// DOM - Document Object Model
+
+/* 
+변수의 타입(primitive(원시) type) - number, string, boolean, undefined
+변수의 타입(reference(참조) type) - arrat, object, null
+배열(Array)
+반복(Iteration) - for, while
+*/
+
+var students = [
+  {
+    name: '홍길동',
+    age: 28,
+    height: 180
+  }, {
+    name: '홍길순',
+    age: 25,
+    height: 185
+  }, {
+    name: '홍길만',
+    age: 32,
+    height: 175
+  }
+];
+
+console.log( students[0].name + '은' + students[0].age + '살 이고 키는' + students[0].height + '입니다.');
+
+/*
+// 반복문은 '조건'이 true일때 반복, '조건'이 false가 되면 반복 종료
+for(초기값; 조건; 증가값) {
+  // 반복할 내용
+}
+*/
+
+var sum = 0;
+for (var i=0; i<=10; i++) {
+  console.log(sum + i);
+  sum = sum + i;
+}
+console.log(i);
+console.log(sum);
+
+
+
+
+// i = i + 1   ->   i++, ++i
+
+// var b = 10;
+// console.log(b++); // 10
+// console.log(++b); // 11
+
+
+
+
+</script>

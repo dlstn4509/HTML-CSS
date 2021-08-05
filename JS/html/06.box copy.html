@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box생성</title>
+  <link rel="stylesheet" href="../../0.BASE/01_bootstrap.min.css">
+  <link rel="stylesheet" href="../../0.BASE/02_base.css">
+  <script src="../../0.BASE/04_jquery.min.js"></script>
+  <style>
+    .box {width: 80px; height: 80px; margin: 8px; transition: all .5s; background-color: red;}
+    .box:hover {opacity: 0;}
+  </style>
+</head>
+<body>
+  <div class="container py-3 form-inline">
+    <input type="number" id='count' class="form-control mr-1" style="width: 80px;" value="1" min="1" max="1000"></input>
+    <button class="btn btn-primary mr-1" onclick="changeBox('create');">만들어</button>
+    <button class="btn btn-danger" onclick="changeBox('remove');" style="display: none;">지워</button>
+  </div>
+  <div class="container border p-3 my-1 d-flex flex-wrap" id="stage">
+    
+  </div>
+  <script src="../../0.BASE/05_util.js"></script>
+  <script src="../js/06.box copy.js"></script>
+</body>
+</html>
