@@ -43,6 +43,6 @@ function onBtHide () {
 }
 
 /********************* 이벤트등록 ***************************/
-setTimeout(createBox, 1000, '.stage') // 한번만 실행
+// setTimeout(createBox, 1000, '.stage') // 한번만 실행
 $('.bt-show').click(onBtShow);
 $('.bt-hide').click(onBtHide);
