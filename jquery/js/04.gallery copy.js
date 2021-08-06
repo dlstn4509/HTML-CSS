@@ -62,42 +62,33 @@ var products = [
 	},
 ];
 
-(function init () {
-	var cnt = products.length;
-	var html = '';
-	var wrap = document.getElementsByClassName('prd-wrap')[0];
-	for(var i=0; 1<cnt; i++){
-		html = '<li class="prd">';
-		html += '<div class="imgs">';
-		html += '<img src="'+products[i].src+'" class="w100" onclick="openModal('+i+');">';
-		html += '</div>';
-		html += '<div class="conts">';
-		html += '<h2 class="name">'+products[i].name+'</h2>';
-		html += '<p class="content">'+products[i].content+'</p>';
-		html += '<div class="price">$'+products[i].price+'</div>';
-		html += '</div>';
-		html += '</li>';
-		wrap.innerHTML += html;
-	}})();
+var prdwrap =  document.querySelector('.prd-wrap')
 
 
 
-function openModal(id) {
-	var modal = document.getElementsByClassName('modal-wrapper')[0];
-	var img = modal.getElementsByTagName('img')[0];
+
+for (var i=0, html; i<products.length; i++) {
+	html = '<li class="prd">';
+	html += '<div class="imgs">';
+	html += '<img src="'+products[i].src+'" alt="p1" class="w100" onclick="openModal('+i+');">';
+	html += '</div>';
+	html += '<div class="conts">';
+	html += '<h2 class="name">'+products[i].name+'</h2>';
+	html += '<p class="content">'+products[i].content+'</p>';
+	html += '<div class="price">$'+products[i].price+'</div>';
+	html += '</div>';
+	html += '</li>';
+	prdwrap.innerHTML += html;
+}
+
+function openModal (id) {
+	var modalwrapper =  document.querySelector('.modal-wrapper')
+	var img = document.querySelector('.img') 
 	img.src = products[id].src;
-	modal.style.display = 'flex';
-	}
+	modalwrapper.style.display = 'flex';
+}
 
-
-
-	function closeModal() {
-		var modal = document.getElementsByClassName('modal-wrapper')[0];
-		modal.style.display = 'none';
-	}
-
-
-
-
-
-
+function closeModal () {
+	var modalwrapper =  document.querySelector('.modal-wrapper')
+	modalwrapper.style.display = 'none';
+}

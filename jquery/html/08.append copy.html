@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>copy Append(), AppendTo(), prepend(), prependTo()</title>
+  <link rel="stylesheet" href="../../0.BASE/01_bootstrap.min.css">
+  <script src="../../0.BASE/04_jquery.min.js"></script>
+  <style>
+    .box {width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #fff; background-color: red;}
+  </style>
+
+</head>
+<body>
+  <div class="text-center my-5">
+    <button class="bt-append btn btn-primary">Append</button>
+    <button class="bt-prepend btn btn-primary">prepend</button>
+    <button class="bt-remove btn btn-danger">Remove</button>
+    <button class="bt-empty btn btn-danger">Empty</button>
+  </div>
+  <div class="wrapper container border border-danger p-5 d-flex flex-wrap">
+    <!-- <div class="box"></div> -->
+  </div>
+
+  <script>
+/*     $('.bt-append').click(function(){
+      $('.wrapper').append('<div class="box"></div>');
+    }) */
+    $('.bt-append').click(function(){
+      $('<div class="box">'+($('.box').length+1)+'</div>').appendTo('.wrapper');
+    })
+    $('.bt-prepend').click(function(){
+      $('<div class="box">'+($('.box').length+1)+'</div>').prependTo('.wrapper');
+    })
+    $('.bt-remove').click(function(){
+      $('.box').remove();
+    })
+    $('.bt-empty').click(function(){
+      $('.wrapper').empty();
+    })
+    
+  </script>
+</body>
+</html>
