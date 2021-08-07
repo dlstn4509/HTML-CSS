@@ -50,8 +50,8 @@ function choiceLotto () {
     else {
       color = 'green'
     }
+  }
   lottoEl.innerHTML += '<li class="ball '+color+'">'+lotto[i]+'</li>';
-}
 
 function makeColor () {
   
