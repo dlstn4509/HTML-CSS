@@ -13,6 +13,6 @@ $('.bt-show').click(function(){
 })
 
 $('.bt-move').click(function(){
-  $('.box2').animate({left:"1000px"}, 100);
-  $('.box2').animate({right:"1000px"}, 200);
+  $('.box2').animate({"left":"1000px"}, 100);
+  $('.box2').animate({"right":"1000px"}, 200);
 })
