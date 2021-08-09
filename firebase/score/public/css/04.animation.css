@@ -7,23 +7,22 @@
   animation-iteration-count: infinite;   /* 반복횟수: 숫자 or 명령어 */
   animation-direction: alternate;        /* normal[기본값], reverse, alternate, alternate-reverse */
   animation-delay: .5s;                  /* 딜레이 */
-  animation-play-state: paused;          /* 애니메이션 핸들링 가능: running, paused*/
+  animation-play-state: running;          /* 애니메이션 핸들링 가능: running, paused*/
   animation-timing-function: ease;       /* linear, ease, ease-in, ease-out, ease-in-out */
 }
-.box2 {
-  animation-name: ani-box2;
-  animation-duration: 10s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 2;
-  animation-direction: alternate;
-}
-
-
 @keyframes ani-box1 {
   from {transform: translateY(0);}
   to {transform: translateY(500px);}
 }
 
+
+.box2 {
+  animation-name: ani-box2;
+  animation-duration: 10s;
+  animation-fill-mode: backwards;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
 @keyframes ani-box2 {
   0% {transform: translate(0, 0) rotate(0); background-color: red;}
   15% {transform: translate(0, 200px) rotate(360deg); background-color: orange}
