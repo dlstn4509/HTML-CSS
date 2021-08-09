@@ -6,6 +6,22 @@ console.log( $('#cnt').val() ); //jquery
 */
 
 
+/*
+database 저장
+  {
+    uid : '',                 (사용자)
+    ip  : '',                 (위치)
+    datetime : 1693754929398, (저장된 시점, 타임스탬프)
+    result: [
+      { name : '홍길동', speed: 1513 },
+      { name : '홍길순', speed: 1523 },
+      { name : '홍길만', speed: 1578 },
+      { name : '홍길룡', speed: 1629 },
+    ]
+  }
+*/
+
+
 /**
  *  기능정의
  * ! 1. 참여 인원을 선택할 수 있는 입력창이 화면에 보인다
@@ -68,8 +84,12 @@ function onStart() {
   $('.member-wp').each(function(i){
     var speed = random(1500, 500)
     console.log(i, speed);
-    $(this).stop().animate({'left' : getTarget()}, speed);
+    $(this).stop().animate({'left' : getTarget()}, speed, function(){
+      
+    });  // 설문지 비유 개쩜
   })
+  // 데이터베이스 저장 - 추후 구현
+  // modal 창 열어야 함
 }
 
 function onReset() {
