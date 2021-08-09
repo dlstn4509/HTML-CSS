@@ -24,8 +24,9 @@ console.log( $('#cnt').val() ); //jquery
 
 
 /*************** user function ******************/
-// function addMember(n) {
+
 function addMember(selector, n) {
+  // function addMember(n) {
   for (var i=0, html; i<n; i++) {
     html  = '<div class="member-wp">';
     html += '<div class="imgs">';
@@ -33,8 +34,8 @@ function addMember(selector, n) {
     html += '</div>';
     html += '<input type="text" name="member" class="form-control">';
     html += '</div>';
-    // $('.stage-wrap').append(html);
     $(selector).append(html);
+    // $('.stage-wrap').append(html);
   }
 }
 
@@ -47,6 +48,10 @@ function removeEl(selector, empty) {
   }
 }
 
+function getTarget() {
+  return ($('.stage-wrap').outerWidth() - $('.member-wp').outerWidth() - 10) + 'px';
+}
+
 /*************** event callback *****************/
 function onInit() {
   $('.bt-init').hide();
@@ -57,7 +62,14 @@ function onInit() {
 }
 
 function onStart() {
-
+  $('.bt-start').attr('disabled', true);
+  $('.bt-reset').attr('disabled', true);
+  // $('.member-wp').stop().animate({'left' : getTarget()}, 2000)
+  $('.member-wp').each(function(i){
+    var speed = random(1500, 500)
+    console.log(i, speed);
+    $(this).stop().animate({'left' : getTarget()}, speed);
+  })
 }
 
 function onReset() {
