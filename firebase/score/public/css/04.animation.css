@@ -1,0 +1,36 @@
+.container {display: flex; justify-content: space-between; margin: 100px auto;}
+.box {width: 150px; height: 150px; background-color: red;}
+.box1 {
+  animation-name: ani-box1;              /* keyframes 지정 */
+  animation-duration: 2s;                /* animation 속도 */
+  animation-fill-mode: forwards;         /* backwards[기본값], forwards */
+  animation-iteration-count: infinite;   /* 반복횟수: 숫자 or 명령어 */
+  animation-direction: alternate;        /* normal[기본값], reverse, alternate, alternate-reverse */
+  animation-delay: .5s;                  /* 딜레이 */
+  animation-play-state: paused;          /* 애니메이션 핸들링 가능: running, paused*/
+  animation-timing-function: ease;       /* linear, ease, ease-in, ease-out, ease-in-out */
+}
+.box2 {
+  animation-name: ani-box2;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 2;
+  animation-direction: alternate;
+}
+
+
+@keyframes ani-box1 {
+  from {transform: translateY(0);}
+  to {transform: translateY(500px);}
+}
+
+@keyframes ani-box2 {
+  0% {transform: translate(0, 0) rotate(0); background-color: red;}
+  15% {transform: translate(0, 200px) rotate(360deg); background-color: orange}
+  30% {transform: translate(300px, 200px) rotate(0) scale(1.5);}
+  45% {transform: translate(300px, 400px) rotate(360deg); background-color: orange;}
+  60% {transform: translate(0, 300px) rotate(-360deg); background-color: green;}
+  75% {transform: translate(0, 500px) rotate(-720deg); background-color: blue;}
+  90% {transform: translate(0, 0) rotate(0); background-color: purple;}
+  100% {background-color: red;}
+}

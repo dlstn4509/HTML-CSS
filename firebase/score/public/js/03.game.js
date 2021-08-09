@@ -1,3 +1,11 @@
+/* 
+console.log( document.initForm.cnt.value ); //js
+console.log( document.querySelector('form[name="initForm"] input[name="cnt"]').value ); //js
+console.log( $('form[name="initForm"] input[name="cnt"]').val() ); //jquery
+console.log( $('#cnt').val() ); //jquery
+*/
+
+
 /**
  *  기능정의
  * ! 1. 참여 인원을 선택할 수 있는 입력창이 화면에 보인다
