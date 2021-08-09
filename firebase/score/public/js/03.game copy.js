@@ -58,12 +58,13 @@ function onInit() {
   $('.bt-start').show();
   $('.bt-reset').show();
   addMember($('#cnt').val());
+  $('#cnt').attr('readonly', true);
 }
 
 function onStart() {
   $('.bt-start').attr('disabled', true)
   $('.bt-reset').attr('disabled', true)
-  $('#cnt').attr('readonly', true);
+  $('.member-wp').stop().animate({"left":"300px"}, 1000)
 }
 
 
