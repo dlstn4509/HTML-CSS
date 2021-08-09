@@ -1,27 +1,3 @@
-/* 
-console.log( document.initForm.cnt.value ); //js
-console.log( document.querySelector('form[name="initForm"] input[name="cnt"]').value ); //js
-console.log( $('form[name="initForm"] input[name="cnt"]').val() ); //jquery
-console.log( $('#cnt').val() ); //jquery
-*/
-
-
-/*
-database 저장
-  {
-    uid : '',                 (사용자)
-    ip  : '',                 (위치)
-    datetime : 1693754929398, (저장된 시점, 타임스탬프)
-    result: [
-      { name : '홍길동', speed: 1513 },
-      { name : '홍길순', speed: 1523 },
-      { name : '홍길만', speed: 1578 },
-      { name : '홍길룡', speed: 1629 },
-    ]
-  }
-*/
-
-
 /**
  *  기능정의
  * ! 1. 참여 인원을 선택할 수 있는 입력창이 화면에 보인다
@@ -34,22 +10,33 @@ database 저장
  * ! 8. 경주결과 확인 후 닫기 버튼을 누르면 초기화 상태로 돌아간다.
  */
 
-
-
 /*************** global init ********************/
 
 
 /*************** user function ******************/
-function addMember(n) {
+function addMember(selector, n) {
   for (var i=0, html; i<n; i++){
-  html  = '<div class="member-wp">';
-  html += '<div class="imgs">';
-  html += '<img src="../img/marathon.png" class="w100">';
-  html += '</div>';
-  html += '<input type="text" name="member" class="form-control">';
-  html += '</div>';
-  $('.stage-wrap').append(html);
+    html  = '<div class="member-wp">';
+    html += '<div class="imgs">';
+    html += '<img src="../img/marathon.png" class="w100">';
+    html += '</div>';
+    html += '<input type="text" name="member" class="form-control">';
+    html += '</div>';
+    $(selector).append(html);
   }
+}
+
+function removeEl(seletor, empty) {
+  if(empty) {
+    $(seletor).empty();
+  }
+  else {
+    $(seletor).remove();
+  }
+}
+
+function getTarget() {
+  return ($('.stage-wrap').outerWidth() - $('.member-wp').outerWidth() - 10) + 'px';
 }
 
 /*************** event callback *****************/
@@ -57,25 +44,28 @@ function onInit() {
   $('.bt-init').hide();
   $('.bt-start').show();
   $('.bt-reset').show();
-  addMember($('#cnt').val());
   $('#cnt').attr('readonly', true);
+  addMember('.stage-wrap' ,$('#cnt').val());
 }
 
 function onStart() {
-  $('.bt-start').attr('disabled', true)
-  $('.bt-reset').attr('disabled', true)
-  $('.member-wp').stop().animate({"left":"300px"}, 1000)
+  $('.bt-start').attr('disabled', true);
+  $('.bt-reset').attr('disabled', true);
+  $('.member-wp').each(function(){
+    var speed =  random(1500, 1000)
+    $(this).stop().animate({"left":getTarget()}, speed);
+  })
 }
-
-
 
 function onReset() {
   $('.bt-init').show();
   $('.bt-start').hide();
   $('.bt-reset').hide();
-  $('.stage-wrap').empty();
+  $('#cnt').val(4).focus().attr('readonly', false);
+  // $('.stage-wrap').empty();
+  removeEl('.stage-wrap', true);
+  // 순수함수 만들기 어려움
 }
-
 
 /*************** event init *********************/
 $('.bt-init').click(onInit);
@@ -83,4 +73,3 @@ $('.bt-start').click(onStart);
 $('.bt-reset').click(onReset);
 
 /*************** start init *********************/
-

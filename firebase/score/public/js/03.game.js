@@ -106,4 +106,3 @@ $('.bt-start').click(onStart);
 $('.bt-reset').click(onReset);
 
 /*************** start init *********************/
-

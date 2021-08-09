@@ -1,14 +1,14 @@
 .container {display: flex; justify-content: space-between; margin: 100px auto;}
 .box {width: 150px; height: 150px; background-color: red;}
 .box1 {
-  animation-name: ani-box1;              /* keyframes 지정 */
-  animation-duration: 2s;                /* animation 속도 */
-  animation-fill-mode: forwards;         /* backwards[기본값], forwards */
-  animation-iteration-count: infinite;   /* 반복횟수: 숫자 or 명령어 */
-  animation-direction: alternate;        /* normal[기본값], reverse, alternate, alternate-reverse */
-  animation-delay: .5s;                  /* 딜레이 */
-  animation-play-state: running;          /* 애니메이션 핸들링 가능: running, paused*/
-  animation-timing-function: ease;       /* linear, ease, ease-in, ease-out, ease-in-out */
+  animation-name: ani-box1;            /* keyframes 지정 */
+  animation-duration: 2s;              /* animation 속도 */
+  animation-fill-mode: forwards;       /* backwards[기본값], forwards */
+  animation-iteration-count: infinite; /* 반복횟수: 숫자 or 명령어 */
+  animation-direction: alternate;      /* normal[기본값], reverse, alternate, alternate-reverse */
+  animation-delay: .5s;                /* 딜레이 */
+  animation-play-state: running;       /* 애니메이션 핸들링 가능: running, paused*/
+  animation-timing-function: ease;     /* linear, ease, ease-in, ease-out, ease-in-out */
 }
 @keyframes ani-box1 {
   from {transform: translateY(0);}
