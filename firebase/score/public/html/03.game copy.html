@@ -12,15 +12,16 @@
   <script src="../0.BASE/04_jquery.min.js"></script>
   <script src="../0.BASE/05_util.js"></script>
   <script src="../0.BASE/moment.min.js"></script>
+  <script src="../0.BASE/lodash.min.js"></script>
 </head>
 <body>
-  <section class="wrapper">
+  <section class="main-wrapper">
     <div class="alert alert-info main-title">달리기 게임</div>
     <form action="#" name="initForm" class="form-inline">
-      <input type="number" name="cnt" id="cnt" value="4" min="2" max="8" step="1" class="form-control" autofocus>
+      <input type="number" name="cnt" id="cnt" value="3" min="2" max="8" step="1" class="form-control" autofocus>
       <button type="button" class="btn btn-success bt-init">준비</button>
       <button type="button" class="btn btn-primary bt-start">시작</button>
-      <button type="button" class="btn btn-danger bt-reset">취소</button>
+      <button type="button" class="btn btn-danger bt-reset">초기화</button>
     </form>
     <div class="stage-wrap">
       <!-- <div class="member-wp">
@@ -31,6 +32,36 @@
       </div> -->
     </div>
   </section>
+  
+  <aside class="modal-wrapper" style="display: none;">
+    <div class="modal-wrap">
+      <h2 class="title">달리기 결과</h2>
+      <p class="datetime"></p>
+      <table class="list-tb table text-center border-bottom">
+        <thead class="thead-dark">
+          <tr>
+            <th>순위</th>
+            <th>이름</th>
+            <th>기록</th>
+          </tr>
+        </thead>
+        <tbody class="list-tbody">
+          <!-- <tr>
+            <td class="score">1등</td>
+            <td class="name">홍길동</td>
+            <td class="time">01:22:34</>
+          </tr> -->
+        </tbody>
+      </table>
+      <div class="bt-wp text-center">
+        <div class="btn btn-danger bt-close">닫기</div>
+        <div class="btn btn-success bt-save">저장하기</div>
+      </div>
+    </div>
+    <div class="modal-bt bt-close">
+      <i class="fa fa-times"></i>
+    </div>
+  </aside>
   
   <script src="../js/03.game copy.js"></script>
 </body>

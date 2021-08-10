@@ -26,13 +26,20 @@ function addMember(selector, n) {
   }
 }
 
+function addList(selector, data) {
+  for (var i=0, html; i<data.length; i++){
+    html  = '<tr>';
+    html += '<td class="score">'+(i + 1)+'등</td>';
+    html += '<td class="name">'+data[i].name+'</td>';
+    html += '<td class="time">'+data[i].speed/1000+'초</td>';
+    html += '</tr>';
+    $(selector).append(html);
+  }
+}
+
 function removeEl(seletor, empty) {
-  if(empty) {
-    $(seletor).empty();
-  }
-  else {
-    $(seletor).remove();
-  }
+  if(empty) $(seletor).empty();
+  else $(seletor).remove();
 }
 
 function getTarget() {
@@ -49,12 +56,33 @@ function onInit() {
 }
 
 function onStart() {
+  var cnt = $('.member-wp').length;
+  var num = 0;
+  var members = [];            // 선수 정보
+  var result = [];             // 순위 정보
+  
   $('.bt-start').attr('disabled', true);
   $('.bt-reset').attr('disabled', true);
-  $('.member-wp').each(function(){
-    var speed =  random(1500, 1000)
-    $(this).stop().animate({"left":getTarget()}, speed);
-  })
+  $('.modal-wrapper .datetime').html( moment().format('YYYY년MM월DD일 HH시mm분ss초') )
+  $('.member-wp').each(function(i){
+    members.push({
+      name: $(this).find('input').val().trim() || (i+1) + '번',
+      speed: random(1500, 1000)
+    });
+  }); // members 완성
+
+  // result = JSON.parse(JSON.stringify(members));    // deep copy
+  result = _.cloneDeep(members);                      // deep copy
+
+  result.sort(function(a, b){return a.speed - b.speed}); // 순위 결과를 오름차순
+
+  addList('.modal-wrapper .list-tbody', result);    // table 생성 완료
+
+  $('.member-wp').each(function(i){  // 애니메이션 (은 거들뿐)
+    $(this).stop().animate({"left":getTarget()}, members[i].speed, function () {
+      if(++num === cnt) $('.modal-wrapper').show();
+    });
+  });
 }
 
 function onReset() {
@@ -62,14 +90,22 @@ function onReset() {
   $('.bt-start').hide();
   $('.bt-reset').hide();
   $('#cnt').val(3).focus().attr('readonly', false);
-  // $('.stage-wrap').empty();
   removeEl('.stage-wrap', true);
-  // 순수함수 만들기 어려움
+  removeEl('.modal-wrapper .list-tbody', true);
+  removeEl('.modal-wrapper .datetime', true);
+}
+
+function onModalClose() {
+  $('.modal-wrapper').hide();
+  $('.main-wrapper .bt-reset').attr('disabled', false);
+  $('.main-wrapper .bt-start').attr('disabled', false);
 }
 
 /*************** event init *********************/
-$('.bt-init').click(onInit);
-$('.bt-start').click(onStart);
-$('.bt-reset').click(onReset);
+$('.main-wrapper .bt-init').click(onInit);
+$('.main-wrapper .bt-start').click(onStart);
+$('.main-wrapper .bt-reset').click(onReset);
+
+$('.modal-wrapper .bt-close').click(onModalClose);
 
 /*************** start init *********************/
