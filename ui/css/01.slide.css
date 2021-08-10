@@ -5,10 +5,10 @@
 .pager-wrap .pager {color: #666; cursor: pointer;}
 .pager-wrap .pager.active {color: #ec670f;}
 
-.bt-angle {font-size: 2em; color: #000; position: absolute; top: 50%; transform: translateY(-50%); cursor: pointer;}
-.bt-angle:hover {color: #ffc1b2;}
-.bt-angle.bt-prev {left: .5em;}
-.bt-angle.bt-next {right: .5em;}
+.bt-angle {font-size: 3em; color: #421812; opacity: .2; position: absolute; top: 50%; transform: translateY(-50%); cursor: pointer; transition: all .5s;}
+.bt-angle:hover {opacity: 1;}
+.bt-angle.bt-prev {left: .25em;}
+.bt-angle.bt-next {right: .25em;}
 
 
 /********************** wrapper1 *********************/
