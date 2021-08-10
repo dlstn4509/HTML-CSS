@@ -61,7 +61,7 @@ function onReset() {
   $('.bt-init').show();
   $('.bt-start').hide();
   $('.bt-reset').hide();
-  $('#cnt').val(4).focus().attr('readonly', false);
+  $('#cnt').val(3).focus().attr('readonly', false);
   // $('.stage-wrap').empty();
   removeEl('.stage-wrap', true);
   // 순수함수 만들기 어려움
