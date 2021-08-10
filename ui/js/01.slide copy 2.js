@@ -1,28 +1,60 @@
 /*************** global init ********************/
 var $wrapper = $('.wrapper1');
-var $slide = $wrapper.find('.slide-wrap');
+var $slidewrap = $wrapper.find('.slide-wrap');
 var $pager = $wrapper.find('.pager');
 var $btPrev = $wrapper.find('.bt-prev')
 var $btNext = $wrapper.find('.bt-next')
-var interval;
-var idx = 0;
-var gap = 2000;
-var speed = 500;
-var last = $slide.find('.slide').length -1;
+var interval;                  // setInterval을 넣어놓을 변수
+var idx = 0;                   // animation이 움질일 값의 인자 (0, -100%, -200% ...)
+var gap = 2000;                // setInterval의 간격
+var speed = 500;               // animation speed
+var last = $slidewrap.find('.slide').length -1;    // $('.slide)의 마지막 index 6
 
 /*************** user function ******************/
-function ani(slideEl, pagerEl, speed, idx) {
-
+function ani() {
+  $slidewrap.stop().animate({"left" : -idx * 100 + '%'}, speed)
 }
 
 /*************** event callback *****************/
+function onEnter() {
+  clearInterval(interval);
+}
+
+function onLeave() {
+  interval = setInterval(onNext, gap);
+}
+
+function onPager() {
+
+}
+
+function onPrev() {
+  if(idx === 0){
+    idx = last;
+    $slidewrap.css({"left" : -idx * 100 + '%'});
+  }
+  idx--;
+  ani();
+}
+
+function onNext() {
+  if(idx === last) {
+    idx = 0;
+    $slidewrap.css({"left" : 0});
+  }
+  // idx = idx + 1;
+  idx++;
+  ani();
+}
 
 
 /*************** event init *********************/
-$wrapper.mouseenter(onEnter).mouseleave(onLeave);
+$wrapper.mouseenter(onEnter);
+$wrapper.mouseleave(onLeave);
 $pager.click(onPager);
 $btPrev.click(onPrev);
 $btNext.click(onNext);
 
 /*************** start init *********************/
-interval = setInterval(onInterval, gap);
+interval = setInterval(onNext, gap);
+
