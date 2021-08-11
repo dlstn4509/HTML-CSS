@@ -14,7 +14,10 @@ function Slide(_parent, _opt) {
 	this.useNavigation = opt.navigation && opt.navigation.prev && opt.navigation.next ? true : false;
 	this.usePagination = opt.pagination && opt.pagination.el ? true : false;
 
-	if(this.effect.toLowerCase() !== 'horizontal' && this.effect.toLowerCase() !== 'vertical' && this.effect.toLowerCase() !== 'fade') {
+	if(
+    this.effect.toLowerCase() !== 'horizontal' &&
+    this.effect.toLowerCase() !== 'vertical' &&
+    this.effect.toLowerCase() !== 'fade') {
 		this.effect = 'horizontal';
 	}
 	this.effect += 'Type';
