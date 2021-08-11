@@ -1,0 +1,4 @@
+.my-swiper, .my-swiper2, .my-swiper3 {max-width: 720px; margin: 50px auto;}
+.swiper-pagination-bullet-active {background-color: #f00;}
+.swiper-button-next, .swiper-button-prev {color: #f00;}
+.swiper-button-next, .swiper-container-rtl .swiper-button-next {color: #f00;}
