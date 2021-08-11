@@ -1,6 +1,6 @@
 var slide = new Slide('#slide1', {
 	autoPlay: true,
-	effect: 'horizontal',
+	effect: 'HOrizontal',
 	autoPlaySpeed: 1000,
 	navigation: {
 		prev: '.bt-prev',
@@ -14,7 +14,7 @@ var slide = new Slide('#slide1', {
 
 var slide2 = new Slide('#slide2', {
 	autoPlay: true,
-	effect: 'vertical',
+	effect: 'VERtical',
 	autoPlaySpeed: 2000,
 	speed: 800,
 	navigation: {

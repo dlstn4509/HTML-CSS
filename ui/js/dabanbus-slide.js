@@ -7,19 +7,19 @@ function Slide(_parent, _opt) {
 	this.wrapper = $(_parent);
 	this.wrap = this.wrapper.find('.slide-wrap');
 	this.slide = this.wrap.find('.slide');
-	this.effect = opt.effect || 'horizontal';
+	this.effect = opt.effect.toLowerCase() || 'horizontal';
 	this.speed = Number(opt.speed) || 500;
 	this.autoPlay = opt.autoPlay === false ? false : true;
 	this.autoPlaySpeed = Number(opt.autoPlaySpeed) || 3000;
 	this.useNavigation = opt.navigation && opt.navigation.prev && opt.navigation.next ? true : false;
 	this.usePagination = opt.pagination && opt.pagination.el ? true : false;
 
-	if(
+/* 	if(
     this.effect.toLowerCase() !== 'horizontal' &&
     this.effect.toLowerCase() !== 'vertical' &&
     this.effect.toLowerCase() !== 'fade') {
 		this.effect = 'horizontal';
-	}
+	} */
 	this.effect += 'Type';
 	this.wrap.addClass(this.effect);
 
