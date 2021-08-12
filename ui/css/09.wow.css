@@ -1,0 +1,42 @@
+/********************** global init *********************/
+.wrapper {width: 100%; overflow: hidden;} 
+section.page {padding: 3em; height: 100vh; display: flex; flex-direction: column; justify-content: space-between;}
+section.page h1.title {font-size: 3em; color: #fff;}
+section.page .content-wrap {display: flex; width: 100%;}
+section.page .content-wrap .box {width: 31.3333%; height: 200px; margin: 1%}
+section.page .content-wrap .box1 {background-color: rgb(255, 174, 0);}
+section.page .content-wrap .box2 {background-color: rgb(70, 62, 179);}
+section.page .content-wrap .box3 {background-color: rgb(238, 56, 183);}
+
+/********************** section *********************/
+section.page1 {background-color: rgb(84, 192, 21)}
+section.page2 {background-color: rgb(219, 97, 16)}
+section.page3 {background-color: rgb(197, 159, 34)}
+section.page4 {background-color: rgb(255, 0, 0)}
+section.page5 {background-color: cadetblue}
+
+
+/********************** animation *********************/
+
+
+
+/********************** 반응형 *********************/
+@media (max-width: 1399px) {
+  
+}
+
+@media (max-width: 1199px) {
+  
+}
+
+@media (max-width: 991px) {
+  
+}
+
+@media (max-width: 767px) {
+  
+}
+
+@media (max-width: 575px) {
+  
+}
