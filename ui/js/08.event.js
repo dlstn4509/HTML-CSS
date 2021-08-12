@@ -14,7 +14,8 @@
 // console.log(window.scrollY);        // JS
 // console.log($(this).scrollTop);     // jQuery
 // $().offset()
-/*   console.log($('h1.title').eq(0).offset().top);
+/*   
+console.log($('h1.title').eq(0).offset().top);
 console.log($('h1.title').eq(1).offset().top);
 console.log($('h1.title').eq(2).offset().top);
 console.log($('h1.title').eq(3).offset().top);

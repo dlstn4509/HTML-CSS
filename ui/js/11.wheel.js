@@ -20,19 +20,22 @@ function onWheel(e) {
     var d = e.deltaY;      // + 스크롤 내리기, - 스크롤 내리기    100
     var y = e.pageY;       // 스크롤 이벤트가 발생한 지점         y축 숫자
     var page = $('section.page'); // .page
-    var last = page.length - 1;   // page의 마지막 dix
+    var last = page.length - 1;   // page의 마지막 idx
     var top = [];          // .page들의 offset().top 값 배열
     var idx;               // 가야될 페이지 idx
 
-    page.each(function(i){
+    page.each(function(i) {
       top[i] = $(this).offset().top
     });
 
-    for(var i=last; i>-1; i--) {
+    for(var i=last; i>-1; i--) {   // 어느 페이지에서 휠 했냐
       if(y > top[i]) break;
       }
+     // Y축 >  .page.offset().top
+      console.log(i);
+
     if(d > 0) {                    // 휠을 내리면
-      if(i , last) idx = i + 1;    // 휠을 내리고 마지막 페이지가 아니라면
+      if(i < last) idx = i + 1;    // 휠을 내리고 마지막 페이지가 아니라면
       else idx = last;
     }
 
