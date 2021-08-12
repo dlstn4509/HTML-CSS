@@ -7,9 +7,9 @@ section.page h1.title.active {animation-play-state: running;}
 section.page .content-wrap {display: flex; width: 100%;}
 section.page .content-wrap .box {width: 31.3333%; height: 200px; margin: 1%; animation-duration: 1s; animation-fill-mode: forwards; opacity: 0;  animation-play-state: paused;}
 section.page .content-wrap .box.active {animation-play-state: running;}
-section.page .content-wrap .box1 {background-color: rgb(255, 174, 0);animation-name: toTop}
-section.page .content-wrap .box2 {background-color: rgb(70, 62, 179);animation-name: toRight}
-section.page .content-wrap .box3 {background-color: rgb(238, 56, 183);animation-name: toBottom}
+section.page .content-wrap .box1 {background-color: rgb(255, 174, 0);animation-name: toRight}
+section.page .content-wrap .box2 {background-color: rgb(70, 62, 179);animation-name: toTop}
+section.page .content-wrap .box3 {background-color: rgb(238, 56, 183);animation-name: toLeft}
 
 /********************** section *********************/
 section.page1 {background-color: rgb(84, 192, 21)}
@@ -32,12 +32,12 @@ section.page5 {background-color: cadetblue}
 
 @keyFrames toTop {
   0% {opacity: 0; transform: translateY(200px);}
-  100% {opacity: 1; transform: translateX(0);}
+  100% {opacity: 1; transform: translateY(0);}
 }
 
 @keyFrames toBottom {
   0% {opacity: 0; transform: translateY(-200px);}
-  100% {opacity: 1; transform: translateX(0);}
+  100% {opacity: 1; transform: translateY(0);}
 }
 
 

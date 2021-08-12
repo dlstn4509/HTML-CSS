@@ -10,22 +10,23 @@
 
 
 /*************** event callback *****************/
-function onScroll(e) {
-  // console.log(e);
-  // console.log(window.scrollY);        // JS
-  // console.log($(this).scrollTop);     // jQuery
-  // $().offset()
+// console.log(e);
+// console.log(window.scrollY);        // JS
+// console.log($(this).scrollTop);     // jQuery
+// $().offset()
 /*   console.log($('h1.title').eq(0).offset().top);
-  console.log($('h1.title').eq(1).offset().top);
-  console.log($('h1.title').eq(2).offset().top);
-  console.log($('h1.title').eq(3).offset().top);
-  console.log($('h1.title').eq(4).offset().top); */
-  var guideTop = $(window).scrollTop() + $(this).innerWidth();
-  $('h1.title').each(function(v, i){
-    if(guideTop - 1000 > $(this).offset().top) $(this).addClass('active');
+console.log($('h1.title').eq(1).offset().top);
+console.log($('h1.title').eq(2).offset().top);
+console.log($('h1.title').eq(3).offset().top);
+console.log($('h1.title').eq(4).offset().top); */
+
+function onScroll(e) {
+  var guideTop = $(this).scrollTop() + $(this).outerHeight(); // outerHeight는 창크기에 따라 고정
+  $('h1.title').each(function(){
+    if(guideTop - 200 > $(this).offset().top) $(this).addClass('active');
   });
-  $('.box').each(function(v, i){
-    if(guideTop - 1000 > $(this).offset().top) $(this).addClass('active');
+  $('.box').each(function(){
+    if(guideTop - 200 > $(this).offset().top) $(this).addClass('active');
   });
 }
 
