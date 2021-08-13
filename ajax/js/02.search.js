@@ -38,7 +38,7 @@ function setImageLists(r) {
     var html = '<li class="list image grid-item">';
     html += '<img src="'+v.thumbnail_url+'" class="w100">';
     html += '</li>';
-    $('.lists').append(html);
+    $(html).appendTo('.lists');
   });
   var $grid = $('.grid-wrap').masonry({
     itemSelector: '.grid-item',
@@ -47,6 +47,7 @@ function setImageLists(r) {
   });
   $grid.imagesLoaded().progress( function() {
     $grid.masonry('layout');
+    $grid.masonry('reloadItems');
   });
 }
 
