@@ -11,3 +11,7 @@ function zp(n) {
 	return (n < 10) ? '0'+n : n;
 	// 삼항 연산자 let a = 조건 ? 실행(참) : 실행(거짓)
 }
+
+function numberFormat(v) {           // 숫자 3자리마타 쉼표
+	return v.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}

@@ -13,6 +13,34 @@ function getParams(query) {
   }
 }
 
+function setTotalCnt(cnt) {
+  $('.result-cnt').html(numberFormat(cnt))
+}
+
+function setWebLists(r) {
+  
+}
+
+function setImageLists(r) {
+  
+}
+
+function setClipLists(r) {
+  
+}
+
+function setBlogLists(r) {
+  
+}
+
+function setBookLists(r) {
+  
+}
+
+function setCafeLists(r) {
+  
+}
+
 
 /*************** event callback *****************/
 function onSubmit(e) {
@@ -23,7 +51,29 @@ function onSubmit(e) {
 }
 
 function onSuccess(res) {
-  console.log(res);
+  var cate = res.config.url.split('/').pop();
+  var v = res.data;
+  setTotalCnt(v.meta.total_count);
+  switch(cate) {
+    case 'web' :
+      setWebLists(v.document);
+      break;
+    case 'image' :
+      setImageLists(v.document);
+      break;
+    case 'vclip' :
+      setClipLists(v.document);
+      break;
+    case 'blog' :
+      setBlogLists(v.document);
+      break;
+    case 'book' :
+      setBookLists(v.document);
+      break;
+    case 'cafe' :
+      setCafeLists(v.document);
+      break;
+  }
 }
 
 function onError(err) {
