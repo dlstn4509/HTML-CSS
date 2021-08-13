@@ -3,23 +3,23 @@ var auth = 'KakaoAK accdfd5267af756d07efcd007e13bcee';
 var kakaoURL = 'https://dapi.kakao.com/'
 
 /*************** user function ******************/
-function getPath(cate) {
+function getPath(cate) {        // 카카오 api 주소
   return kakaoURL+(cate === 'book' ? 'v3' : 'v2')+'/search/' + cate;
-}
+}       // https://dapi.kakao.com/v2/search/web
 
-function getParams(query) {
+function getParams(query) {     // 카카오 검색방법
   return {
-    params: {query: query},
-    headers: {Authorization: auth}
+    params: {query: query},          // 전송하는 데이터 (바디)
+    headers: {Authorization: auth}   // 헤더
   }
 }
 
-function setTotalCnt(cnt) {
+function setTotalCnt(cnt) {     // 검색결과 건수
   $('.result-cnt').html(numberFormat(cnt))
 }
 
-function setWebLists(r) {
-	$('.lists').empty().attr('class', 'lists web');
+function setWebLists(r) {       // web 검색 결과 도출
+	$('.lists').empty().attr('class', 'lists web');  // empty로 안비우면 계속 쌓임
 	r.forEach(function(v, i) {
 		var html = '<li class="list web">';
 		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
@@ -80,8 +80,12 @@ function setCafeLists(r) {
 
 
 /*************** event callback *****************/
-function onLoadError(el) {
-  $('.modal-wrapper .img-wp img').attr('src', $(el).data('thumb'));
+function onSubmit(e) {
+	e.preventDefault();  // 이게 없으면 나한테 보냄 -> 카카오로 ㄱㄱ
+	var cate = $(this).find('select[name="category"]').val().trim();
+	var query = $(this).find('input[name="query"]').val().trim();
+	axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
+  // axios.get().then().catch();
 }
 
 function onModalShow() {
@@ -96,12 +100,8 @@ function onModalShow() {
   $('.modal-wrapper .dt').html(moment(v.datetime).format('YYYY-MM-DD HH:mm:ss'));
 }
 
-
-function onSubmit(e) {
-	e.preventDefault();
-	var cate = $(this).find('select[name="category"]').val().trim();
-	var query = $(this).find('input[name="query"]').val().trim();
-	axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
+function onLoadError(el) {
+  $('.modal-wrapper .img-wp img').attr('src', $(el).data('thumb'));
 }
 
 function onSuccess(res) {
