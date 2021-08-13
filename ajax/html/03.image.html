@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03.image</title>
+  <link rel="stylesheet" href="../../0.BASE/00_all.min.css">
+  <link rel="stylesheet" href="../../0.BASE/01_bootstrap.min.css">
+  <link rel="stylesheet" href="../../0.BASE/02_base.css">
+  <script src="../../0.BASE/04_jquery.min.js"></script>
+  <script src="../../0.BASE/moment.min.js"></script>
+  <script src="../../0.BASE/lodash.min.js"></script>
+  <script src="../../0.BASE/05_util.js"></script>
+</head>
+<body>
+  <img src="" class="img">
+  <script>
+    $('.img').attr('src', 'https://t1.daumcdn.net/news/202102/26/poctan/20210226100545709hutc.jpg');
+    $('.img').on('load', function() {
+      console.log($('.img').outerWidth(), $('.img').outerHeight());
+    });
+  </script>
+</body>
+</html>

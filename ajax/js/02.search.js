@@ -19,36 +19,51 @@ function setTotalCnt(cnt) {
 }
 
 function setWebLists(r) {
-  $('.lists').empty();
-  r.forEach(function(v, i) {
-    var html = '<li class="list web">';
-    html += '<a class="title">'+v.title+'</a>';
-    html += '<p class="content">'+v.contents+'</p>';
-    html += '<a class="link" href="'+v.url+'" target="_blank">'+v.url+'</a>';
-    html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
-    html += '</li>';
-    $('.lists').append(html);
-  })
+	$('.lists').empty().attr('class', 'lists web');
+	r.forEach(function(v, i) {
+		var html = '<li class="list web">';
+		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
+		html += '<p class="content">'+v.contents+'</p>';
+		html += '<a class="link" href="'+v.url+'" target="_blank">'+v.url+'</a>';
+		html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
+		html += '</li>';
+		$('.lists').append(html);
+	});
 }
 
 function setImageLists(r) {
-  
+  $('.lists').empty().attr('class', 'lists image grid-wrap');
+  $('.lists').append('<li class="list image grid-sizer"></li>');
+  r.forEach(function(v, i) {
+    var html = '<li class="list image grid-item">';
+    html += '<img src="'+v.thumbnail_url+'" class="w100">';
+    html += '</li>';
+    $('.lists').append(html);
+  });
+  var $grid = $('.grid-wrap').masonry({
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true
+  });
+  $grid.imagesLoaded().progress( function() {
+    $grid.masonry('layout');
+  });
 }
 
 function setClipLists(r) {
-  
+  console.log(r);
 }
 
 function setBlogLists(r) {
-  
+  console.log(r);
 }
 
 function setBookLists(r) {
-  
+  console.log(r);
 }
 
 function setCafeLists(r) {
-  
+  console.log(r);
 }
 
 
