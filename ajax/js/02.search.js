@@ -32,7 +32,6 @@ function setWebLists(r) {
 }
 
 function setImageLists(r) {
-  console.log(r);
   $('.lists').empty().attr('class', 'lists image grid-wrap');
   $('.lists').append('<li class="list image grid-sizer"></li>');
   r.forEach(function(v, i) {
@@ -41,11 +40,11 @@ function setImageLists(r) {
       width: v.width,
       height: v.height,
       src: v.image_url,
+      thumb: v.thumbnail_url,
       name: v.display_sitename,
       url: v.doc_url,
       dt: v.datetime
     });
-    console.log(info);
     var html = '<li class="list image grid-item" data-info=\''+info+'\'>';
     html += '<img src="'+v.thumbnail_url+'" class="w100">';
     html += '<div class="info"></div>';
@@ -64,30 +63,37 @@ function setImageLists(r) {
 }
 
 function setClipLists(r) {
-  console.log(r);
+  
 }
 
 function setBlogLists(r) {
-  console.log(r);
+  
 }
 
 function setBookLists(r) {
-  console.log(r);
+  
 }
 
 function setCafeLists(r) {
-  console.log(r);
+  
 }
 
 
 /*************** event callback *****************/
+function onLoadError(el) {
+  $('.modal-wrapper .img-wp img').attr('src', $(el).data('thumb'));
+}
+
 function onModalShow() {
   var v = $(this).data('info');
   $('.modal-wrapper').show();
   $('.modal-wrapper .img-wp img').attr('src', v.src);
+  $('.modal-wrapper .img-wp img').data('thumb', v.thumb);
   $('.modal-wrapper .size-wp').html(v.width + ' x ' + v.height);
-  $('.modal-wrapper .name-wp').html(v.name);
+  $('.modal-wrapper .collection').html('['+v.collection+'] ');
+  $('.modal-wrapper .name').html(v.name);
   $('.modal-wrapper .link').attr('href', v.url).html(v.url);
+  $('.modal-wrapper .dt').html(moment(v.datetime).format('YYYY-MM-DD HH:mm:ss'));
 }
 
 
