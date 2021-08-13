@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02.search</title>
+  <link rel="stylesheet" href="../../0.BASE/00_all.min.css">
+  <link rel="stylesheet" href="../../0.BASE/01_bootstrap.min.css">
+  <link rel="stylesheet" href="../../0.BASE/02_base.css">
+  <link rel="stylesheet" href="../css/02.search.css">
+  <script src="../../0.BASE/04_jquery.min.js"></script>
+  <script src="../../0.BASE/moment.min.js"></script>
+  <script src="../../0.BASE/lodash.min.js"></script>
+  <script src="../../0.BASE/axios.min.js"></script>
+  <script src="../../0.BASE/05_util.js"></script>
+</head>
+<body>
+  <div class="container">
+		<form class="search-form form-inline my-5">
+			<select name="category" class="form-control mr-2">
+				<option value="web" selected>웹사이트</option>
+				<option value="blog">블로그</option>
+				<option value="image">이미지</option>
+				<option value="vclip">동영상</option>
+				<option value="book">도서</option>
+				<option value="cafe">카페</option>
+			</select>
+			<input type="text" class="form-control mr-2 flex-grow-1" name="query" autofocus>
+			<button class="btn btn-primary">검색</button>
+		</form>
+		<h2 class="text-right mb-3">검색결과: <span class="result-cnt"></span>건</h2>
+		<ul class="lists">
+
+		</ul>
+	</div>
+  <script src="../js/02.search.js"></script>
+</body>
+</html>
