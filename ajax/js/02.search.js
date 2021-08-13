@@ -1,9 +1,10 @@
 /*************** global init ********************/
 var auth = 'KakaoAK accdfd5267af756d07efcd007e13bcee';
+var kakaoURL = 'https://dapi.kakao.com/'
 
 /*************** user function ******************/
 function getPath(cate) {
-  return 'https://dapi.kakao.com/'+(cate === 'book' ? 'v3' : 'v2')+'/search/' + cate;
+  return kakaoURL+(cate === 'book' ? 'v3' : 'v2')+'/search/' + cate;
 }
 
 function getParams(query) {
@@ -18,7 +19,16 @@ function setTotalCnt(cnt) {
 }
 
 function setWebLists(r) {
-  // $('lists').empty();
+  $('.lists').empty();
+  r.forEach(function(v, i) {
+    var html = '<li class="list web">';
+    html += '<a class="title">'+v.title+'</a>';
+    html += '<p class="content">'+v.contents+'</p>';
+    html += '<a class="link" href="'+v.url+'" target="_blank">'+v.url+'</a>';
+    html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
+    html += '</li>';
+    $('.lists').append(html);
+  })
 }
 
 function setImageLists(r) {
@@ -56,28 +66,28 @@ function onSuccess(res) {
   setTotalCnt(v.meta.total_count);
   switch(cate) {
     case 'web' :
-      setWebLists(v.document);
+      setWebLists(v.documents);
       break;
     case 'image' :
-      setImageLists(v.document);
+      setImageLists(v.documents);
       break;
     case 'vclip' :
-      setClipLists(v.document);
+      setClipLists(v.documents);
       break;
     case 'blog' :
-      setBlogLists(v.document);
+      setBlogLists(v.documents);
       break;
     case 'book' :
-      setBookLists(v.document);
+      setBookLists(v.documents);
       break;
     case 'cafe' :
-      setCafeLists(v.document);
+      setCafeLists(v.documents);
       break;
   }
 }
 
 function onError(err) {
-  console.log(err);
+  
 }
 
 /*************** event init *********************/
