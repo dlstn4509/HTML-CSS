@@ -42,9 +42,10 @@ function onSubmit(e) {
   axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
 }
 
+
 function onSuccess(res) {
-  numberFormat($('.result-cnt').html(res.data.meta.total_count));
-  console.log((res.config.url).split('/').pop());
+  var cnt = res.data.meta.total_count;
+  $('.result-cnt').html(numberFormat(cnt));
   switch((res.config.url).split('/').pop()) {
   case 'web':
     setWebLists();
