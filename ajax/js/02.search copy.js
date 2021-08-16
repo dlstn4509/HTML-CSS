@@ -32,28 +32,30 @@ function setWebLists(r) {
 }
 
 function setImageLists(r) {
-	$('.lists').empty().attr('class', 'lists image grid-wrap');
-	r.forEach(function(v, i) {
-		var html = '<li class="list image grid-sizer">';
-		html += '<li class="list image grid-item" data-info="" >';
-		$('.lists').append(html);
-	});
+  console.log(r);
+  $('.lists').empty().attr('class', 'lists image');
+  r.forEach(function(v, i) {
+    var html = '<li class="list">';
+    html += '<img src="'+v.thumbnail_url+'" class="w100">';
+    html += '</li>';
+    $('.lists').append(html);
+  });
 }
 
 function setBlogLists(r) {
-
+  console.log(r);
 }
 
 function setVclipLists(r) {
-
+  console.log(r);
 }
 
 function setBookLists(r) {
-
+  console.log(r);
 }
 
 function setCafeLists(r) {
-
+  console.log(r);
 }
 
 /*************** event callback *****************/

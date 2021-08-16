@@ -5,8 +5,8 @@
 .lists.web .list .content {font-size: 1.125em; margin-bottom: .5em; line-height: 1.2;}
 .lists.web .list .link {color: #155daf; margin-bottom: .5em; display: inline-block;}
 
-.lists.image {z-index: 1;}
-.lists.image .list {max-width: 12.5%; border: 5px solid #fff; cursor: pointer; transition: all .5s;}
+.lists.image {display: flex; flex-wrap: wrap;}
+.lists.image .list {max-width: 130px; margin: 4px; border: 5px solid #fff; cursor: pointer;}
 .lists.image .list:hover {border-color: rgba(238, 255, 5, 0.986); transform: scale(1.6); box-shadow: 0 0 10px rgba(0, 0, 0, .3); z-index: 9999;}
 
 
