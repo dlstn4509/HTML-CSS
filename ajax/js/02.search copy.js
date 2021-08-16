@@ -18,8 +18,8 @@ function setTotalCnt(cnt) {     // 검색결과 건수
   $('.result-cnt').html(numberFormat(cnt))
 }
 
-function setWebLists(r) {       // web 검색 결과 도출
-	$('.lists').empty().attr('class', 'lists web');  // empty로 안비우면 계속 쌓임
+function setWebLists(r) { 
+	$('.lists').empty().attr('class', 'lists web');
 	r.forEach(function(v, i) {
 		var html = '<li class="list web">';
 		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
@@ -27,6 +27,15 @@ function setWebLists(r) {       // web 검색 결과 도출
 		html += '<a class="link" href="'+v.url+'" target="_blank">'+v.url+'</a>';
 		html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
 		html += '</li>';
+		$('.lists').append(html);
+	});
+}
+
+function setImageLists(r) {
+	$('.lists').empty().attr('class', 'lists image grid-wrap');
+	r.forEach(function(v, i) {
+		var html = '<li class="list image grid-sizer">';
+		html += '<li class="list image grid-item" data-info="" >';
 		$('.lists').append(html);
 	});
 }
@@ -49,11 +58,10 @@ function setCafeLists(r) {
 
 /*************** event callback *****************/
 function onSubmit(e) {
-	e.preventDefault();  // 이게 없으면 나한테 보냄 -> 카카오로 ㄱㄱ
+	e.preventDefault(); 
 	var cate = $(this).find('select[name="category"]').val().trim();
 	var query = $(this).find('input[name="query"]').val().trim();
 	axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
-  // axios.get().then().catch();
 }
 
 
