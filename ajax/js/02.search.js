@@ -20,7 +20,7 @@ function setTotalCnt(cnt) {     // 검색결과 건수
   $('.result-cnt').html(numberFormat(cnt))
 }
 
-function setWebLists(r) {       // web 검색 결과 도출
+function setWebLists(r) {       // web
 	$('.lists').empty().attr({'class': 'lists web', 'style' : ''});
 	r.forEach(function(v, i) {
 		var html = '<li class="list web">';
@@ -158,16 +158,12 @@ function setCafeLists(r) {       // 카페
 	});
 }
 
-function setPager(isEnd, totaRecord) {
+function setPager(isEnd, totalRecord) {
   page = Number(page);
-  var totalPage = Math.ceil(totaRecord/size[cate]); // 총 페이지 수 
-  if(cate === 'vclip') {
-    if(totalPage > 15) totalPage = 15;
-  }
-  else {
-    if(totalPage > 50) totalPage = 50;
-  }
-  var pagerCnt = 5;     // pager의 보여질 페이지 수
+  var totalPage = Math.ceil(totalRecord/size[cate]); // 총 페이지 수 
+	if(totalPage > 50) totalPage = 50;
+	if(cate === 'vclip' && totalPage > 15) totalPage = 15;
+  var pagerCnt = 5;     //  pager의 보여질 페이지 수
   var startPage;        //  pager의 시작번호
   var endPage;          //  pager의 마지막번호
   startPage = Math.floor((page -1) / pagerCnt) * pagerCnt + 1;
@@ -176,23 +172,23 @@ function setPager(isEnd, totaRecord) {
 
   $('.pager-wrap .bt-page').remove();
   for(var i=startPage; i<=endPage; i++){
-    // $('.pager-wrap .bt-next').before('<i class="bt-page">'+i+'</i>')
     if(i === page)
     $('<i class="bt-page active" data-page="'+i+'">'+i+'</i>').insertBefore('.pager-wrap .bt-next').click(onPagerClick);
+    // $('.pager-wrap .bt-next').before('<i class="bt-page active" data-page="'+i+'">'+i+'</i>')
     else
     $('<i class="bt-page" data-page="'+i+'">'+i+'</i>').insertBefore('.pager-wrap .bt-next').click(onPagerClick);
   }
-  $('.pager-wrap .bt-first')[0].dataset['page'] = 1;
-  $('.pager-wrap .bt-pager-prev')[0].dataset['page'] = startPage === 1 ? 1 : startPage - 1;
-  $('.pager-wrap .bt-prev')[0].dataset['page'] = page === 1 ? 1 : page - 1;
-  $('.pager-wrap .bt-next')[0].dataset['page'] = page === totalPage ? totalPage : page + 1;
-  $('.pager-wrap .bt-pager-next')[0].dataset['page'] = endPage === totalPage ? endPage : endPage + 1;
-  $('.pager-wrap .bt-last')[0].dataset['page'] = totalPage;
+  $('.pager-wrap .bt-first')[0].dataset.page = 1;
+  $('.pager-wrap .bt-pager-prev')[0].dataset.page = startPage === 1 ? 1 : startPage - 1;
+  $('.pager-wrap .bt-prev')[0].dataset.page = page === 1 ? 1 : page - 1;
+  $('.pager-wrap .bt-next')[0].dataset.page = page === totalPage ? totalPage : page + 1;
+  $('.pager-wrap .bt-pager-next')[0].dataset.page = endPage === totalPage ? endPage : endPage + 1;
+  $('.pager-wrap .bt-last')[0].dataset.page = totalPage;
 }
 
 /*************** event callback *****************/
 function onPagerClick() {
-  page = Number(this.dataset['page']);
+  page = Number(this.dataset.page);
   axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
 }
 
@@ -258,11 +254,11 @@ function onError(err) {
 $('.search-form').submit(onSubmit);
 
 $('.pager-wrap .bt-first').click(onPagerClick);
-  $('.pager-wrap .bt-pager-prev').click(onPagerClick);
-  $('.pager-wrap .bt-prev').click(onPagerClick);
-  $('.pager-wrap .bt-next').click(onPagerClick);
-  $('.pager-wrap .bt-pager-next').click(onPagerClick);
-  $('.pager-wrap .bt-last').click(onPagerClick);
+$('.pager-wrap .bt-pager-prev').click(onPagerClick);
+$('.pager-wrap .bt-prev').click(onPagerClick);
+$('.pager-wrap .bt-next').click(onPagerClick);
+$('.pager-wrap .bt-pager-next').click(onPagerClick);
+$('.pager-wrap .bt-last').click(onPagerClick);
 
 /*************** start init *********************/
 
