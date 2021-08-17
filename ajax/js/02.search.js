@@ -81,7 +81,6 @@ function setBlogLists(r) {
 }
 
 function setClipLists(r) {
-  console.log(r);
 	$('.lists').empty().attr('class', 'lists clip');
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
@@ -103,7 +102,7 @@ function setClipLists(r) {
 }
 
 function setBookLists(r) {
-  
+  console.log(r);
 }
 
 function setCafeLists(r) {
