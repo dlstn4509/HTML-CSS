@@ -1,6 +1,8 @@
 /*************** global init ********************/
 var auth = 'KakaoAK accdfd5267af756d07efcd007e13bcee';
 var kakaoURL = 'https://dapi.kakao.com/';
+var cate, query, page = 1;
+var size = {web: 10, blog: 10, cafe: 10, vclip: 15, image: 80} // size 기본값
 
 /*************** user function ******************/
 function getPath(cate) {        // 카카오 api 주소
@@ -9,8 +11,8 @@ function getPath(cate) {        // 카카오 api 주소
 
 function getParams(query) {     // 카카오 검색방법
   return {
-    params: {query: query},          // 전송하는 데이터 (바디)
-    headers: {Authorization: auth}   // 헤더
+    params: {query: query, size: size[cate], page: page},
+    headers: {Authorization: auth}
   }
 }
 
@@ -156,17 +158,37 @@ function setCafeLists(r) {       // 카페
 	});
 }
 
+function setPager(isEnd, totaRecord) {
+  var totalPage = Math.ceil(totaRecord/size[cate]); // 총 페이지 수 
+  if(cate === 'vclip') {
+    if(totalPage > 15) totalPage = 15;
+  }
+  else {
+    if(totalPage > 50) totalPage = 50;
+  }
+  var pagerCnt = 5;     // pager의 보여질 페이지 수
+  var startPage;        //  pager의 시작번호
+  var endPage;          //  pager의 마지막번호
+  startPage = Math.floor((page -1) / pagerCnt) * pagerCnt + 1;
+  endPage = startPage + pagerCnt -1;
+  if(endPage > totalPage) endPage = totalPage;
+
+  $('.pager-wrap .bt-page').remove();
+  for(var i=startPage; i<=endPage; i++){
+    $('.pager-wrap .bt-next').before('<a href="#" class="bt-page">'+i+'</a>')
+    // $('<a href="#" class="bt-page">'+i+'</a>').insertBefore('.pager-wrap .bt-next')
+  }
+}
 
 /*************** event callback *****************/
 function onSubmit(e) {
 	e.preventDefault();  // 이게 없으면 나한테 보냄 -> 카카오로 ㄱㄱ
-	var cate = $(this).find('select[name="category"]').val().trim();
-	var query = $(this).find('input[name="query"]').val().trim();
+	cate = $(this).find('select[name="category"]').val().trim();
+	query = $(this).find('input[name="query"]').val().trim();
   if(cate && cate !== '' && query && query !== '')
   axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
   else
   $(this).find('input[name="query"]').focus();
-  // axios.get().then().catch();
 }
 
 function onModalShow() {
@@ -186,10 +208,11 @@ function onLoadError(el) {
 }
 
 function onSuccess(res) {
-  var cate = res.config.url.split('/').pop();
+  var cateStr = res.config.url.split('/').pop();
   var v = res.data;
-  setTotalCnt(v.meta.total_count);
-  switch(cate) {
+  setTotalCnt(v.meta.pageable_count);
+  setPager(v.meta.is_end, v.meta.pageable_count);
+  switch(cateStr) {
     case 'web' :
       setWebLists(v.documents);
       break;
