@@ -19,7 +19,7 @@ function setTotalCnt(cnt) {     // 검색결과 건수
 }
 
 function setWebLists(r) {       // web 검색 결과 도출
-	$('.lists').empty().attr('class', 'lists web');  // empty로 안비우면 계속 쌓임
+	$('.lists').empty().attr({'class': 'lists web', 'style' : ''});
 	r.forEach(function(v, i) {
 		var html = '<li class="list web">';
 		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
@@ -32,7 +32,7 @@ function setWebLists(r) {       // web 검색 결과 도출
 }
 
 function setImageLists(r) {     // 이미지
-  $('.lists').empty().attr('class', 'lists image grid-wrap');
+  $('.lists').empty().attr({'class': 'lists image grid-wrap', 'style': ''});
   $('.lists').append('<li class="list image grid-sizer"></li>');
   r.forEach(function(v, i) {
     var info = JSON.stringify({
@@ -63,7 +63,7 @@ function setImageLists(r) {     // 이미지
 }
 
 function setBlogLists(r) {      // 블로그
-	$('.lists').empty().attr('class', 'lists blog');
+	$('.lists').empty().attr({'class': 'lists blog', 'style' : ''});
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
   html += '<a class="thumbs" href="'+v.url+'" target="_black">';
@@ -81,7 +81,7 @@ function setBlogLists(r) {      // 블로그
 }
 
 function setClipLists(r) {      // 동영상
-	$('.lists').empty().attr('class', 'lists clip');
+	$('.lists').empty().attr({'class': 'lists clip', 'style' : ''});
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
   html += '<a class="thumbs" href="'+v.url+'" target="_black">';
@@ -102,7 +102,7 @@ function setClipLists(r) {      // 동영상
 }
 
 function setBookLists(r) {       // 도서
-  $('.lists').empty().attr('class', 'lists book');
+  $('.lists').empty().attr({'class':'lists book', 'style' : ''});
 	r.forEach(function(v, i) {
     var author = v.authors.join(', ');
     var thumbnail = v.thumbnail !== '' ? v.thumbnail : 'http://via.placeholder.com/120x174/eee?text=No+image';
@@ -137,10 +137,9 @@ function setBookLists(r) {       // 도서
 	});
 }
 
-
 function setCafeLists(r) {       // 카페
   console.log(r);
-  $('.lists').empty().attr('class', 'lists cafe');
+  $('.lists').empty().attr({'class': 'lists cafe', 'style' : ''});
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
   html += '<a class="thumbs" href="'+v.url+'" target="_black">';
