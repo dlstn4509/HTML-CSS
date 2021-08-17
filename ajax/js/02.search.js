@@ -66,13 +66,18 @@ function setBlogLists(r) {
   console.log(r);
 	$('.lists').empty().attr('class', 'lists blog');
 	r.forEach(function(v, i) {
-		var html = '<li class="list web">';
-		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
-		html += '<p class="content">'+v.contents+'</p>';
-		html += '<a class="link" href="'+v.url+'" target="_blank">'+v.url+'</a>';
-		html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
-		html += '</li>';
-		$('.lists').append(html);
+  var html  = '<li class="list">';
+  html += '<a class="thumbs" href="'+v.url+'">';
+  html += '<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">';
+  html += '</a>';
+  html += '<div class="contents">';
+  html += '<a class="title" href="'+v.url+'">'+v.title+'</a>';
+  html += '<p class="content">'+v.contents+'</p>';
+  html += '<a class="name" href="'+v.url+'">'+v.blogname+'</a> | <a href="'+v.url+'" class="link">'+v.url+'</a>';
+  html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD')+'</div>';
+  html += '</div>';
+  html += '</li>';
+  $('.lists').append(html);
 	});
 }
 
