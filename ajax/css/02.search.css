@@ -1,6 +1,6 @@
 /**************** global init ****************/
 .lists {border-top: 1px solid #dedede; overflow-wrap: break-word; }
-.lists .link {width: 100%;  align-items: flex-start}
+.lists .link {width: 100%;}
 .lists.web .list {color: #555; border-bottom: 1px solid #dedede; margin-bottom: 1em; padding: 1em 0;}
 .lists.web .list .title {font-size: 1.325em; color: #111; margin-bottom: 1em; text-decoration: underline; display: inline-block;}
 .lists.web .list .content {font-size: 1.125em; margin-bottom: .5em; line-height: 1.2;}
@@ -16,12 +16,12 @@
 .lists.image .list:hover .info {width: 200px; height: 100%; position: absolute;} */
 
 .pager-wrap {display: flex; justify-content: center; margin: 2em 0;}
-.pager-wrap a {width: 36px; height: 36px; border: 1px solid #ccc; text-align: center; line-height: 30px; margin-right: -1px; text-decoration: none;}
+.pager-wrap i {width: 36px; height: 36px; border: 1px solid #ccc; text-align: center; line-height: 30px; margin-right: -1px; text-decoration: none; font-style: normal; cursor: pointer;}
 .pager-wrap .bt-page.active {background-color: #333; color: #fff;}
-.pager-wrap a:not(.bt-page) {background-color: #efefef;}
+.pager-wrap i:not(.bt-page) {background-color: #efefef;}
 
 
-.modal-wrapper {position: fixed; top: 0; left: 0; z-index: 99999; background-color: rgba(0, 0, 0, .8); display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; overflow-wrap: break-word;}
+.modal-wrapper {position: fixed; top: 0; left: 0; z-index: 99999; background-color: rgba(0, 0, 0, .8); display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh;}
 .modal-wrapper .modal-wrap {background-color: #fff;}
 .modal-wrapper .modal-wrap .img-wp {position: relative;}
 .modal-wrapper .modal-wrap .img-wp img {max-height: 60vh; max-width: 80vh;}
@@ -29,10 +29,10 @@
 .modal-wrapper .modal-wrap .size-wp {font-size: 0.875em; color: #999;}
 .modal-wrapper .modal-wrap .name-wp {font-size: 1.5em; color: #111;}
 .modal-wrapper .modal-wrap .name-wp .name { text-decoration: underline;}
-.modal-wrapper .modal-wrap .link {color: #155daf; font-size: .875em; display: inline-block; width: 100%;}
+.modal-wrapper .modal-wrap .link {color: #155daf; font-size: .875em; display: inline-block; width: 100%;  overflow-wrap: break-word;}
 .modal-wrapper .modal-wrap .dt {color: #999; font-size: .875em;}
 
-.lists.blog .list {display: flex; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede;  align-items: flex-start}
+.lists.blog .list {display: flex; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede;  align-items: flex-start;}
 .lists.blog .list .thumbs {width: 140px; padding: 4px;}
 .lists.blog .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
 .lists.blog .list .contents .title {font-size: 1.25em; color: #03378a; margin-bottom: .5em; display: inline-block;}
@@ -41,7 +41,7 @@
 .lists.blog .list .contents .link {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block; width: 100%;}
 .lists.blog .list .contents .dt {font-size: 1em; color: #999; margin-bottom: .325em; display: block;}
 
-.lists.clip .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede; align-items: flex-start;}
+.lists.clip .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede; align-items: flex-start; flex-wrap: wrap;}
 .lists.clip .list .thumbs {width: 148px; padding: 4px;}
 .lists.clip .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
 .lists.clip .list .contents .title {font-size: 1.25em; color: #03378a; margin-bottom: .5em; display: inline-block;}
@@ -50,7 +50,7 @@
 .lists.clip .list .contents .link {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
 .lists.clip .list .contents .dt {font-size: 1em; color: #999; margin-bottom: .325em; display: block;}
 
-.lists.book {display: flex; flex-wrap: wrap;}
+.lists.book {display: flex; flex-wrap: wrap; align-items: flex-start;}
 .lists.book .list {width: 50%; padding: 2em; border-bottom: 1px solid #dedede;}
 .lists.book .list:nth-child(odd) {border-right: 1px solid #dedede;}
 .lists.book .title {font-size: 1.25em; color: #03378a; margin-bottom: .75em; display: inline-block;}
@@ -67,7 +67,7 @@
 .lists.book .info-wp .dt {margin-bottom: .75em; color: #999;}
 .lists.book .content {color: #444; line-height: 1.25;}
 
-.lists.cafe .list {display: flex; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede;}
+.lists.cafe .list {display: flex; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede; align-items: flex-start;}
 .lists.cafe .list .thumbs {width: 140px; padding: 4px;}
 .lists.cafe .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
 .lists.cafe .list .contents .title {font-size: 1.25em; color: #03378a; margin-bottom: .5em; display: inline-block;}
