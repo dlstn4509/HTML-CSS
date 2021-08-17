@@ -102,8 +102,41 @@ function setClipLists(r) {
 }
 
 function setBookLists(r) {
-  console.log(r);
+  $('.lists').empty().attr('class', 'lists book');
+	r.forEach(function(v, i) {
+    var author = v.authors.join(', ');
+    var thumbnail = v.thumbnail !== '' ? v.thumbnail : 'http://via.placeholder.com/120x174/eee?text=No+image';
+    var translator = v.translators.join(', ');
+    var salePrice = (v.sale_price) > -1 ? numberFormat(v.sale_price) + '원' : '판매중지'
+    var isbn = v.isbn.replace(' ', ' / ');
+    var dt = moment(v.datetime).format('YYYY-MM-DD');
+    var html  = '<li class="list">';
+    html += '<a href="'+v.url+'" target="_blank" class="title">'+v.title+'</a>';
+    html += '<div class="info-wrap">';
+    html += '<a class="thumb-wp" href="'+v.url+'" target="_blank">';
+    html += '<img src="'+thumbnail+'" alt=""   class="w100">';
+    html += '</a>';
+    html += '<div class="info-wp">';
+    html += '<div class="authors">';
+    html += '<span class="author">'+author+'</span>';
+    if (v.translators.length) html += '<span class="translators"> (역: '+translator+')</span>';
+    html += '</div>';
+    html += '<div class="prices">';
+    html += '<span class="price">'+numberFormat(v.price)+'</span> | ';
+    html += '<span class="sale-price">'+salePrice+'</span>';
+    if (v.status) html += '<span class="status">'+' ' + (v.status)+'</span>';
+    html += '</div>';
+    html += '<div class="publisher">'+v.publisher+'</div>';
+    html += '<div class="isbn">'+isbn+'</div>';
+    html += '<div class="dt">'+dt+'</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '<a href="'+v.url+'" target="_blank" class="content">'+v.contents+'</a>';
+    html += '</li>';
+    $('.lists').append(html);
+	});
 }
+
 
 function setCafeLists(r) {
   
