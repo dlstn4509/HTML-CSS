@@ -22,8 +22,8 @@
 		<form class="search-form form-inline my-5">
 			<select name="category" class="form-control mr-2">
 				<option value="web" >웹사이트</option>
-				<option value="blog">블로그</option>
-				<option value="image"selected>이미지</option>
+				<option value="blog"selected>블로그</option>
+				<option value="image">이미지</option>
 				<option value="vclip">동영상</option>
 				<option value="book">도서</option>
 				<option value="cafe">카페</option>
@@ -31,14 +31,24 @@
 			<input type="text" class="form-control mr-2 flex-grow-1" name="query" autofocus value="박보영">
 			<button class="btn btn-primary">검색</button>
 		</form>
-    
-    <li ></li>
-
 
 		<h2 class="text-right mb-3">검색결과: <span class="result-cnt font-weight-bold"></span>건</h2>
     
-		<ul class="lists web">
-<!--       <li class="list">
+		<ul class="lists">
+      <li class="list">          블로그
+        <div class="thubms">
+          <img src="" alt="">
+        </div>
+        <div class="contents">
+          <div class="name"></div>
+          <div class="title"></div>
+          <p class="content"></p>
+          <a href="" class="link"></a>
+          <div class="dt"></div>
+        </div>
+      </li>
+
+<!--       <li class="list">  웹
         <h3 class="title">문서 제목</h3>
         <p class="content">문서 본문 중 일부</p>
         <a class="link">문서 URL http://</a>

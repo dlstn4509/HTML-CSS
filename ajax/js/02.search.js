@@ -1,6 +1,6 @@
 /*************** global init ********************/
 var auth = 'KakaoAK accdfd5267af756d07efcd007e13bcee';
-var kakaoURL = 'https://dapi.kakao.com/'
+var kakaoURL = 'https://dapi.kakao.com/';
 
 /*************** user function ******************/
 function getPath(cate) {        // 카카오 api 주소
@@ -62,11 +62,21 @@ function setImageLists(r) {
   });
 }
 
-function setClipLists(r) {
-  
+function setBlogLists(r) {
+  console.log(r);
+	$('.lists').empty().attr('class', 'lists blog');
+	r.forEach(function(v, i) {
+		var html = '<li class="list web">';
+		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
+		html += '<p class="content">'+v.contents+'</p>';
+		html += '<a class="link" href="'+v.url+'" target="_blank">'+v.url+'</a>';
+		html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
+		html += '</li>';
+		$('.lists').append(html);
+	});
 }
 
-function setBlogLists(r) {
+function setClipLists(r) {
   
 }
 
@@ -84,7 +94,10 @@ function onSubmit(e) {
 	e.preventDefault();  // 이게 없으면 나한테 보냄 -> 카카오로 ㄱㄱ
 	var cate = $(this).find('select[name="category"]').val().trim();
 	var query = $(this).find('input[name="query"]').val().trim();
-	axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
+  if(cate && cate !== '' && query && query !== '')
+  axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
+  else
+  $(this).find('input[name="query"]').focus();
   // axios.get().then().catch();
 }
 
@@ -115,11 +128,11 @@ function onSuccess(res) {
     case 'image' :
       setImageLists(v.documents);
       break;
-    case 'vclip' :
-      setClipLists(v.documents);
-      break;
     case 'blog' :
       setBlogLists(v.documents);
+      break;
+    case 'vclip' :
+      setClipLists(v.documents);
       break;
     case 'book' :
       setBookLists(v.documents);
