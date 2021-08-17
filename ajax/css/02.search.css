@@ -9,7 +9,6 @@
 .lists.image .list {max-width: 12.5%; border: 5px solid #fff; cursor: pointer; transition: all .5s;}
 .lists.image .list:hover {border-color: rgba(238, 255, 5, 0.986); transform: scale(1.6); box-shadow: 0 0 10px rgba(0, 0, 0, .3); z-index: 9999;}
 
-
 /* .lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer; transition: all .5s; position: relative; display: flex;}
 .lists.image .list:hover {border-color: rgba(238, 255, 5, 0.986); transform: scale(2); box-shadow: 0 0 10px rgba(0, 0, 0, .3); z-index: 9999;}
 .lists.image .list .info {width: 0; transition: all .35s; transition-delay: .5s; background-color: #fff; transform: translate(67%);}
@@ -26,16 +25,24 @@
 .modal-wrapper .modal-wrap .link {color: #155daf; font-size: .875em; display: inline-block;}
 .modal-wrapper .modal-wrap .dt {color: #999; font-size: .875em;}
 
-
-.lists.blog {}
 .lists.blog .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede;}
-.lists.blog .list .thumbs {width: 140px; padding: 4px; border: 1px solid #03378a;}
+.lists.blog .list .thumbs {width: 140px; padding: 4px; border: 1px solid #96b8ee;}
 .lists.blog .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
 .lists.blog .list .contents .title {font-size: 1.25em; color: #03378a; margin-bottom: .5em; display: inline-block;}
-.lists.blog .list .contents .content {font-size: 1em; line-height: 1.25; color: #777;}
+.lists.blog .list .contents .content {font-size: 1em; line-height: 1.25; color: #777; margin-bottom: 1.15em;}
 .lists.blog .list .contents .name {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
 .lists.blog .list .contents .link {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
 .lists.blog .list .contents .dt {font-size: 1em; color: #999; margin-bottom: .325em; display: block;}
+
+.lists.clip {}
+.lists.clip .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede;}
+.lists.clip .list .thumbs {width: 148px; padding: 4px; border: 1px solid #96b8ee;}
+.lists.clip .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
+.lists.clip .list .contents .title {font-size: 1.25em; color: #03378a; margin-bottom: .5em; display: inline-block;}
+.lists.clip .list .contents .play-time {font-size: 1em; color: #777; margin-bottom: .325em;}
+.lists.clip .list .contents .author {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
+.lists.clip .list .contents .link {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
+.lists.clip .list .contents .dt {font-size: 1em; color: #999; margin-bottom: .325em; display: block;}
 
 
 

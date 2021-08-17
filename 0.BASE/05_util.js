@@ -15,3 +15,21 @@ function zp(n) {
 function numberFormat(v) {           // 숫자 3자리마타 쉼표
 	return v.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
+
+function getPlayTime(s) {
+	if(s >= 3600)
+	return zp(parseInt(s/3600)) + ':' + zp(parseInt((s%3600)/60)) + ':' + zp(s%60);
+	else
+	return zp(parseInt((s%3600)/60)) + ':' + zp(s%60);
+}
+
+/* function getPlayTime(s) {
+	return Math.floor(s/3600) + ':' + Math.floor(s%3600) + ':' + zp(s%60);
+} */
+
+/* function getPlayTime(s) {
+	if(Math.floor(s/60) >= 60)
+		return Math.floor(s/3600) + ':' + Math.floor(s%3600) + ':' + zp(s%60);
+	else
+		return zp(Math.floor(s/60)) + ':' + zp(s%60); 
+} */
