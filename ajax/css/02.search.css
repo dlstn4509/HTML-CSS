@@ -34,7 +34,6 @@
 .lists.blog .list .contents .link {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
 .lists.blog .list .contents .dt {font-size: 1em; color: #999; margin-bottom: .325em; display: block;}
 
-.lists.clip {}
 .lists.clip .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede;}
 .lists.clip .list .thumbs {width: 148px; padding: 4px; border: 1px solid #96b8ee;}
 .lists.clip .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}

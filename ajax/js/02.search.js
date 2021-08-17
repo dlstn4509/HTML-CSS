@@ -66,13 +66,13 @@ function setBlogLists(r) {
 	$('.lists').empty().attr('class', 'lists blog');
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
-  html += '<a class="thumbs" href="'+v.url+'">';
+  html += '<a class="thumbs" href="'+v.url+'" target="_black">';
   html += '<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">';
   html += '</a>';
   html += '<div class="contents">';
-  html += '<a class="title" href="'+v.url+'">'+v.title+'</a>';
+  html += '<a class="title" href="'+v.url+'" target="_black">'+v.title+'</a>';
   html += '<p class="content">'+v.contents+'</p>';
-  html += '<a class="name" href="'+v.url+'">'+v.blogname+'</a> | <a href="'+v.url+'" class="link">'+v.url+'</a>';
+  html += '<a class="name" href="'+v.url+'" target="_black">'+v.blogname+'</a> | <a href="'+v.url+'" class="link" target="_black">'+v.url+'</a>';
   html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD')+'</div>';
   html += '</div>';
   html += '</li>';
@@ -85,16 +85,16 @@ function setClipLists(r) {
 	$('.lists').empty().attr('class', 'lists clip');
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
-  html += '<a class="thumbs" href="'+v.url+'">';
+  html += '<a class="thumbs" href="'+v.url+'" target="_black">';
   html += ' <img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">';
   html += '</a>';
   html += '<div class="contents">';
-  html += ' <a class="title" href="'+v.url+'">'+v.title+'</a>';
+  html += ' <a class="title" href="'+v.url+'" target="_black">'+v.title+'</a>';
   html += ' <div>'
-  html += '   <a class="author" href="'+v.url+'">'+v.author+'</a>';
+  html += '   <a class="author" href="'+v.url+'" target="_black">'+v.author+'</a>';
   html += '   <span class="play-time">'+getPlayTime(v.play_time)+'</span>';
   html += ' </div>'
-  html += ' <a href="'+v.url+'" class="link">'+v.url+'</a>';
+  html += ' <a href="'+v.url+'" class="link" target="_black">'+v.url+'</a>';
   html += ' <div class="dt">'+moment(v.datetime).format('YYYY-MM-DD')+'</div>';
   html += '</div>';
   html += '</li>';
