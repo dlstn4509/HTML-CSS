@@ -31,7 +31,7 @@ function setWebLists(r) {       // web 검색 결과 도출
 	});
 }
 
-function setImageLists(r) {
+function setImageLists(r) {     // 이미지
   $('.lists').empty().attr('class', 'lists image grid-wrap');
   $('.lists').append('<li class="list image grid-sizer"></li>');
   r.forEach(function(v, i) {
@@ -62,7 +62,7 @@ function setImageLists(r) {
   });
 }
 
-function setBlogLists(r) {
+function setBlogLists(r) {      // 블로그
 	$('.lists').empty().attr('class', 'lists blog');
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
@@ -80,7 +80,7 @@ function setBlogLists(r) {
 	});
 }
 
-function setClipLists(r) {
+function setClipLists(r) {      // 동영상
 	$('.lists').empty().attr('class', 'lists clip');
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
@@ -101,7 +101,7 @@ function setClipLists(r) {
 	});
 }
 
-function setBookLists(r) {
+function setBookLists(r) {       // 도서
   $('.lists').empty().attr('class', 'lists book');
 	r.forEach(function(v, i) {
     var author = v.authors.join(', ');
@@ -138,8 +138,23 @@ function setBookLists(r) {
 }
 
 
-function setCafeLists(r) {
-  
+function setCafeLists(r) {       // 카페
+  console.log(r);
+  $('.lists').empty().attr('class', 'lists cafe');
+	r.forEach(function(v, i) {
+  var html  = '<li class="list">';
+  html += '<a class="thumbs" href="'+v.url+'" target="_black">';
+  html += '<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">';
+  html += '</a>';
+  html += '<div class="contents">';
+  html += '<a class="title" href="'+v.url+'" target="_black">'+v.title+'</a>';
+  html += '<p class="content">'+v.contents+'</p>';
+  html += '<a class="name" href="'+v.url+'" target="_black">'+v.cafename+'</a> | <a href="'+v.url+'" class="link" target="_black">'+v.url+'</a>';
+  html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD')+'</div>';
+  html += '</div>';
+  html += '</li>';
+  $('.lists').append(html);
+	});
 }
 
 
