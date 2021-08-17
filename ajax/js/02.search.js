@@ -159,6 +159,7 @@ function setCafeLists(r) {       // 카페
 }
 
 function setPager(isEnd, totaRecord) {
+  page = Number(page);
   var totalPage = Math.ceil(totaRecord/size[cate]); // 총 페이지 수 
   if(cate === 'vclip') {
     if(totalPage > 15) totalPage = 15;
@@ -191,7 +192,7 @@ function setPager(isEnd, totaRecord) {
 
 /*************** event callback *****************/
 function onPagerClick() {
-  page = $(this).data('page')
+  page = Number(this.dataset['page']);
   axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
 }
 
