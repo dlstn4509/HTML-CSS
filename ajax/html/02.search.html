@@ -19,16 +19,19 @@
 </head>
 <body>
   <div class="container">
-		<form class="search-form form-inline my-5">
+    <h1 class="logo text-center fa-2x py-4 text-secondary">
+      <i class="fa fa-search"></i> dabanbus 검색
+    </h1>
+		<form class="search-form form-inline mt-3 mb-5">
 			<select name="category" class="form-control mr-2">
-				<option value="web">웹사이트</option>
+				<option value="web"selected>웹사이트</option>
 				<option value="blog">블로그</option>
-				<option value="image"selected>이미지</option>
+				<option value="image">이미지</option>
 				<option value="vclip">동영상</option>
 				<option value="book">도서</option>
 				<option value="cafe">카페</option>
 			</select>
-			<input type="text" class="form-control mr-2 flex-grow-1" name="query" autofocus value="박보영">
+			<input type="text" class="form-control mr-2 flex-grow-1" name="query" autofocus value="">
 			<button class="btn btn-primary">검색</button>
 		</form>
 
