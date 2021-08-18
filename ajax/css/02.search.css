@@ -9,7 +9,7 @@ body {height: 10000px;}
 
 .lists.image {z-index: 1; display: flex; flex-wrap: wrap;}
 .lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer;}
-.lists.image .list:hover {border-color: #548308; transform: scale(1.5); box-shadow: 0 0 10px rgba(0, 0, 0, .4); z-index: 9;}
+.lists.image .list:hover {border-color: #548308; transform: scale(1.5); box-shadow: 0 0 10px rgba(0, 0, 0, .4); z-index: 9;} 
 
 .lists.blog .list {display: flex; align-items: flex-start; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede;}
 .lists.blog .list .thumbs {width: 140px; padding: 4px; border: 1px solid #96b8ee;}
