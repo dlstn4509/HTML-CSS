@@ -297,7 +297,6 @@ function onError(err) {
 	$('.observer').remove();
 }
 
-
 /*************** event init ***************/
 $('.search-form').submit(onSubmit);
 $('.pager-wrap .bt-first').click(onPagerClick);
