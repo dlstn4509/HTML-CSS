@@ -1,8 +1,9 @@
 /*************** global init ********************/
 var auth = 'KakaoAK accdfd5267af756d07efcd007e13bcee';
 var kakaoURL = 'https://dapi.kakao.com/';
-var cate, query, page = 1;
+var cate, query, isEnd = false, page = 1;
 var size = {web: 10, blog: 10, cafe: 10, vclip: 15, image: 80} // size 기본값
+var observer;
 
 /*************** user function ******************/
 function getPath(cate) {        // 카카오 api 주소
@@ -34,8 +35,13 @@ function setWebLists(r) {       // web
 }
 
 function setImageLists(r) {     // 이미지
-  $('.lists').empty().attr({'class': 'lists image grid-wrap', 'style': ''});
-  $('.lists').append('<li class="list image grid-sizer"></li>');
+  if(page === 1) {
+    $('.lists').empty().attr({'class': 'lists image grid-wrap', 'style': ''});
+    $('.lists').append('<li class="list image grid-sizer"></li>');
+  }
+  else
+    $('.observer').remove();
+
   r.forEach(function(v, i) {
     var info = JSON.stringify({
       collection: v.collection,
@@ -53,11 +59,18 @@ function setImageLists(r) {     // 이미지
     html += '</li>';
     $(html).appendTo('.lists').click(onModalShow);
   });
+
+  /// 옵저버 처리
+  $('.lists').after('<li class="observer"></li>');
+	observer = new IntersectionObserver(onIntersection, {threshold: 1});
+	observer.observe(document.querySelector('.observer'));
+
   var $grid = $('.grid-wrap').masonry({
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
-    percentPosition: true
+    percentPosition: true,
   });
+
   $grid.imagesLoaded().progress( function() {
     $grid.masonry('layout');
     $grid.masonry('reloadItems');
@@ -83,7 +96,9 @@ function setBlogLists(r) {      // 블로그
 }
 
 function setClipLists(r) {      // 동영상
-	$('.lists').empty().attr({'class': 'lists clip', 'style' : ''});
+  $('.pager-wrap').hide();
+  if(page === 1) $('.lists').empty().attr({'class': 'lists clip', 'style': ''});
+  else $('.observer').remove();
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
   html += '<a class="thumbs" href="'+v.url+'" target="_black">';
@@ -101,6 +116,11 @@ function setClipLists(r) {      // 동영상
   html += '</li>';
   $('.lists').append(html);
 	});
+
+  /// 옵저버 처리
+	$('.lists').after('<div class="observer"></div>');
+	observer = new IntersectionObserver(onIntersection, {threshold: 1});
+	observer.observe(document.querySelector('.observer'));
 }
 
 function setBookLists(r) {       // 도서
@@ -140,7 +160,6 @@ function setBookLists(r) {       // 도서
 }
 
 function setCafeLists(r) {       // 카페
-  console.log(r);
   $('.lists').empty().attr({'class': 'lists cafe', 'style' : ''});
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
@@ -158,7 +177,11 @@ function setCafeLists(r) {       // 카페
 	});
 }
 
-function setPager(isEnd, totalRecord) {
+function setPager(totalRecord) {
+  $('.pager-wrap').show();
+    if(observer && document.querySelector('.lists .observer'))
+		observer.unobserve(document.querySelector('.lists .observer'));
+
   page = Number(page);
   var totalPage = Math.ceil(totalRecord/size[cate]); // 총 페이지 수
 	if(totalPage > 50) totalPage = 50;
@@ -210,7 +233,21 @@ function setPager(isEnd, totalRecord) {
     $('.pager-wrap .bt-last').attr('disabled', false)[0].dataset['page'] = totalPage;
 }
 
+function setIntersection() {
+	
+}
+
 /*************** event callback *****************/
+function onIntersection(el) {
+		if(el[el.length -1].isIntersecting && isEnd === false) {
+      page = Number(page) + 1;
+      axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
+    }
+    if(isEnd == true) {
+      // observer.unobserve
+    }
+};
+
 function onPagerClick() {
   page = Number(this.dataset.page);
   axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
@@ -221,6 +258,7 @@ function onSubmit(e) {
 	e.preventDefault();  // 이게 없으면 나한테 보냄 -> 카카오로 ㄱㄱ
 	cate = $(this).find('select[name="category"]').val().trim();
 	query = $(this).find('input[name="query"]').val().trim();
+  page = 1;
   if(cate && cate !== '' && query && query !== '')
   axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
   else
@@ -244,10 +282,12 @@ function onLoadError(el) {
 }
 
 function onSuccess(res) {
-  var cateStr = res.config.url.split('/').pop();
-  var v = res.data;
-  setTotalCnt(v.meta.pageable_count);
-  setPager(v.meta.is_end, v.meta.pageable_count);
+	console.log(res);
+	var cateStr = res.config.url.split('/').pop();
+	var v = res.data;
+	setTotalCnt(v.meta.pageable_count);
+  isEnd = v.meta.is_end;
+	if(cate !== 'vclip' && cate !== 'image') setPager(v.meta.pageable_count);
   switch(cateStr) {
     case 'web' :
       setWebLists(v.documents);
