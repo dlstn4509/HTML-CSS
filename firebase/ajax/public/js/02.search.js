@@ -18,7 +18,7 @@ function getParams(query) {     // 카카오 검색방법
 }
 
 function setTotalCnt(cnt) {     // 검색결과 건수
-  $('.result-cnt').html(numberFormat(cnt))
+  $('.result-cnt').html(numeral(cnt), format(0,0))
 }
 
 function setWebLists(r) {       // web
@@ -164,6 +164,7 @@ function setCafeLists(r) {       // 카페
 
 function setPager(totalRecord) {
   $('.pager-wrap').show();
+  if(observer && $('.observer')[0]) observer.unobserver($('.observer')[0]);
   $('.observer').remove();
 
   page = Number(page);
@@ -228,7 +229,8 @@ function onIntersection(el) {
       axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
     }
     if(isEnd == true) {
-      // observer.unobserve
+      $('.observer').remove();
+      observer.unsoserve($('.observer'))
     }
 };
 
