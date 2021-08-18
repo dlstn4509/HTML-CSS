@@ -12,7 +12,7 @@ function getPath(cate) {
 
 function getParams(query) {
 	return {
-		params: { query: query, size: size[cate], page: page },
+		params: { query: query, size: size[cate], page: page },	
 		headers: { Authorization: auth }
 	}
 }
