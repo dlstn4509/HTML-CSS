@@ -35,12 +35,8 @@ function setWebLists(r) {       // web
 }
 
 function setImageLists(r) {     // 이미지
-  if(page === 1) {
-    $('.lists').empty().attr({'class': 'lists image grid-wrap', 'style': ''});
-    $('.lists').append('<li class="list image grid-sizer"></li>');
-  }
-  else
-    $('.observer').remove();
+  if(page === 1) $('.lists').empty().attr({'class': 'lists image', 'style': ''});
+  else $('.observer').remove();
 
   r.forEach(function(v, i) {
     var info = JSON.stringify({
@@ -53,7 +49,7 @@ function setImageLists(r) {     // 이미지
       url: v.doc_url,
       dt: v.datetime
     });
-    var html = '<li class="list image grid-item" data-info=\''+info+'\'>';
+    var html = '<li class="list image" data-info=\''+info+'\'>';
     html += '<img src="'+v.thumbnail_url+'" class="w100">';
     html += '<div class="info"></div>';
     html += '</li>';
@@ -64,17 +60,6 @@ function setImageLists(r) {     // 이미지
   $('.lists').after('<li class="observer"></li>');
 	observer = new IntersectionObserver(onIntersection, {threshold: 1});
 	observer.observe(document.querySelector('.observer'));
-
-  var $grid = $('.grid-wrap').masonry({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
-  });
-
-  $grid.imagesLoaded().progress( function() {
-    $grid.masonry('layout');
-    $grid.masonry('reloadItems');
-  });
 }
 
 function setBlogLists(r) {      // 블로그

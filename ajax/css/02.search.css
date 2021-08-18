@@ -7,11 +7,10 @@ body {height: 10000px;}
 .lists.web .list .content {font-size: 1.125em; margin-bottom: .5em; line-height: 1.2;}
 .lists.web .list .link {color: #155daf; margin-bottom: .5em; display: inline-block; width: 100%;}
 
-.lists.image {z-index: 1;}
-.lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer; transition: all .5s;}
+.lists.image {z-index: 1; display: flex; flex-wrap: wrap;}
+.lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer;}
 .lists.image .list:hover {border-color: #548308; transform: scale(1.5); box-shadow: 0 0 10px rgba(0, 0, 0, .4); z-index: 9;}
 
-.lists.blog {}
 .lists.blog .list {display: flex; align-items: flex-start; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede;}
 .lists.blog .list .thumbs {width: 140px; padding: 4px; border: 1px solid #96b8ee;}
 .lists.blog .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
@@ -21,8 +20,6 @@ body {height: 10000px;}
 .lists.blog .list .contents .link {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;} 
 .lists.blog .list .contents .dt {font-size: .875em; color: #999; display: block;} 
 
-
-.lists.clip {}
 .lists.clip .list {display: flex; flex-wrap: wrap; align-items: flex-start; padding: 1em; border-bottom: 1px solid #dedede;}
 .lists.clip .list .thumbs {width: 148px; padding: 4px; border: 1px solid #96b8ee;}
 .lists.clip .list .contents {width: calc(100% - 148px); padding-left: 1.5em;}
