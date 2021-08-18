@@ -57,7 +57,7 @@ function setImageLists(r) {     // 이미지
   });
 
   /// 옵저버 처리
-  $('.lists').after('<li class="observer"></li>');
+  $('.lists').after('<div class="observer d-flex justify-content-center py-5"><i class="fa fa-spin fa-spinner fa-2x"></i></div>');
 	observer = new IntersectionObserver(onIntersection, {threshold: 1});
 	observer.observe(document.querySelector('.observer'));
 }
@@ -87,23 +87,23 @@ function setClipLists(r) {      // 동영상
 	r.forEach(function(v, i) {
   var html  = '<li class="list">';
   html += '<a class="thumbs" href="'+v.url+'" target="_black">';
-  html += ' <img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">';
+  html += '<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">';
   html += '</a>';
   html += '<div class="contents">';
-  html += ' <a class="title" href="'+v.url+'" target="_black">'+v.title+'</a>';
-  html += ' <div>'
-  html += '   <a class="author" href="'+v.url+'" target="_black">'+v.author+'</a>';
-  html += '   <span class="play-time">'+getPlayTime(v.play_time)+'</span>';
-  html += ' </div>'
-  html += ' <a href="'+v.url+'" class="link" target="_black">'+v.url+'</a>';
-  html += ' <div class="dt">'+moment(v.datetime).format('YYYY-MM-DD')+'</div>';
+  html += '<a class="title" href="'+v.url+'" target="_black">'+v.title+'</a>';
+  html += '<div>'
+  html += '<a class="author" href="'+v.url+'" target="_black">'+v.author+'</a>';
+  html += '<span class="play-time">'+getPlayTime(v.play_time)+'</span>';
+  html += '</div>'
+  html += '<a href="'+v.url+'" class="link" target="_black">'+v.url+'</a>';
+  html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD')+'</div>';
   html += '</div>';
   html += '</li>';
   $('.lists').append(html);
 	});
 
   /// 옵저버 처리
-	$('.lists').after('<div class="observer"></div>');
+  $('.lists').after('<div class="observer d-flex justify-content-center py-5"><i class="fa fa-spin fa-spinner fa-2x"></i></div>');
 	observer = new IntersectionObserver(onIntersection, {threshold: 1});
 	observer.observe(document.querySelector('.observer'));
 }
@@ -164,8 +164,7 @@ function setCafeLists(r) {       // 카페
 
 function setPager(totalRecord) {
   $('.pager-wrap').show();
-    if(observer && document.querySelector('.lists .observer'))
-		observer.unobserve(document.querySelector('.lists .observer'));
+  $('.observer').remove();
 
   page = Number(page);
   var totalPage = Math.ceil(totalRecord/size[cate]); // 총 페이지 수

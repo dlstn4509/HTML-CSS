@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>02.search</title>
+  <title>search</title>
   <link rel="stylesheet" href="../../0.BASE/00_all.min.css">
   <link rel="stylesheet" href="../../0.BASE/01_bootstrap.min.css">
   <link rel="stylesheet" href="../../0.BASE/02_base.css">
@@ -34,21 +34,6 @@
 
 		<h2 class="text-right mb-3">검색결과: <span class="result-cnt font-weight-bold"></span>건</h2>
     
-    <div class="pager-wrap" style="display: none;">
-      <button class="bt-first fa fa-arrow-left" data-page="1" disabled></button>
-      <button class="bt-pager-prev fa fa-angle-double-left" disabled></button>
-      <button class="bt-prev fa fa-angle-left" disabled></button>      
-<!--       <button href="#" class="bt-page">1</button>
-      <button href="#" class="bt-page">2</button>
-      <button href="#" class="bt-page">3</button>
-      <button href="#" class="bt-page">4</button>
-      <button href="#" class="bt-page">5</button> -->
-      <button class="bt-next fa fa-angle-right" disabled></button>
-      <button class="bt-pager-next fa fa-angle-double-right" disabled></button>
-      <button class="bt-last fa fa-arrow-right" disabled></button>
-    </div>
-
-
 		<ul class="lists">
       <!-- <li class="list">             도서
         <a href="" target="_blank" class="title">토론은 게임이다</a>
@@ -96,7 +81,19 @@
       </li> -->
 		</ul>
 
-
+    <div class="pager-wrap" style="display: none;">
+      <button class="bt-first fa fa-arrow-left" data-page="1" disabled></button>
+      <button class="bt-pager-prev fa fa-angle-double-left" disabled></button>
+      <button class="bt-prev fa fa-angle-left" disabled></button>      
+<!--       <button href="#" class="bt-page">1</button>
+      <button href="#" class="bt-page">2</button>
+      <button href="#" class="bt-page">3</button>
+      <button href="#" class="bt-page">4</button>
+      <button href="#" class="bt-page">5</button> -->
+      <button class="bt-next fa fa-angle-right" disabled></button>
+      <button class="bt-pager-next fa fa-angle-double-right" disabled></button>
+      <button class="bt-last fa fa-arrow-right" disabled></button>
+    </div>
 
     <div class="modal-wrapper" style="display: none;">
       <div class="modal-wrap">
@@ -116,6 +113,7 @@
       </div>
     </div>
 	</div>
+  <!-- <div class="fa fa-spin fa-spinner fa-5x"></div> -->
   <script src="../js/02.search.js"></script>
 </body>
 </html>
