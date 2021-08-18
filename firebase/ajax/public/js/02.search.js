@@ -195,22 +195,27 @@ function setPager(totalRecord) {
 		$('.pager-wrap .bt-first').attr('disabled', true);
 	else
 		$('.pager-wrap .bt-first').attr('disabled', false);
+
 	if(startPage === 1)
 		$('.pager-wrap .bt-pager-prev').attr('disabled', true);
 	else	
 		$('.pager-wrap .bt-pager-prev').attr('disabled', false)[0].dataset['page'] = startPage - 1;
+
 	if(page === 1)
 		$('.pager-wrap .bt-prev').attr('disabled', true);
 	else
 		$('.pager-wrap .bt-prev').attr('disabled', false)[0].dataset['page'] = page - 1;
+
 	if(page === totalPage)
 		$('.pager-wrap .bt-next').attr('disabled', true);
 	else
 		$('.pager-wrap .bt-next').attr('disabled', false)[0].dataset['page'] = page + 1;
+
 	if(endPage === totalPage)
 		$('.pager-wrap .bt-pager-next').attr('disabled', true);
 	else
 		$('.pager-wrap .bt-pager-next').attr('disabled', false)[0].dataset['page'] = endPage + 1;
+		
 	if(page === totalPage)
 		$('.pager-wrap .bt-last').attr('disabled', true);
 	else
