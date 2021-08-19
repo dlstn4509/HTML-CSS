@@ -20,8 +20,7 @@
 .recent-wrapper .list-wrap .list {width: 19%; margin-right: 1%;}
 
 /******************* list-wrapper *********************/
-.list-wrapper {}
-.list-wrapper .list-tbl {}
+.list-wrapper .list-tbl {border-bottom: 1px solid #dedede;}
 .list-wrapper .list-tbl .icon {width: 30px; margin-right: .5em;}
 .list-wrapper .list-tbl th:nth-child(1) {width: 10%;}
 .list-wrapper .list-tbl th:nth-child(2) {width: auto;}
@@ -31,6 +30,9 @@
 
 .list-wrapper .list-tbl td {vertical-align: middle;}
 .list-wrapper .list-tbl td:nth-child(2) {text-align: left;}
+
+.list-wrapper .pager-wrap .page-link {color: #888;}
+.list-wrapper .page-item .active {background-color: #267407; border-color: #267407;} 
 
 /******************* footer-wrapper *********************/
 
