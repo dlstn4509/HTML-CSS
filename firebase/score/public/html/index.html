@@ -5,17 +5,102 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
-  <link rel="stylesheet" href="../../0.BASE/00_all.min.css">
-  <link rel="stylesheet" href="../../0.BASE/01_bootstrap.min.css">
-  <link rel="stylesheet" href="../../0.BASE/02_base.css">
-  <link rel="stylesheet" href="../css/.css">
-  <script src="../../0.BASE/04_jquery.min.js"></script>
-  <script src="../../0.BASE/moment.min.js"></script>
-  <script src="../../0.BASE/lodash.min.js"></script>
-  <script src="../../0.BASE/05_util.js"></script>
+  <link rel="stylesheet" href="../0.BASE/00_all.min.css">
+  <link rel="stylesheet" href="../0.BASE/01_bootstrap.min.css">
+  <link rel="stylesheet" href="../0.BASE/02_base.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <script src="/__/firebase/8.8.1/firebase-app.js"></script>
+  <script src="/__/firebase/8.8.1/firebase-auth.js"></script>
+  <script src="/__/firebase/8.8.1/firebase-database.js"></script>
+  <script src="/__/firebase/8.8.1/firebase-storage.js"></script>
+  <script src="/__/firebase/8.8.1/firebase-analytics.js"></script>
+  <script src="/__/firebase/init.js?useEmulator=true"></script>
+  <script src="../0.BASE/04_jquery.min.js"></script>
+  <script src="../0.BASE/moment.min.js"></script>
+  <script src="../0.BASE/lodash.min.js"></script>
+  <script src="../0.BASE/uuidv4.min.js"></script>
+  <script src="../0.BASE/promise.polyfill.min.js"></script>
+  <script src="../0.BASE/05_util.js"></script>
 </head>
 <body>
-  
-  <script src="../js/.js"></script>
+<!-- header-wrapper -->
+  <header class="header-wrapper">
+		<h1 class="logo-wrap">
+			<div class="photo-logo"><img src="" alt="로고" class="w100"></div>
+			<i class="icon-logo fa fa-user-circle"></i> 
+			<span class="name">Dabanbus's Community</span>
+		</h1>
+		<ul class="navi-wrap">
+			<li class="navi bt-login">
+				<i class="fab fa-google"></i>
+				<span class="name">Login</span>
+			</li>
+			<li class="navi bt-logout">
+				<i class="fa fa-sign-out-alt"></i>
+				<span class="name">Logout</span>
+			</li>
+		</ul>
+	</header>
+
+<!-- recent-wrapper -->
+  <section class="recent-wrapper wrapper">
+    <div class="title-wrap">
+      <h2 class="title">최근게시글</h2>
+    </div>
+    <div class="list-wrap">
+      <ul class="list-wp">
+        <li class="list">
+          <img src="../img/team1.jpg" alt="img" class="w100">
+        </li>
+        <li class="list">
+          <img src="../img/team1.jpg" alt="img" class="w100">
+        </li>
+        <li class="list">
+          <img src="../img/team1.jpg" alt="img" class="w100">
+        </li>
+        <li class="list">
+          <img src="../img/team1.jpg" alt="img" class="w100">
+        </li>
+        <li class="list">
+          <img src="../img/team1.jpg" alt="img" class="w100">
+        </li>
+      </ul>
+    </div>
+  </section>
+
+<!-- list-wrapper -->
+  <section class="list-wrapper wrapper">
+    <table class="table table-hover table-striped table-condensed text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th class="col-">번호</th>
+          <th class="col-">제목</th>
+          <th class="col-">작성자</th>
+          <th class="col-">작성일</th>
+          <th class="col-">조회</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>아버지를 아버지라..</td>
+          <td>홍길동</td>
+          <td>2021-08-19</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+<!-- footer-wrapper -->
+  <footer class="footer-wrapper">
+
+  </footer>
+
+<!-- modal-wrapper -->
+  <section class="modal-wrapper">
+    <div class="btn btn-sm btn-success bt-write">글쓰기</div>
+  </section>
+  <script src="../js/index.js"></script>
 </body>
 </html>
