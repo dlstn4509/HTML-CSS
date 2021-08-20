@@ -1,4 +1,4 @@
-1/*************** global init ********************/
+/*************** global init ********************/
 var auth = firebase.auth();
 var googleAuth = new firebase.auth.GoogleAuthProvider();
 var firebaseDatabase = firebase.database();
@@ -12,11 +12,12 @@ var allowType = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4']
 var btSave = document.querySelector('.write-wrapper .bt-save')       // 글작성 버튼
 var btLogin = document.querySelector('.header-wrapper .bt-login')    // 로그인 버튼
 var btLogout = document.querySelector('.header-wrapper .bt-logout')  // 로그아웃 버튼
-var btWrite = document.querySelector('.list-wrapper .bt-write')       // 글쓰기 버튼
-var btClose = document.querySelector('.write-wrapper .bt-close')       // 모달창 닫기 버튼
-var btReset = document.querySelector('.write-wrapper .bt-reset')       // 모달창 리셋 버튼
+var btWrite = document.querySelector('.list-wrapper .bt-write')      // 글쓰기 버튼
+var btClose = document.querySelector('.write-wrapper .bt-close')     // 모달창 닫기 버튼
+var btReset = document.querySelector('.write-wrapper .bt-reset')     // 모달창 리셋 버튼
 var writeWrapper = document.querySelector('.write-wrapper')          
 var writeForm = document.writeForm;                                  // 글작성 form
+var loading = document.querySelector('.write-wrapper .loading-wrap') // 로딩스피너
 
 /*************** user function ******************/
 
@@ -42,17 +43,19 @@ function onLogout() {
   auth.signOut();
 }
 
-function onWrite() { // 모달창이 오픈되면 (글작성 버튼)
+function onWrite() {                           // 모달창이 오픈되면 (글작성 버튼)
+  loading.style.display = 'none';
   $(writeWrapper).stop().fadeIn(300);
   writeForm.title.focus();
 }
 
-function onClose() { // 모달창이 닫히면
+function onClose() {                           // 모달창이 닫히면
   $(writeWrapper).stop().fadeOut(300);
   onWriteReset();
 }
 
-function onWriteReset(e) {  // 초기화 (모달창 닫으면 실행)
+function onWriteReset(e) {                    // 초기화 (모달창 닫으면 실행)
+  writeForm.reset();                          // button[type-reset] 클릭
   writeForm.title.value = '';
   writeForm.title.classList.remove('active');
   writeForm.writer.value = '';
@@ -63,12 +66,16 @@ function onWriteReset(e) {  // 초기화 (모달창 닫으면 실행)
   })
 }
 
-function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , validation 검증도 함 (필수사항들)
+function onWriteSubmit(e) {                  // 모달창에서 글쓰기 버튼을 누르면 , validation 검증도 함 (필수사항들)
   e.preventDefault();
   var title = writeForm.title;
   var writer = writeForm.writer;
-  var upfile = writeForm.upfile;    // upfile은 정보가 나와서 trim안됨
+  var upfile = writeForm.upfile;            // upfile은 정보가 나와서 trim안됨
   var content = writeForm.content;
+  if(!user) {
+    alert('로그인 후 이용하세요')
+    return false;
+  }
   if(!requiredValid(title)) {
     title.focus();
     return false;
@@ -81,23 +88,65 @@ function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , v
     return false;
   }
 
-  var data = {};                  // 여기서 firebase save
+  var data = {};                           // 여기서 firebase save
   data.user = user.uid;
   data.title = title.value;
   data.writer = writer.value;
   data.content = content.value;
-  data.createAt = new Date().getTime()   // 언제 만들어졌냐 (타임스탬프)
-  data.file = (upfile.files.length) ? upfile.files[0] : {};
-  db.push(data).key;              //  firebase 저장 명령어
+  if(upfile.files.length) {                // 파일이 존재하면 처리 로직
+    var upload = null;
+    var file = upfile.files[0];
+    var savename = genFile();
+    var uploader = storage.child(savename.folder).child(savename.file).put(file);
+    uploader.on('state_changed', onUploading, onUploadError, onUploaded);
+    data.file = {
+      folder: 'root/board/'+savename.folder,
+      name: savename.file
+    }
+  }
+  else {
+    onClose();
+    db.push(data).key;                     //  firebase 저장 명령어
+  }
+
+  function onUploading(snapshot) {        // 파일이 업로드 되는 동안
+    loading.style.display = 'flex';
+    upload = snapshot;
+  }
+  
+  function onUploaded() {                 // 파일 업로드 완료 후
+    loading.style.display = 'none';
+    upload.ref.getDownloadURL().then(onSuccess).catch(onError);
+  }
+  
+  function onUploadError(err) {           // 파일 업로드 실패시
+    if(err.code === 'storage/unauthorized') location.href = '../403.html'
+    else {
+      loading.style.display = 'none';
+      alert('파일 업로드에 실패하셨습니다. 관리자에게 문의 후 다시 시도해 주세요.');
+      console.log('error', err);
+    }
+  }
+
+  function onSuccess(r) {                 // r: 실제 웹으로 접근 가능한 경로
+    onClose();
+    data.file.path = r;
+    db.push(data).key;                    //  firebase 저장 명령어
+  }
+
+  function onError(err) {
+    loading.style.display = 'none';
+    alert('파일 가져오기에 실패하셨습니다. 다시 시도해 주세요.');
+    console.log(err);
+  }
 }
 
 function onRequiredValid(e) {
   requiredValid(this);
 }
 
-function requiredValid(el) {  //  title, write에서 blur되거나 keyup되면
-  // var el = this; // e.target
-  var next = $(el).next()[0];  // $().next()
+function requiredValid(el) {               //  title, write에서 blur되거나 keyup되면
+  var next = $(el).next()[0];
   if(el.value.trim() === '') {
     el.classList.add('active');
     next.classList.add('active');
@@ -110,7 +159,7 @@ function requiredValid(el) {  //  title, write에서 blur되거나 keyup되면
   }
 }
 
-function onUpfileChange(e) { // upfile에서 값이 change되면 -> 확장자(타입) 검증
+function onUpfileChange(e) {                // upfile에서 값이 change되면 -> 확장자(타입) 검증
   upfileValid(this);
 }
 
@@ -128,7 +177,10 @@ function upfileValid(el) {
   }
 }
 
-
+function onLoadingClick(e) {                //  로딩바가 돌때 클릭 막기
+  e.preventDefault();
+  e.stopPropagation();
+}
 
 /*************** event init *********************/
 auth.onAuthStateChanged(onAuthChanged);
@@ -147,11 +199,11 @@ writeForm.writer.addEventListener('keyup', onRequiredValid);
 
 writeForm.upfile.addEventListener('change', onUpfileChange);
 
-db.on('child_added', onAdded);
-db.on('child_changed', onChanged);
-db.on('child_remove', onRemove);
+loading.addEventListener('click', onLoadingClick);
 
-
+// db.on('child_added', onAdded);
+// db.on('child_changed', onChanged);
+// db.on('child_remove', onRemove);
 
 /*************** start init *********************/
 
