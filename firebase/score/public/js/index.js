@@ -1,4 +1,4 @@
-/*************** global init ********************/
+1/*************** global init ********************/
 var auth = firebase.auth();
 var googleAuth = new firebase.auth.GoogleAuthProvider();
 var firebaseDatabase = firebase.database();
@@ -11,11 +11,13 @@ var user = null;
 var btSave = document.querySelector('.write-wrapper .bt-save')       // 글작성 버튼
 var btLogin = document.querySelector('.header-wrapper .bt-login')    // 로그인 버튼
 var btLogout = document.querySelector('.header-wrapper .bt-logout')  // 로그아웃 버튼
-var btWite = document.querySelector('.list-wrapper .bt-write')       // 글작성 버튼
+var btWrite = document.querySelector('.list-wrapper .bt-write')       // 글쓰기 버튼
 var writeWrapper = document.querySelector('.write-wrapper')          
 var writeForm = document.writeForm;                                  // 글작성 form
 
 /*************** user function ******************/
+
+
 /*************** event callback *****************/
 function onAuthChanged(r) {  // onAuthStateChanged
   user = r;
@@ -57,12 +59,45 @@ function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , v
   }
 }
 
+function onRequiredValid(e) {  //  title, write에서 blur되거나 keyup되면
+  // var el = this; // e.target
+  var next = $(this).next()[0];  // $().next()
+  if(this.value.trim() === '') {
+    this.classList.add('active');
+    next.style.display = 'block';
+    return false;
+  }
+  else {
+    this.classList.remove('active');
+    next.style.display = 'none';
+    return true;
+  }
+}
+
+function onUpFileBlur(e) { // upfile에서 blur되면
+
+}
+
+
+
 /*************** event init *********************/
 auth.onAuthStateChanged(onAuthChanged);
 btLogin.addEventListener('click', onLogin);
 btLogout.addEventListener('click', onLogout);
-btWite.addEventListener('click', onWrite);
+btWrite.addEventListener('click', onWrite);
 writeForm.addEventListener('submit', onWriteSubmit);
+
+writeForm.title.addEventListener('blur', onRequiredValid);
+writeForm.title.addEventListener('keyup', onRequiredValid);
+
+writeForm.writer.addEventListener('blur', onRequiredValid);
+writeForm.writer.addEventListener('keyup', onRequiredValid);
+
+writeForm.upfile.addEventListener('blur', onUpFileBlur);
+
+
+
+
 
 /*************** start init *********************/
 
