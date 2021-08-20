@@ -6,12 +6,15 @@ var firebaseStorage = firebase.storage();
 var db = firebaseDatabase.ref('root/board');
 var storage = firebaseStorage.ref('root/board');
 var user = null;
+var allowType = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4']
 
 /*************** element init ********************/
 var btSave = document.querySelector('.write-wrapper .bt-save')       // 글작성 버튼
 var btLogin = document.querySelector('.header-wrapper .bt-login')    // 로그인 버튼
 var btLogout = document.querySelector('.header-wrapper .bt-logout')  // 로그아웃 버튼
 var btWrite = document.querySelector('.list-wrapper .bt-write')       // 글쓰기 버튼
+var btClose = document.querySelector('.write-wrapper .bt-close')       // 모달창 닫기 버튼
+var btReset = document.querySelector('.write-wrapper .bt-reset')       // 모달창 리셋 버튼
 var writeWrapper = document.querySelector('.write-wrapper')          
 var writeForm = document.writeForm;                                  // 글작성 form
 
@@ -44,38 +47,69 @@ function onWrite() { // 모달창이 오픈되면 (글작성 버튼)
   writeForm.title.focus();
 }
 
+function onClose() { // 모달창이 닫히면
+  $(writeWrapper).stop().fadeOut(300);
+  onWriteReset();
+}
+
+function onWriteReset(e) {  // 초기화 (모달창 닫으면 실행)
+  writeForm.title.value = '';
+  writeForm.title.classList.remove('active');
+  writeForm.writer.value = '';
+  writeForm.writer.classList.remove('active');
+  writeForm.content.value = '';
+  document.querySelectorAll('.required-comment').forEach(function(v, i){
+    v.classList.remove('active');
+  })
+}
+
 function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , validation 검증도 함 (필수사항)
   e.preventDefault();
-  var title = writeForm.title.value.trim();
-  var write = writeForm.write.value.trim();
+  var title = writeForm.title;
+  var writer = writeForm.writer;
   var upfile = writeForm.upfile.files;    // upfile은 정보가 나와서 trim안됨
   var content = writeForm.content.value.trim();
-
-  if(title === '') {
-
+  if(!requiredValid(title)) {
+    title.focus();
+    return false;
   }
-  if(write === ''){
-
+  if(!requiredValid(writer)){
+    writer.focus();
+    return false;
   }
 }
 
-function onRequiredValid(e) {  //  title, write에서 blur되거나 keyup되면
+function onRequiredValid(e) {
+  requiredValid(this);
+}
+
+function requiredValid(el) {  //  title, write에서 blur되거나 keyup되면
   // var el = this; // e.target
-  var next = $(this).next()[0];  // $().next()
-  if(this.value.trim() === '') {
-    this.classList.add('active');
-    next.style.display = 'block';
+  var next = $(el).next()[0];  // $().next()
+  if(el.value.trim() === '') {
+    el.classList.add('active');
+    next.classList.add('active');
     return false;
   }
   else {
-    this.classList.remove('active');
-    next.style.display = 'none';
+    el.classList.remove('active');
+    next.classList.remove('active');
     return true;
   }
 }
 
-function onUpFileBlur(e) { // upfile에서 blur되면
-
+function onUpFileChange(e) { // upfile에서 값이 change되면 -> 확장자(타입) 검증
+  var next = $(el).next()[0];
+  if(this.files.length > 0 && allowType.indexOf(this.files[0].type) === -1) {
+    this.classList.add('active');
+    next.classList.add('active');
+    return false;
+  }
+  else {
+    this.classList.remove('active');
+    next.classList.remove('active');
+    return true;
+  }
 }
 
 
@@ -85,6 +119,8 @@ auth.onAuthStateChanged(onAuthChanged);
 btLogin.addEventListener('click', onLogin);
 btLogout.addEventListener('click', onLogout);
 btWrite.addEventListener('click', onWrite);
+btClose.addEventListener('click', onClose);
+btReset.addEventListener('click', onWriteReset);
 writeForm.addEventListener('submit', onWriteSubmit);
 
 writeForm.title.addEventListener('blur', onRequiredValid);
@@ -93,7 +129,7 @@ writeForm.title.addEventListener('keyup', onRequiredValid);
 writeForm.writer.addEventListener('blur', onRequiredValid);
 writeForm.writer.addEventListener('keyup', onRequiredValid);
 
-writeForm.upfile.addEventListener('blur', onUpFileBlur);
+writeForm.upfile.addEventListener('change', onUpFileChange);
 
 
 
