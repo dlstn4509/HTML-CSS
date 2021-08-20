@@ -25,26 +25,25 @@ var loading = document.querySelector('.write-wrapper .loading-wrap') // 로딩�
 /*************** event callback *****************/
 function onAuthChanged(r) {  // onAuthStateChanged
   user = r;
-  if(user) { // 로그인 되면 ui가 할 일
+  if(user) {                 // 로그인 되면 ui가 할 일
     btLogin.style.display = 'none';
     btLogout.style.display = 'block';
   }
-  else {     // 로그아웃 되면 ui가 할 일
+  else {                     // 로그아웃 되면 ui가 할 일
     btLogin.style.display = 'block';
     btLogout.style.display = 'none';
   }
 }
-// login
-function onLogin() {
+
+function onLogin() { // login하면 구글 팝업
   auth.signInWithPopup(googleAuth);
 }
 
-function onLogout() {
+function onLogout() {  // logout
   auth.signOut();
 }
 
 function onWrite() {                           // 모달창이 오픈되면 (글작성 버튼)
-  loading.style.display = 'none';
   $(writeWrapper).stop().fadeIn(300);
   writeForm.title.focus();
 }
@@ -56,13 +55,12 @@ function onClose() {                           // 모달창이 닫히면
 
 function onWriteReset(e) {                    // 초기화 (모달창 닫으면 실행)
   writeForm.reset();                          // button[type-reset] 클릭
-  writeForm.title.value = '';
   writeForm.title.classList.remove('active');
-  writeForm.writer.value = '';
+  // writeForm.writer.value = '';
   writeForm.writer.classList.remove('active');
-  writeForm.content.value = '';
+  // writeForm.content.value = '';
   document.querySelectorAll('.required-comment').forEach(function(v, i){
-    v.classList.remove('active');
+    v.classList.remove('active');            // 필수사항 입니다 에서 active 빼기
   })
 }
 
