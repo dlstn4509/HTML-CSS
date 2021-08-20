@@ -67,8 +67,8 @@ function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , v
   e.preventDefault();
   var title = writeForm.title;
   var writer = writeForm.writer;
-  var upfile = writeForm.upfile.files;    // upfile은 정보가 나와서 trim안됨
-  var content = writeForm.content.value.trim();
+  var upfile = writeForm.upfile;    // upfile은 정보가 나와서 trim안됨
+  var content = writeForm.content;
   if(!requiredValid(title)) {
     title.focus();
     return false;
@@ -77,6 +77,17 @@ function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , v
     writer.focus();
     return false;
   }
+  if(!upfileValid(upfile)){
+    return false;
+  }
+  // 여기서 firebase save
+  var data = {};
+  data.user = user.uid;
+  data.title = title.value;
+  data.writer = writer.value;
+  data.content = content.value;
+  data.file = (upfile.files.length) ? upfile.files[0] : {};
+  db.push(data).key;  //  firebase 저장 명령어
 }
 
 function onRequiredValid(e) {
@@ -98,15 +109,19 @@ function requiredValid(el) {  //  title, write에서 blur되거나 keyup되면
   }
 }
 
-function onUpFileChange(e) { // upfile에서 값이 change되면 -> 확장자(타입) 검증
+function onUpfileChange(e) { // upfile에서 값이 change되면 -> 확장자(타입) 검증
+  upfileValid(this);
+}
+
+function upfileValid(el) {
   var next = $(el).next()[0];
-  if(this.files.length > 0 && allowType.indexOf(this.files[0].type) === -1) {
-    this.classList.add('active');
+  if(el.files.length > 0 && allowType.indexOf(el.files[0].type) === -1) {
+    el.classList.add('active');
     next.classList.add('active');
     return false;
   }
   else {
-    this.classList.remove('active');
+    el.classList.remove('active');
     next.classList.remove('active');
     return true;
   }
@@ -129,7 +144,7 @@ writeForm.title.addEventListener('keyup', onRequiredValid);
 writeForm.writer.addEventListener('blur', onRequiredValid);
 writeForm.writer.addEventListener('keyup', onRequiredValid);
 
-writeForm.upfile.addEventListener('change', onUpFileChange);
+writeForm.upfile.addEventListener('change', onUpfileChange);
 
 
 
