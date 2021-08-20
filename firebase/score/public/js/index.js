@@ -63,7 +63,7 @@ function onWriteReset(e) {  // 초기화 (모달창 닫으면 실행)
   })
 }
 
-function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , validation 검증도 함 (필수사항)
+function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , validation 검증도 함 (필수사항들)
   e.preventDefault();
   var title = writeForm.title;
   var writer = writeForm.writer;
@@ -86,6 +86,7 @@ function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , v
   data.title = title.value;
   data.writer = writer.value;
   data.content = content.value;
+  data.createAt = new Date().getTime()   // 언제 만들어졌냐 (타임스탬프)
   data.file = (upfile.files.length) ? upfile.files[0] : {};
   db.push(data).key;              //  firebase 저장 명령어
 }
@@ -146,7 +147,9 @@ writeForm.writer.addEventListener('keyup', onRequiredValid);
 
 writeForm.upfile.addEventListener('change', onUpfileChange);
 
-
+db.on('child_added', onAdded);
+db.on('child_changed', onChanged);
+db.on('child_remove', onRemove);
 
 
 

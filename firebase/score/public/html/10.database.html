@@ -8,7 +8,6 @@ var db = firebase.database().ref('root/board');
 // db.on('child_changed', onChanged);
 // db.on('child_removed', onRemove);
 
-db.removed();
 
 function onAdded(r) {
   console.log(r.val());
@@ -23,7 +22,16 @@ function onRemove(r) {
 }
 
 
+db.orderByKey().limitToLast(5).get().then(onGet).catch(onError); 
+// -> orderByKey로 정렬하고 밑에서부터 5개 limit로 get해라 (최근글), 배열로 만들고 정렬을 다시 해줘야 함
 
+function onGet(r){       // limitToLast 사용법
+  var arr = [];
+  r.forEach(function(v, i) {arr.push(v);})
+  arr.reverse().forEach(function(v, i){
+    console.log(v.key);
+  })
+}
 
 
 
