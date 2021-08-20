@@ -80,14 +80,14 @@ function onWriteSubmit(e) { // 모달창에서 글쓰기 버튼을 누르면 , v
   if(!upfileValid(upfile)){
     return false;
   }
-  // 여기서 firebase save
-  var data = {};
+
+  var data = {};                  // 여기서 firebase save
   data.user = user.uid;
   data.title = title.value;
   data.writer = writer.value;
   data.content = content.value;
   data.file = (upfile.files.length) ? upfile.files[0] : {};
-  db.push(data).key;  //  firebase 저장 명령어
+  db.push(data).key;              //  firebase 저장 명령어
 }
 
 function onRequiredValid(e) {
