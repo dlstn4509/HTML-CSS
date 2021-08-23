@@ -22,6 +22,7 @@ body > .gnb {min-height: calc(100vh - 130px);}
 .recent-wrapper .list-wrap .list {width: 19%; margin-right: 1%;}
 
 /******************* list-wrapper *********************/
+.list-wrapper .title-wrap {display: flex; justify-content: space-between; align-items: flex-end;}
 .list-wrapper .list-tbl {border-bottom: 1px solid #dedede;}
 .list-wrapper .list-tbl .icon {width: 30px; margin-right: .5em;}
 .list-wrapper .list-tbl th:nth-child(1) {width: 10%;}
