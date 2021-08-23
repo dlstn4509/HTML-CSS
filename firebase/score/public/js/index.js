@@ -20,21 +20,24 @@ var btReset = document.querySelector('.write-wrapper .bt-reset');     // 모달�
 var writeWrapper = document.querySelector('.write-wrapper');          
 var writeForm = document.writeForm;                                  // 글작성 form
 var loading = document.querySelector('.write-wrapper .loading-wrap'); // 로딩스피너
+var observerEl = document.querySelector('.observer-el'); 
 var tbody = document.querySelector('.list-tbl tbody');
 
 var page = 1;
-var listCnt = 5;
+var listCnt = 3;
 var pagerCnt = 3;
 var totalRecord = 0;
+var observer = new IntersectionObserver(onObserver, {});
 
 /*************** user function ******************/
 function listInit() {
+  tbody.innerHTML = '';
   ref.limitToFirst(listCnt).get().then(onGetData).catch(onGetError);
 }
 
 function setHTML(k, v) {
   var n = tbody.querySelectorAll('tr').length + 1;
-  var html  = '<tr data-idx="'+v.idx+'" data-key="k">';
+  var html  = '<tr data-idx="'+v.idx+'" data-key="'+k+'">';
   html += '<td>'+n+'</td>';
   html += '<td>';
   if(v.upfile) {
@@ -47,38 +50,61 @@ function setHTML(k, v) {
   html += '<td>0</td>';
   html += '</tr>';
   tbody.innerHTML += html;
+  sortTr();
+}
+
+function sortTr() {
+  var total = tbody.querySelectorAll('tr').length;
+  tbody.querySelectorAll('tr').forEach(function(v, i) {
+    v.querySelector('td').innerHTML = total - i;
+  })
 }
 
 /*************** event callback *****************/
+function onObserver(el, observer) {
+  el.forEach(function(v) {
+    if(v.isIntersecting) {
+      var tr = tbody.querySelectorAll('tr')
+      if(tr.length > 0) {
+        var last = Number(tr[tr.length - 1].dataset['idx']);
+        ref.startAfter(last).limitToFirst(listCnt).get().then(onGetData).catch(onGetError);
+      }
+      else {
+        ref.limitToFirst(listCnt).get().then(onGetData).catch(onGetError);
+      }
+    }
+  });
+}
+
 function onGetData(r) {
   r.forEach(function(v, i){
     setHTML(v.key, v.val()); 
-  })
+  });
 }
 
 function onGetError(err) {
 
 }
 
-function onAuthChanged(r) {  // onAuthStateChanged
-  user = r;
-  if(user) {                 // 로그인 되면 ui가 할 일
+function onAuthChanged(r) {                       // onAuthStateChanged
+  user = r;  
+  if(user) {                                      // 로그인 되면 ui가 할 일
     btLogin.style.display = 'none';
     btLogout.style.display = 'block';
     btWrite.style.display = 'inline-block';
   }
-  else {                     // 로그아웃 되면 ui가 할 일
+  else {                                         // 로그아웃 되면 ui가 할 일
     btLogin.style.display = 'block';
     btLogout.style.display = 'none';
     btWrite.style.display = 'none';
   }
 }
 
-function onLogin() { // login하면 구글 팝업
+function onLogin() {                             // login하면 구글 팝업
   auth.signInWithPopup(googleAuth);
 }
 
-function onLogout() {  // logout
+function onLogout() {                           // logout
   auth.signOut();
 }
 
@@ -160,6 +186,7 @@ function onWriteSubmit(e) {                  // 모달창에서 글쓰기 버튼
     else {
       db.push(data).key;                     //  firebase 저장 명령어
       onClose();
+      listInit();
     }
   }
 
@@ -188,6 +215,7 @@ function onWriteSubmit(e) {                  // 모달창에서 글쓰기 버튼
     data.upfile.path = r;
     db.push(data).key;                    //  firebase 저장 명령어
     onClose();
+    listInit();
   }
 
   function onError(err) {
@@ -263,3 +291,4 @@ loading.addEventListener('click', onLoadingClick);
 
 /*************** start init *********************/
 listInit();
+observer.observe(observerEl);
