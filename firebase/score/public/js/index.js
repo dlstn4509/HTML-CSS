@@ -21,22 +21,49 @@ var writeWrapper = document.querySelector('.write-wrapper');
 var writeForm = document.writeForm;                                  // 글작성 form
 var loading = document.querySelector('.write-wrapper .loading-wrap'); // 로딩스피너
 var tbody = document.querySelector('.list-tbl tbody');
+var recent = document.querySelector('.recent-wrapper .list-wp');
+var listWrapper = document.querySelector('.list-wrapper');
+var viewWrapper = document.querySelector('.view-wrapper');
 var tr;
 
 var observer;     // IntersectionObserver의 Instance
 var listCnt = 5;  // 
 
 /*************** user function ******************/
-function listInit() {
+function goView(k) {
+	// location.href = './view.html?key='+k;
+	listWrapper.style.display = 'none';
+	viewWrapper.style.display = 'block';
+	db
+	.child(k)
+	.get()
+	.then(onGetView)
+	.catch(onGetError);
+}
+
+function listInit() {     // 처음, 데이터를 생성
   tbody.innerHTML = '';
-  ref.limitToFirst(listCnt).get().then(onGetData).catch(onGetError);
+  ref
+  .limitToFirst(listCnt)
+  .get()
+  .then(onGetData)
+  .catch(onGetError);
+}
+
+function recentInit(ref) { 
+	ref
+		// .startAfter()
+		.limitToFirst(1)
+		.get()
+		.then(onGetRecent)
+		.catch(onGetError);
 }
 
 function setHTML(k, v) {
   var n = tbody.querySelectorAll('tr').length + 1;
   var html  = '<tr data-idx="'+v.idx+'" data-key="'+k+'">';
   html += '<td>'+n+'</td>';
-  html += '<td>';
+  html += '<td onclick="goView(\''+k+'\');">';
   if(v.upfile) {
     html += '<img src="'+exts[allowType.indexOf(v.upfile.file.type)]+'" class="icon"> ';
   }
@@ -60,6 +87,11 @@ function sortTr() {
 }
 
 /*************** event callback *****************/
+function onGetView(r) {
+	console.log(r.key, r.val());
+	viewWrapper.innerHTML = r.val().title;
+}
+
 function onObserver(el, observer) {
   el.forEach(function(v) {
     if(v.isIntersecting) {
@@ -75,6 +107,24 @@ function onGetData(r) {
   r.forEach(function(v, i){
     setHTML(v.key, v.val()); 
   });
+}
+
+function onGetRecent(r) {
+  if(r.numChildren() > 0) { // 데이터가 존재함
+		r.forEach(function(v, i) {
+			var isImg = v.val().upfile && v.val().upfile.file.type !== allowType[3];
+			if(isImg) {
+				var html = '<li class="list" data-idx="'+v.val().idx+'" style="background-image: url(\''+v.val().upfile.path+'\');" onclick="goView(\''+v.key+'\');">';
+				html += '<div class="ratio"></div>';
+				html += '</li>';
+				recent.innerHTML += html;
+			}
+			var li = recent.querySelectorAll('li');
+			var cnt = li.length;
+			var last = cnt - 1;
+			if(last < 5) recentInit(ref.startAfter(v.val().idx));
+		});
+	}
 }
 
 function onGetError(err) {
@@ -130,6 +180,7 @@ function onWriteSubmit(e) {                  // 모달창에서 글쓰기 버튼
   var writer = writeForm.writer;
   var upfile = writeForm.upfile;            // upfile은 정보가 나와서 trim안됨
   var content = writeForm.content;
+  var upload;
   if(!user) {
     alert('로그인 후 이용하세요')
     return false;
@@ -170,7 +221,7 @@ function onWriteSubmit(e) {                  // 모달창에서 글쓰기 버튼
         type: upfile.files[0].type,
       }
       var savename = genFile();
-      var uploader = storage.child(savename.folder).child(savename.file).put(file);
+      var uploader = storage.child(savename.folder).child(savename.file).put(upfile.files[0]);
       uploader.on('state_changed', onUploading, onUploadError, onUploaded);
       data.upfile = {
         folder: 'root/board/'+savename.folder,
@@ -182,6 +233,8 @@ function onWriteSubmit(e) {                  // 모달창에서 글쓰기 버튼
       db.push(data).key;                     //  firebase 저장 명령어
       onClose();
       listInit();
+      recent.innerHTML = '';
+			recentInit(ref);
     }
   }
 
@@ -211,6 +264,8 @@ function onWriteSubmit(e) {                  // 모달창에서 글쓰기 버튼
     db.push(data).key;                    //  firebase 저장 명령어
     onClose();
     listInit();
+    recent.innerHTML = '';
+		recentInit(ref);
   }
 
   function onError(err) {
@@ -287,3 +342,5 @@ loading.addEventListener('click', onLoadingClick);
 /*************** start init *********************/
 observer = new IntersectionObserver(onObserver, {rootMargin: '-100px'});
 listInit();
+recent.innerHTML = '';
+recentInit(ref);
