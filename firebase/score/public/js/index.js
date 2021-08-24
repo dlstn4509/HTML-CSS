@@ -22,6 +22,7 @@ var btClose = document.querySelector('.write-wrapper .bt-close');     // 모달�
 var btReset = document.querySelector('.write-wrapper .bt-reset');     // 모달창 리셋 버튼
 var writeWrapper = document.querySelector('.write-wrapper');          
 var writeForm = document.writeForm;                                  // 글작성 form
+var writeTitle = writeWrapper.querySelector('h2.title');
 var loading = document.querySelector('.write-wrapper .loading-wrap'); // 로딩스피너
 var tbody = document.querySelector('.list-tbl tbody');
 var recent = document.querySelector('.recent-wrapper .list-wp');
@@ -51,18 +52,14 @@ function viewShow(el) {
     case 'LIST' :
       listWrapper.style.display = 'block';
       viewWrapper.style.display = 'none';
-      updateWrapper.style.display = 'none';
       globalKey = null;
+      recent.innerHTML = '';
+			recentInit(ref);
+			listInit();
       break;
     case 'VIEW' :
       listWrapper.style.display = 'none';
       viewWrapper.style.display = 'block';
-      updateWrapper.style.display = 'none';
-      break;
-    case 'UPDATE' :
-      listWrapper.style.display = 'none';
-      viewWrapper.style.display = 'none';
-      updateWrapper.style.display = 'block';
       break;
   }
 }
@@ -124,7 +121,7 @@ function setHTML(k, v) {
   html += '</td>';
   html += '<td>'+v.writer+'</td>';
   html += '<td>'+moment(v.createdAt).format('YYYY-MM-DD')+'</td>';
-  html += '<td>0</td>';
+  html += '<td>'+(v.readcnt || 0)+'</td>';
   html += '</tr>';
   tbody.innerHTML += html;
   tr = tbody.querySelectorAll('tr');
@@ -141,7 +138,15 @@ function sortTr() {
 
 /*************** event callback *****************/
 function onUpdate(e) {
-  console.log(e)
+  db.child(this.dataset['key']).once('value', function(v) {
+		if(user && v.val().user === user.uid) {
+			onWrite(e, e.target.dataset['key']);
+		}
+		else {
+			alert('권한이 없습니다.');
+			viewShow('LIST');
+		}
+	}); 
 }
 
 function onDelete(e) {
@@ -150,9 +155,6 @@ function onDelete(e) {
 			if(user && v.val().user === user.uid) {
 				db.child(e.target.dataset['key']).remove();
 				viewShow('LIST');
-				listInit();
-				recent.innerHTML = '';
-				recentInit(ref);
 			}
 			else {
 				alert('권한이 없습니다.');
@@ -164,7 +166,7 @@ function onDelete(e) {
 
 function onGetView(r) {
   globalKey = r.val().user;
-	console.log(r.key);
+	viewButton(true);
 	viewWrapper.querySelector('.title-wrap .content').innerHTML = r.val().title;
 	viewWrapper.querySelector('.writer-wrap .content').innerHTML = r.val().writer;
 	viewWrapper.querySelector('.datetime-wrap .content').innerHTML = moment(r.val().createdAt).format('YYYY-MM-DD HH:mm:ss');
@@ -172,7 +174,6 @@ function onGetView(r) {
 	viewWrapper.querySelector('.content-wrap').innerHTML = r.val().content || '';
 	btUpdate.dataset['key'] = r.key;
 	btDelete.dataset['key'] = r.key;
-	viewButton(true);
   if(r.val().upfile) {
 		var html = '';
 		if(allowType.indexOf(r.val().upfile.file.type) === 3) {
@@ -204,6 +205,11 @@ function onGetView(r) {
 		});
 		setNavi(prev, next);
 	}).catch(onGetError);
+
+  	// readcnt update
+	db.child(r.key).update({
+		readcnt: r.val().readcnt ? r.val().readcnt + 1 : 1
+	})
 }
 
 function onObserver(el, observer) {
@@ -271,9 +277,23 @@ function onLogout() {                           // logout
   auth.signOut();
 }
 
-function onWrite() {                           // 모달창이 오픈되면 (글작성 버튼)
+function onWrite(e, key) {                    // 모달창이 오픈되면 (글작성 버튼)
+  loading.style.display = 'none';
   $(writeWrapper).stop().fadeIn(300);
+  writeForm.key.value = '';
+	writeTitle.innerHTML = '게시글 작성';
+	btSave.innerHTML = '글쓰기';
   writeForm.title.focus();
+  	// update처리
+	if(key) db.child(key).once('value', onGetUpdate);
+	function onGetUpdate(r) {
+		writeForm.key.value = key;
+		writeForm.title.value = r.val().title;
+		writeForm.writer.value = r.val().writer;
+		writeForm.content.value = r.val().content;
+		writeTitle.innerHTML = '게시글 수정';
+		btSave.innerHTML = '수정하기';
+	}
 }
 
 function onClose() {                           // 모달창이 닫히면
@@ -388,9 +408,6 @@ function onWriteSubmit(e) {                  // 모달창에서 글쓰기 버튼
   function saveAfter() {
 		db.push(data).key; // firebase저장
 		onClose();
-		listInit();
-		recent.innerHTML = '';
-		recentInit(ref);
 		viewShow('LIST');
 	}
 }
