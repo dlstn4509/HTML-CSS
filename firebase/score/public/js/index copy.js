@@ -346,9 +346,9 @@ function onClose() {                           // 모달창이 닫히면
 function onWriteReset(e) {                    // 초기화 (모달창 닫으면 실행)
   writeForm.reset();                          // button[type-reset] 클릭
   writeForm.title.classList.remove('active');
-  writeForm.writer.value = '';
+  // writeForm.writer.value = '';
   writeForm.writer.classList.remove('active');
-  writeForm.content.value = '';
+  // writeForm.content.value = '';
   document.querySelectorAll('.required-comment').forEach(function(v, i){
     v.classList.remove('active');            // 필수사항 입니다 에서 active 빼기
   })
