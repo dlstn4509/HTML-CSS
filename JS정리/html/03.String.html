@@ -15,6 +15,7 @@
     b.indexOf('llo'), // -> 2
     b.indexOf('l'), // -> 2 (처음 만나는것만 나옴)
     b.indexOf('l', 4), // -> 9 (4 는 시작 위치, 9번째 l이 나옴)
+    b.indexOf('c'), // -> -1
     )
 
     function findChar(str, search) {  //                                              실패, while문으로 만들어 보셈 -1 활용
@@ -30,6 +31,7 @@
     var b = 'Hello World';
     console.log(
       b.includes('l'), // -> true
+      b.includes('c'), // -> false
       b.includes('l', 0), // -> true
       b.startsWith('H'), // -> true
       b.endsWith('d'), // -> true
@@ -79,6 +81,12 @@
      /* ************************************************************************************************************* */
      // str.toLowerCase() -> str을 소문자로
      // str.toUpperCase() -> str을 대문자로
+
+     console.log(
+
+       toLowerCase('ABCD'),
+       toUpperCase('abcd')
+     )
 
      // str.concat(str2) -> str1 + str2;
      var a = 'Hello', b = 'World';
