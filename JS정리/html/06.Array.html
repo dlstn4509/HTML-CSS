@@ -8,24 +8,28 @@
     arr, // -> ["A", "B", "C", "D"]
   );
 
+  
   // arr.pop(): return element;                배열의 맨 뒤 요소 추출
   console.log(
     arr.pop(), // -> "D"
     arr, // -> ["A", "B", "C"]
   );
 
+  
   // arr.unshift(넣을 값): return length;       배열의 맨 앞 요소 삽입
   console.log(
     arr.unshift('D'), // -> 4
     arr, // -> ["D", "A", "B", "C"]
   );
 
+  
   // arr.shift(): return element;               배열의 맨 앞 요소 추출
   console.log(
     arr.shift(), // -> "D"
     arr, // -> ["A", "B", "C"]
   );
 
+  
   // arr.splice(index(작업할 index), length(추출할 요소), value(넣을 값))
   var arr = ['A', 'B', 'C'];
   console.log(
@@ -33,7 +37,7 @@
     arr, // -> ["A", "D", "C"]
   );
 
-  var arr = ['A', 'B', 'C'];
+  
   console.log(
     arr.splice(1, 0, 'E'), // -> []
     arr, // -> ["A", "E", "B", "C"]
