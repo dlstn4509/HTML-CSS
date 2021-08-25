@@ -1,0 +1,50 @@
+<script>
+  var a = Number.parseInt('1234.56'); // return Number (버림)
+  console.log(a); // -> 1234
+
+  var b = Number.parseFloat('1234.56'); // return Number
+  console.log(b); // -> 1234.56
+
+  var c = b.toFixed(1); // return String (반올림)
+  console.log(c); // -> '1234.6'
+
+  var d = new Number('1234.56');
+  console.log(d); // -> Number {1234.56} 객체
+
+  var e = Number('1234.56');
+  console.log(e); // -> 1234.56
+
+  var f = Number.isNaN('1234.56'); // true, false
+  console.log(f); // -> false
+
+  var g = Number.isNaN(0/0); // true, false
+  console.log(g); // -> true
+
+  var h = 0/0;
+  console.log(h); // -> NaN
+
+  console.log(
+    Number.isNaN(NaN), // -> true
+    Number.isNaN(undefined), // -> false
+    Number.isNaN(null), // -> false
+    Number.isNaN("abcd"), // -> false
+    Number.isNaN(1234), // -> false
+    Number.isNaN(true), // -> false
+  )
+
+  var i = Number.isInteger(100); // 정수냐 실수냐
+  console.log(i); // -> true (정수)
+  var j = Number.isInteger(100.23);
+  console.log(j); // -> false (실수)
+
+  /* ************************************************************************************************************* */
+  console.log(
+  Number.MAX_VALUE,               //	Returns the largest number possible in JavaScript
+  Number.MIN_VALUE,               //	Returns the smallest number possible in JavaScript
+  Number.POSITIVE_INFINITY,	      //  Represents infinity (returned on overflow)
+  Number.NEGATIVE_INFINITY,       //	Represents negative infinity (returned on overflow)
+  NaN,                            //	Represents a "Not-a-Number" value
+  );
+
+
+</script>

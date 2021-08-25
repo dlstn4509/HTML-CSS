@@ -1,0 +1,110 @@
+<script>
+  // char : 문자
+  // string : 문자열
+
+  /* ************************************************************************************************************* */
+  // ES5 indexOf()
+  var a = 'H';            // 문자열 (얘도 문자열 취급)
+  var b = 'Hello World';  // 문자열
+  console.log(
+    b.charAt(-1), // -> '' (공란)
+    b.charAt(0), // -> H (에이치)
+    b.charAt(3), // -> l (엘)
+    b.length, // -> 11 (공란도 숫자 셈, 11개의 자릿수를 가진 문자열)
+    b.indexOf('He'), // -> 0
+    b.indexOf('llo'), // -> 2
+    b.indexOf('l'), // -> 2 (처음 만나는것만 나옴)
+    b.indexOf('l', 4), // -> 9 (4 는 시작 위치, 9번째 l이 나옴)
+    )
+
+    function findChar(str, search) {  //                                              실패, while문으로 만들어 보셈 -1 활용
+      for (var i=0; i <= search.length; i++) {
+        return search.indexOf(str, i);
+      }      
+    } 
+    console.log("🚀 ~ file: 03.String.html ~ line 26 ~ findChar('l', 'Hello World')", findChar('l', 'Hello World'))
+
+    /* ************************************************************************************************************* */
+    // ES6 indexOf()    익스플로러에서 쓸려면 폴리필 필수
+    var a = 'H';
+    var b = 'Hello World';
+    console.log(
+      b.includes('l'), // -> true
+      b.includes('l', 0), // -> true
+      b.startsWith('H'), // -> true
+      b.endsWith('d'), // -> true
+    );
+
+    /* ************************************************************************************************************* */
+    // replace ('찾을 문자열', '바꿀 문자열')
+    var c = "Hello Dabanbus"
+    console.log(
+      c.replace('He', 'De') // -> Dello Dabanbus
+    );
+    "abcd".replace("ab", "xy");					// "xycd"
+    "15px".replace("px", "");				  	// "15"
+    Number("15px".replace("px", ""));	  // 15
+
+    /* ************************************************************************************************************* */
+    // substr('시작idx', '길이'), substring('시작idx', '마지막idx - 1')
+    var dt = '2021-08-25 12:34:56';
+    console.log(
+      dt.substr(0, 10), // -> 2021-08-25
+      dt.substr(10, 1), // -> ''
+      dt.substr(0, 1), // -> 2
+      dt.substr(11, 2), // -> 12
+      dt.substring(11, 13), // -> 12
+    );
+
+    /* ************************************************************************************************************* */
+    // split('구분할 문자열'): Array
+    var tel = '010-1111-2222';
+    var telArr = tel.split('-')
+    console.log(telArr) // -> ["010", "1111", "2222"]
+    
+    var cart = '10^2#11^1#15^3#30^2'
+    var cartArr = cart.split('#')
+    var myCart = [];
+    var myCart2 = [];
+    for (var i=0; i < cartArr.length; i++) {
+      myCart[i] = cartArr[i].split('^');
+      myCart2[i] = {productId: myCart[i][0], count: myCart[i][1]}
+    }
+    console.log(
+      cartArr, // -> ["10^2", "11^1", "15^3", "30^2"]
+      myCart, // -> [Array(2), Array(2), Array(2), Array(2)]
+      myCart2, // -> [{…}, {…}, {…}, {…}]
+      )
+
+     /* ************************************************************************************************************* */
+     // str.toLowerCase() -> str을 소문자로
+     // str.toUpperCase() -> str을 대문자로
+
+     // str.concat(str2) -> str1 + str2;
+     var a = 'Hello', b = 'World';
+     console.log(a.concat(b)) // -> HelloWorld
+
+     // str.trim() -> 공백 지우기
+
+     console.log(  // 문자열 그대로 전송
+       String(123), // -> 123
+       String(true), // -> true
+       String(undefined), // -> undefined
+       String(null), // -> null
+       String(NaN), // -> NaN
+     );
+    
+     /* ************************************************************************************************************* */
+     var immutables = [];
+     var str = 'apple, banana, kiwi';
+     immutables.push(str);
+     var str2 = str.substr(7, 6);     // substr(시작, 갯수)
+     immutables.push(str2);
+
+     console.log(
+       str, // -> apple, banana, kiwi
+       str2, // -> banana
+       immutables // -> Array 0: "apple, banana, kiwi" 1: "banana"
+     );
+
+</script>

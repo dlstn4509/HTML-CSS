@@ -1,0 +1,115 @@
+<script>
+  var arr = ['A', 'B', 'C'];
+
+
+  // arr.push(넣을 값): return length;          배열의 맨 뒤 요소 삽입
+  console.log(
+    arr.push('D'), // -> 4                     
+    arr, // -> ["A", "B", "C", "D"]
+  );
+
+  // arr.pop(): return element;                배열의 맨 뒤 요소 추출
+  console.log(
+    arr.pop(), // -> "D"
+    arr, // -> ["A", "B", "C"]
+  );
+
+  // arr.unshift(넣을 값): return length;       배열의 맨 앞 요소 삽입
+  console.log(
+    arr.unshift('D'), // -> 4
+    arr, // -> ["D", "A", "B", "C"]
+  );
+
+  // arr.shift(): return element;               배열의 맨 앞 요소 추출
+  console.log(
+    arr.shift(), // -> "D"
+    arr, // -> ["A", "B", "C"]
+  );
+
+  // arr.splice(index(작업할 index), length(추출할 요소), value(넣을 값))
+  var arr = ['A', 'B', 'C'];
+  console.log(
+    arr.splice(1, 1, 'D'), // -> ["B"]   한개가 있어도 배열로 나옴
+    arr, // -> ["A", "D", "C"]
+  );
+
+  var arr = ['A', 'B', 'C'];
+  console.log(
+    arr.splice(1, 0, 'E'), // -> []
+    arr, // -> ["A", "E", "B", "C"]
+  );
+
+  var arr = ['A', 'B', 'C'];
+  console.log(
+    arr.splice(1, 1), // -> ["B"]
+    arr, // -> ["A", "C"]
+  );
+
+  // arr.slice(시작idx, 끝idx(끝idx 불포함)) : return Array;
+  var arr = ['A', 'B', 'C'];
+  console.log(arr.slice(0, 2)); // -> ["A", "B"]
+  console.log(arr);
+
+  var arr2 = arr;
+  console.log(arr, arr2);
+  console.log(arr === arr2); // 같은놈
+  
+  var arr3 = arr.slice();
+  console.log(arr, arr3);
+  console.log(arr === arr3); // 다른놈       ->> deepcopy에 사용 가능
+  
+
+  // arr.concat(arr2) 배열 두개 합치기
+  var arr = ['A', 'B', 'C'];
+  var arr2 = ['D', 'E', 'F'];
+  var arr3 = arr.concat();
+  console.log(arr.concat(arr2)); // -> ["A", "B", "C", "D", "E", "F"]
+  console.log(arr3) // ->  ["A", "B", "C"]
+  console.log(arr === arr3) // -> false      ->> deepcopy에 사용 가능
+
+  /* ************************************************************************************************************* */
+  // reverse : 원본 배열 훼손, 배열의 요소를 뒤집는다.
+  var arr = ['A', 'B', 'C'];
+  arr.reverse();
+  console.log("🚀 ~ file: 06.Array-2.html ~ line 120 ~ arr", arr);  // -> ["C", "B", "A"]
+
+  /* ************************************************************************************************************* */
+  // sort : 배열을 정렬한다.
+  var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  
+  var numbers2 = numbers.slice();
+  var asc = numbers2.sort(); // Text로 정렬
+  console.log("🚀 ~ file: 06.Array.html ~ line 81 ~ asc", asc)  // -> [1, 10, 11, 12, 2, 3, 4, 5, 6, 7, 8, 9]
+  
+  var numbers3 = numbers.slice(); // 오름차순로 정렬
+  var asc = numbers3.sort(function(a, b) {
+    return a - b;
+  });
+  console.log("🚀 ~ file: 06.Array.html ~ line 81 ~ asc", asc) // -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+  var numbers4 = numbers.slice(); // 내림차순로 정렬
+  var asc = numbers4.sort(function(a, b) {
+    return b - a;
+  });
+  console.log("🚀 ~ file: 06.Array.html ~ line 81 ~ asc", asc)  // -> [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+  /* ************************************************************************************************************* */
+  // join: 배열을 문자열로 (String.split() 역순)
+  var tels = ['010', '1111', '2222']
+  var tel = tels.join('-');
+  console.log("🚀 ~ file: 06.Array.html ~ line 100 ~ tel", tel)    // -> 010-1111-2222
+
+  /* ************************************************************************************************************* */
+  // toString(): 배열을 문자열로(구분자가 무조건 ,)
+  var tels = ['010', '1111', '2222']
+  var tel2 = tels.toString();
+  console.log("🚀 ~ file: 06.Array.html ~ line 105 ~ tel2", tel2)   // -> 010,1111,2222
+
+  /* ************************************************************************************************************* */
+  // valueOf() : 배열을 배열로(배열 그자체를 배열로)
+  var tels = ['010', '1111', '2222']
+  var tel3 = tels.valueOf();
+  console.log("🚀 ~ file: 06.Array.html ~ line 105 ~ tel2", tel3)   // -> ["010", "1111", "2222"]
+
+
+</script>

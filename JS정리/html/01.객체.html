@@ -1,0 +1,73 @@
+<body style="height: 200px;">
+  
+  <script>  
+    /**
+     * ! 자바스크립트 내장 객체
+     * - window (최상위 객체)
+     *   - document
+     *   - navigator ...
+     * - Object
+     * - Number
+     * - String
+     * - Array
+     * - Math
+     * - Date
+     * - JSON
+     */
+    // 함수 또는 변수 선언으로 window객체에도 넣읗 수 있다.
+    
+    
+    // 함수 안에서 변수나 함수를 선언하면 외부에서 접근할 수 없다(캡슐화)
+    function a() {
+      var bb = null;
+      function aa() {
+        console.log(this); // -> window
+      }
+      aa();
+      console.log(this); // -> window
+    }
+    a();
+    /* ************************************************************************************************************* */
+    console.log(window); // -> window
+    /* ************************************************************************************************************* */
+    document.addEventListener("click", function () {
+      console.log(this); // -> document
+    })
+    /* ************************************************************************************************************* */
+    function Car(_name, _color) { // ES5 객체 생성 (_name. _color 은 생성자, constructor)
+      this.name = _name;
+      this.color = _color;
+      this.b = function() { // 변수안에 함수만 담아놨을 뿐 뒤에서 내용을 바꿀 수 있다.
+        console.log(this); // -> Car
+      }
+      console.log(this); // -> window
+    }
+    Car.prototype.drive = function () { // 이건 변수가 아니고 속성을 집어넣은거
+      console.log(this.name + '이 달립니다.') // -> 붕붕이이 달립니다.
+    }
+    
+    var car = new Car('붕붕이', '흰색'); // 객체의 Instance 생성 ?? -> this가 바뀜
+    console.log(car.name); // -> 붕붕이
+    console.log(car.color); // -> 흰색
+    car.b();
+    car.drive();
+    /* ************************************************************************************************************* */
+    class Car2 { // ES6 객체 생성
+      constructor(_name, _color) {
+        this.name = _name;
+        this.color = _color;
+        this.b = 'A' // 객체의 전역 변수
+      }
+      drive() { // method 선언
+        console.log(this.name + '이 달립니다.')
+      }
+    }
+    var car2 = new Car2('방방이', '검정')
+    console.log(car2.name); // -> 방방이
+    console.log(car2.color); // -> 검정
+    car2.drive();
+    /* ************************************************************************************************************* */
+    
+    
+  </script>
+</body>
