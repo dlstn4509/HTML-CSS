@@ -15,24 +15,31 @@
   <script src="../../0.BASE/05_util.js"></script>
 </head>
 <body>
-    
+ 
 
-
-
-
-  <script src="../js/.js"></script>
+  
   <script>
-    /* var a = 'Hello World'; 
-var results = a.match(/l/g); 
-console.log((results.length));
- */
+  navigator.geolocation.getCurrentPosition(onSuccess, onError)
 
-console.log(
-$(document).width() ,                       // 문서의 크기
-$(document).height() ,                       // 문서의 크기
-$(window).width(),
-$(window).height()
-);
+  function onSuccess(r) {
+    console.log("🚀 ~ r", r)
+    
+  }
+
+  function onError(err) {
+    console.log("🚀 ~ err", err)
+  }
+  
+  
+  
+
+  
+
+
+
+
+
+
   </script>
 </body>
 </html>

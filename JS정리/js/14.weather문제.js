@@ -57,10 +57,13 @@ function onGet(res) {
 }
 */
 
-$.get('../../JSON/city.list.json').then(onResult);
+$.get('../../JSON/city.list.json').then(onSuccess)
 
-function onResult(r) {
-	const city = r.filter(v => v.country === 'KR');
-	const korCity = city.map(v => ({name: v.name, lat: v.coord.lat, lon: v.coord.lon, id: v.id}));
-	console.log(korCity);
+function onSuccess(r) {
+	console.log(r)
+	const korCity = r.filter(v => v.country === 'KR')
+	const wantKorCity = korCity.map((v) => ({name : v.name, lat : v.coord.lat, lon : v.coord.lon, id : v.id})
+	);
+	const seoul = wantKorCity.filter(v => v.name === 'Seoul')
+	console.log(seoul[1])
 }
