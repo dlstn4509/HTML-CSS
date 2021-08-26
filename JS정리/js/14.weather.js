@@ -14,7 +14,7 @@ function init() {
 
   function onCoordError(err) {
     axios.get(url, {params: {...param, id: '1832501'}}).then(onGetWeather).catch(onError)
-  } 
+  }
 }
 
 /*************** event callback *****************/

@@ -40,3 +40,27 @@ function onError(err) {
 	console.log(err);
 } 
 */
+
+/*
+axios.get('../json/city.list.json').then(onGet).catch(onError);
+function onGet(res) {
+	const korList = [];
+	const city = [];
+	const cityList = res.data;
+	for(let v of res.data) {
+		if(v.country === 'KR') korList.push(v);
+	}
+	for(let v of korList) {
+		city.push({ id: v.id, name: v.name, lat: v.coord.lat, lon: v.coord.lon });
+	}
+	console.log(korList, city);
+}
+*/
+
+$.get('../../JSON/city.list.json').then(onResult);
+
+function onResult(r) {
+	const city = r.filter(v => v.country === 'KR');
+	const korCity = city.map(v => ({name: v.name, lat: v.coord.lat, lon: v.coord.lon, id: v.id}));
+	console.log(korCity);
+}
