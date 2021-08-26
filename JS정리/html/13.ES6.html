@@ -14,11 +14,24 @@
   };
   console.log(utils.numberFn.random(1, 10));          // 그냥 쓸 때
 
+  // case 1
   const { stringFn, numberFn } = utils;
   console.log(numberFn.random(1, 10));                //  쪼개기 (쉽게 쓰기 위함)
 
   const { random } = numberFn;
   console.log(random(1, 10));                         //  쪼개기 (쉽게 쓰기 위함)
+
+  // case 2
+  const { numberFn: fn } = utils;                     // 별칭으로 구조분해 할당 하기
+  console.log(fn(random(1, 10)));
+
+
+
+  const arr = ['A학교', 'B학교', 'C학교'];
+  let [schoolA, schoolB, schoolC] = arr;
+  console.log(schoolB);                              // B학교
+  let [, , c] = arr;
+  console.log(arr);
 
 
 
