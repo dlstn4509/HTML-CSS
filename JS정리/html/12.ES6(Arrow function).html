@@ -1,0 +1,85 @@
+<script>
+  // 함수 선언문
+  function a() {
+
+  };
+
+  // ES5 함수 표현식
+  const b = function() {
+
+  };
+
+  // ES6 함수 표현식
+  const c = () => {                     // 매개변수가 없으면 ()
+
+  };
+
+  const d = k => {                     // 매개변수가 1개면 () 생략 가능
+
+  };
+
+  const e = (k, j) => {                // 매개변수가 2개 이상이면 () 써야함
+
+  };
+
+  const zp = n => n < 10 ? '0' + n : n;   // return값이 있는 한줄 표현식은 {} 생략 가능
+  console.log(zp(9));                     // -> 09
+
+  const arr = ['A', 'B', 'C'];            // ES5
+  const arr2 = arr.map(function(v) {
+    return '__' + v;
+  });
+  console.log(arr2)
+
+  const arr3 = arr.map(v => '__' + v);    // ES6
+  console.log(arr3)
+
+  /* ******************************************************************* */
+  // this - ES5 함수표현식 vs ES6 함수표현식
+  
+  // ES5, ES6에서의 객체내의 함수선언
+  const obj = {
+    fn: function() {      // ES5
+      console.log('FN!')
+    },
+    fn2() {               // ES6
+      console.log('FN2!')
+    }
+  }
+  obj.fn();
+  obj.fn2();
+
+  const obj2 = {
+    timeout() {
+      window.setTimeout(function() {
+        console.log(this);   // this는 window
+      }, 1000)
+    },
+    timeout2() {
+      window.setTimeout(() => {
+        console.log(this);   // this는 obj2
+      }, 1000)
+    },
+    timeout3() {
+      window.setTimeout(function() {
+        console.log(this);   // this는 obj2 (bind사용), Arrow Function은 bind를 쓸 수 없다.
+      }.bind(this), 1000)
+    },
+  }
+  obj2.timeout();
+  obj2.timeout2();
+  obj2.timeout3();
+
+
+  
+
+
+
+
+
+
+
+
+
+
+</script>

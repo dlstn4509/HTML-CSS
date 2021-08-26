@@ -1,0 +1,64 @@
+<script>
+   // ES6달라진점
+   // - const(상수), let           (추가된 변수 선언문)
+   // - 람다 표현식 Arrow Function (추가된 함수 선언문)
+   // - Set, Map, WeakSet, WeakMap, Object객체에 추가된 메서드 몇몇개(entries, keys, values)
+   // - 펼침연산자, 구:비구조화할당(신:구조분해할당), class, String추가된 메서드 몇몇개
+   // - for ~ of
+   // - ★★★★★★★★★★★★★★ Promise, async/await
+   // - ★★★★★★★★★★★★★★ module
+
+
+  // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★  별 열개
+  // ES6 spread operator 펼침연산자
+  var fruits = ['Apple', 'Banana', 'Cherry'];
+  var fruits2 = ['Water Melon', 'Melon', 'Orange'];
+  var fruits3 = fruits.concat(fruits2);
+  console.log(fruits3)                          // -> ["Apple", "Banana", "Cherry", "Water Melon", "Melon", "Orange"]
+
+  // 문제 1 fruits2를 fruits의 Banana 뒤에 합치시오.
+  var fruitsClone = fruits.slice()
+  fruitsClone.splice(2, 0, ...fruits2);         // 펼침 연산자  = fruitsClone.splice(2, 0, fruits2[0], fruits2[1], fruits2[2]);
+  console.log(fruitsClone);                     // -> ["Apple", "Banana", "Water Melon", "Melon", "Orange", "Cherry"]
+
+  /* ************************************************************** */
+  // const
+  // const a; -> 이건 안됨 (const는 상수선언이므로 선언과 동시에 값을 할당해야 한다, 할당된 값은 변경할 수 없다)
+  const a = 1;   // a = 2;   -> 이것도 안됨 (이미 선언 함)
+  const arr = [];
+  arr[0] = 'A';
+  arr[1] = 'B';
+  arr[2] = 'C';
+  console.log(arr);                             // -> ["A", "B", "C"]
+
+  // let -> var와 let은 Scope(유효범위)가 다르다. - 1급함수를 만들 수 있다.
+  // var b = 1;
+  // var b = 2;                                    // -> 가능
+
+  let b = 1;
+  // let b = 2;                                 // -> 불가능, var와 달리 한번 선언하면 재선언이 불가능하다.
+  b = 2;                                        // -> 가능
+
+  for(var i=0; i < 10; i++) {
+    console.log(i);                             // 0 ~ 9
+  }
+  console.log(i);                               // 10
+
+  function test() {
+    for(var i=0; i < 10; i++) {
+      console.log(i);                           // 0 ~ 9
+    }
+    console.log(i);                             // 10
+  }
+  test();
+  console.log(i);                               // 못찾음
+
+  for(let i=0; i < 10; i++) {
+    console.log(i);                             // 0 ~ 9
+  }
+  console.log(i);                               // 못찾음
+
+  /* ************************************************************** */ console.clear();
+
+
+</script>

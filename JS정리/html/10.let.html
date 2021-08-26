@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>var / let</title>
+</head>
+<body>
+  <h1>값 : <span></span></h1>
+  <ul style="font-size: 30px;">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    /* 
+    const li = document.querySelectorAll('li');
+    for(var i=0; i < li.length; i++) {
+      li[i].addEventListener('click', function() {
+        console.log(i); // -> 5
+        document.querySelector('h1 span').innerText = li[i].innerText
+      })
+    }
+    */ // -> 동작 안됨
+
+    const li = document.querySelectorAll('li');
+    for(let i=0; i < li.length; i++) {
+      li[i].addEventListener('click', function() {
+        console.log(i);
+        document.querySelector('h1 span').innerText = li[i].innerText
+      })
+      console.log(i);
+    }
+    
+
+    // 1급함수 closure함수
+    function add10(n) {
+      var a = 10;
+      return function() {
+        return a + n;
+      }
+    }
+
+    var b = add10(30);
+    console.log(b);      // -> ƒ () {
+                         //     return a + n;
+                         //       }
+    console.log(b());    // -> 40
+    var c = add10(40);
+    console.log(c());    // -> 50
+
+    // 순수함수 -> 어떠한 상황(외부상황)에서도 값이 변하지 않는다.
+    function sum(a, b) {
+      return a + b;
+    }
+
+    // 비 순수함수
+    var k = 10;
+    function hap(a, b) {
+      return a + b + k;
+    }
+    console.log(hap(10, 20)) // -> 40
+    k = 20;
+    console.log(hap(10, 20)) // -> 50
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
