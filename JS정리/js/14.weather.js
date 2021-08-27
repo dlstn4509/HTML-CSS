@@ -7,7 +7,8 @@ https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API k
 
 /*************** global init ********************/
 const appid = '3c04f92240b9cdfbc2e0280668623b5d'
-const url =  'https://api.openweathermap.org/data/2.5/weather'
+// const url =  'https://api.openweathermap.org/data/2.5/weather'
+const url =  'http://127.0.0.1:3000/weather'
 const icons =  ['https://openweathermap.org/img/wn/', '@2x.png']
 const param = {units: 'metric', appid}
 
