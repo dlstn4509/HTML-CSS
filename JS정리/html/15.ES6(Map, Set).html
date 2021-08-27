@@ -16,9 +16,11 @@
     }
   }
 
+  console.log(Object.keys(obj)[0])
   for(let v of Object.keys(obj)) { // -> lastName, firstName, fullName
     console.log(v)
   }
+  
 
   for(let v of Object.values(obj)) { // -> 홍, 길동, fullName() {return `${firstName} ${lastName}`}
     console.log(v)
@@ -57,6 +59,7 @@
   console.log(map.has('홍') ? true : false)
 
   console.log(map.delete('fullName'))
+  console.log(map.size)
 
   // console.log(map.clear('lastName'))
 
@@ -81,6 +84,9 @@
   set.add('D')
   set.add('D') // 중복 불가
   console.log(set) // -> {"A", "B", "C", "D"}
+  console.log(set.has('A'))
+  console.log(set.has('F'))
+  console.log(set.size)
 
   set.add('hong')
   set.add('hong2')
@@ -89,7 +95,8 @@
     console.log(v);
   }
 
-
+console.log(`s`)
+console.log(`1`)
 
 
 
