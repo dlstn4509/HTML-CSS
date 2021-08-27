@@ -35,7 +35,10 @@ function onGetWeather(r) {
   // main: title -> main 이름이 겹쳐서 title로 이름 변경하면 title로 접근 가능
   const $wrap = $('.weather-wrap');
   $wrap.find('.city span').text(name);
-  $wrap.find('.img-wp img').attr('src', icons[0] + icon + icons[1]);
+  let html = `<div><img src="${icons[0] + icon + icons[1]}" alt="${icon}" class="w100"></img></div>`
+  // 백틱? `
+  $wrap.find('.img-wp').html(html)
+  // $wrap.find('.img-wp img').attr('src', icons[0] + icon + icons[1]);
   $wrap.find('.temp-wp span').text(temp);
   $wrap.find('.desc-wp .main').text(title);
   $wrap.find('.desc-wp .description').text(description);

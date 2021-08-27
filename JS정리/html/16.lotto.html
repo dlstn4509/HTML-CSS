@@ -1,0 +1,18 @@
+<script src="../../0.BASE/05_util.js"></script>
+
+<script>
+  const INIT = { count: 6, MaxNumber: 45, name: '다맞춰 로또' };
+
+  let { count, MaxNumber: max } = INIT;
+  
+  function getLotto( count, max ) {
+    const luckyNumbers = new Set();
+    while(luckyNumbers.size !== count) {
+      luckyNumbers.add( random(1, max) )
+    }
+    return luckyNumbers
+  }
+  
+  console.log(getLotto(count, max));
+
+</script>

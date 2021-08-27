@@ -1,0 +1,88 @@
+<script>
+  // Set, Map
+  // Object => key: value
+  // Array => index: value
+  // Map => 객체형태(ket : value)를 띈 Iterable 요소, 배열처럼 다양한 메서드가 존재
+  // Set
+
+
+  /***************************************************************************************/
+  const obj = {
+    lastName: '홍',
+    firstName: '길동',
+    fullName() {
+      return `${firstName} ${lastName}`
+    }
+  }
+
+  for(let v of Object.keys(obj)) { // -> lastName, firstName, fullName
+    console.log(v)
+  }
+
+  for(let v of Object.values(obj)) { // -> 홍, 길동, fullName() {return `${firstName} ${lastName}`}
+    console.log(v)
+  }
+
+  for(let v of Object.entries(obj)) { // -> ["lastName", "홍"], ["firstName", "길동"], ["fullName", ƒ]
+    console.log(v)
+  }
+
+  console.log(Object.keys(obj))      // Literal Object의 key를 배열로 만든다.
+  console.log(Object.values(obj))    // Literal Object의 value를 배열로 만든다
+  console.log(Object.entries(obj))   // Literal Object를 map(2차원 배열)으로 만든다, 배열 컨트롤 쌉가능 (filter, map...)
+
+  /***************************************************************************************/ 
+  
+  // Map 는 창고, set은 주는거, get는 가져오는거, has는 key값이 있는지 물어봄, 객체는 idx가 없는데 map은 idx가 있다
+  // map.set('key', 'value')   // 값을 저장
+  // map.get('key')            // 값을 출력
+  // map.han('key')            // 키가 존재하는지 평가 true / false
+  // map.delete('key')         // 삭제 (있아서 지워지면 true, 없으면 false)
+  // map.clear('key')          // 모두 삭제 (undefined)
+  // map.size()                // 요소의 갯수
+
+
+  const map = new Map();
+  map.set('firstName', '길동')
+  map.set('lastName', '홍')
+  map.set('fullName', () => { return this })       
+  console.log(map)
+
+  console.log(map.get('firstName'))
+  console.log(map.get('lastName'))
+  console.log(map.get('fullName')())
+
+  console.log(map.has('firstName') ? true : false)
+  console.log(map.has('홍') ? true : false)
+
+  console.log(map.delete('fullName'))
+
+  // console.log(map.clear('lastName'))
+
+  map.forEach(function(v, k, a) {
+    console.log(v)
+    console.log(k)
+    console.log(a)
+  })
+
+  // Set -> 중복 등록 불가(같은걸 add 할 수 없음)
+  const set = new Set();
+  /* set.add(value)
+  set.delete(value)
+  set.has(value)
+  set.clear(value)
+  set.size */
+  set.add('A')
+  set.add('B')
+  set.add('C')
+  set.add('D')
+  set.add('D') // 중복 불가
+  console.log(set) // -> {"A", "B", "C", "D"}
+
+  set.add('hong')
+  set.add('hong2')
+  console.log(set.has('hong')) // -> true
+  for(let v of set)  { // 반복 가능
+    console.log(v);
+  }
+</script>
