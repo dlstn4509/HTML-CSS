@@ -21,10 +21,50 @@
   <script>
 
   
-  
-  
+/* function Person(_name, _gender) {
+  this.name = _name;
+  this.gender = _gender;
+  this.sayHello = function() {
+    console.log(this.gender + '인 ' + this.name + ' said "hello"');
+  }
+}
+var hong = new Person('홍길동', '남자');
+hong.sayHello() */
 
-  
+/* class Person  {
+  constructor(_name = '', _gender = '') {
+    this.name = _name;
+    this.gender = _gender;
+  }
+  sayHello() {
+    console.log(`${this.gender}인 ${this.name} said "hello"`);
+  }
+}
+var hong = new Person('홍길동', '남자')
+hong.sayHello()
+var hong2 = new Person('홍길순', '여자')
+hong2.sayHello() */
+
+const person = {
+  name: '',
+  gender: '',
+  sayHello() {
+    console.log(`${this.gender}인 ${this.name} said "hello"`);
+  }
+}
+
+const hkd = Object.create(person)
+const hks = Object.create(person)
+
+hkd.name = '홍길동'
+hkd.gender = '남자'
+hkd.sayHello()
+hks.name = '홍길순'
+hks.gender = '여자'
+hks.sayHello()
+console.log("🚀 ~ hkd.name", hkd.name)
+console.log("🚀 ~ hks.name", hks.name)
+
 
 
 
