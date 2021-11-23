@@ -1,46 +1,55 @@
 <!-- https://dabanbus-search.firebaseapp.com/html/02.search.html -->
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>search</title>
-  <link rel="stylesheet" href="../0.BASE/00_all.min.css">
-  <link rel="stylesheet" href="../0.BASE/01_bootstrap.min.css">
-  <link rel="stylesheet" href="../0.BASE/02_base.css">
-  <link rel="stylesheet" href="../css/02.search.css">
-  <script src="../0.BASE/04_jquery.min.js"></script>
-  <script src="../0.BASE/moment.min.js"></script>
-  <script src="../0.BASE/lodash.min.js"></script>
-  <script src="../0.BASE/promise.polyfill.min.js"></script>
-  <script src="../0.BASE/intersection-observer.js"></script>
-  <script src="../0.BASE/axios.min.js"></script>
-  <script src="../0.BASE/numeral.min.js"></script>
-  <script src="../0.BASE/05_util.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1 class="logo text-center fa-2x py-4 text-secondary">
-      <i class="fa fa-search"></i> dabanbus 검색
-    </h1>
-		<form class="search-form form-inline mt-3 mb-5">
-			<select name="category" class="form-control mr-2">
-				<option value="web"selected>웹사이트</option>
-				<option value="blog">블로그</option>
-				<option value="image">이미지</option>
-				<option value="vclip">동영상</option>
-				<option value="book">도서</option>
-				<option value="cafe">카페</option>
-			</select>
-			<input type="text" class="form-control mr-2 flex-grow-1" name="query" autofocus value="">
-			<button class="btn btn-primary">검색</button>
-		</form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>search</title>
+    <link rel="stylesheet" href="../0.BASE/00_all.min.css" />
+    <link rel="stylesheet" href="../0.BASE/01_bootstrap.min.css" />
+    <link rel="stylesheet" href="../0.BASE/02_base.css" />
+    <link rel="stylesheet" href="../css/02.search.css" />
+    <script src="../0.BASE/04_jquery.min.js"></script>
+    <script src="../0.BASE/moment.min.js"></script>
+    <script src="../0.BASE/lodash.min.js"></script>
+    <script src="../0.BASE/promise.polyfill.min.js"></script>
+    <script src="../0.BASE/intersection-observer.js"></script>
+    <script src="../0.BASE/axios.min.js"></script>
+    <script src="../0.BASE/numeral.min.js"></script>
+    <script src="../0.BASE/05_util.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="logo text-center fa-2x py-4 text-secondary">
+        <i class="fa fa-search"></i> dabanbus 검색
+      </h1>
+      <form class="search-form form-inline mt-3 mb-5">
+        <select name="category" class="form-control mr-2">
+          <option value="web" selected>웹사이트</option>
+          <option value="blog">블로그</option>
+          <option value="image">이미지</option>
+          <option value="vclip">동영상</option>
+          <option value="book">도서</option>
+          <option value="cafe">카페</option>
+        </select>
+        <input
+          type="text"
+          class="form-control mr-2 flex-grow-1"
+          name="query"
+          autofocus
+          value="Node.js"
+          placeholder="검색어를 입력하세요."
+        />
+        <button class="btn btn-primary">검색</button>
+      </form>
 
-		<h2 class="text-right mb-3">검색결과: <span class="result-cnt font-weight-bold"></span>건</h2>
-    
-		<ul class="lists">
-      <!-- <li class="list">             도서
+      <h2 class="text-right mb-3">
+        검색결과: <span class="result-cnt font-weight-bold"></span>건
+      </h2>
+
+      <ul class="lists">
+        <!-- <li class="list">             도서
         <a href="" target="_blank" class="title">토론은 게임이다</a>
         <div class="info-wrap">
           <a class="thumb-wp" href="" target="_blank">
@@ -66,7 +75,7 @@
         </a>
       </li> -->
 
-<!--       <li class="list">         블로그
+        <!--       <li class="list">         블로그
         <a class="thumbs" href="">
           <img src="https://search2.kakaocdn.net/argon/130x130_85_c/2RI1rXeH0Ys" alt="" class="w100">
         </a>
@@ -78,47 +87,51 @@
         </div>
       </li> -->
 
-<!--       <li class="list">  웹
+        <!--       <li class="list">  웹
         <h3 class="title">문서 제목</h3>
         <p class="content">문서 본문 중 일부</p>
         <a class="link">문서 URL http://</a>
         <div class="dt">2021-08-13</div>
       </li> -->
-		</ul>
+      </ul>
 
-    <div class="pager-wrap" style="display: none;">
-      <button class="bt-first fa fa-arrow-left" data-page="1" disabled></button>
-      <button class="bt-pager-prev fa fa-angle-double-left" disabled></button>
-      <button class="bt-prev fa fa-angle-left" disabled></button>      
-<!--       <button href="#" class="bt-page">1</button>
+      <div class="pager-wrap" style="display: none">
+        <button class="bt-first fa fa-arrow-left" data-page="1" disabled></button>
+        <button class="bt-pager-prev fa fa-angle-double-left" disabled></button>
+        <button class="bt-prev fa fa-angle-left" disabled></button>
+        <!--       <button href="#" class="bt-page">1</button>
       <button href="#" class="bt-page">2</button>
       <button href="#" class="bt-page">3</button>
       <button href="#" class="bt-page">4</button>
       <button href="#" class="bt-page">5</button> -->
-      <button class="bt-next fa fa-angle-right" disabled></button>
-      <button class="bt-pager-next fa fa-angle-double-right" disabled></button>
-      <button class="bt-last fa fa-arrow-right" disabled></button>
-    </div>
+        <button class="bt-next fa fa-angle-right" disabled></button>
+        <button class="bt-pager-next fa fa-angle-double-right" disabled></button>
+        <button class="bt-last fa fa-arrow-right" disabled></button>
+      </div>
 
-    <div class="modal-wrapper" style="display: none;">
-      <div class="modal-wrap">
-        <div class="img-wp">
-          <img src="http://via.placeholder.com/100" class="w100" onerror="onLoadError(this);">
-          <i class="bt-close fa fa-times" onclick="$('.modal-wrapper').hide();"></i>
-        </div>
-        <div class="p-3">
-          <div class="size-wp mb-2"></div>
-          <div class="name-wp mb-2">
-            <span class="collection"></span>
-            <span class="name"></span>
+      <div class="modal-wrapper" style="display: none">
+        <div class="modal-wrap">
+          <div class="img-wp">
+            <img
+              src="http://via.placeholder.com/100"
+              class="w100"
+              onerror="onLoadError(this);"
+            />
+            <i class="bt-close fa fa-times" onclick="$('.modal-wrapper').hide();"></i>
           </div>
-          <a class="link mb-2" target="_b"></a>
-          <div class="dt"></div>
+          <div class="p-3">
+            <div class="size-wp mb-2"></div>
+            <div class="name-wp mb-2">
+              <span class="collection"></span>
+              <span class="name"></span>
+            </div>
+            <a class="link mb-2" target="_b"></a>
+            <div class="dt"></div>
+          </div>
         </div>
       </div>
     </div>
-	</div>
-  <!-- <div class="fa fa-spin fa-spinner fa-5x"></div> -->
-  <script src="../js/02.search.js"></script>
-</body>
+    <!-- <div class="fa fa-spin fa-spinner fa-5x"></div> -->
+    <script src="../js/02.search.js"></script>
+  </body>
 </html>
